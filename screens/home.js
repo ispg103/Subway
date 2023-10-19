@@ -1,7 +1,6 @@
 export class Home{
     constructor(p5){
       this.p5=p5;
-      //this.background=this.loadImage('../SUBWAY FOTOS/EXTRAS/Background.png');
       this.logo =this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
       this.icon=this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayIcon.png');
 
@@ -16,6 +15,7 @@ export class Home{
         p5.image(this.logo,40,100);
         p5.image(this.icon,40,100);
       this.startButton.show();
+
     }
 
     hideInput(){
