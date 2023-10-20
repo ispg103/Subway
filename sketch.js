@@ -14,7 +14,7 @@ let meats;
 let cheese;
 
 const app = p5 => {
-  const bread = new Bread(p5);
+  const home = new Home(p5);
 
   p5.setup = function() {
     p5.createCanvas(393, 715);
@@ -22,7 +22,7 @@ const app = p5 => {
 
   p5.draw = function() {
     p5.background(220);
-    bread.show(p5);
+    home.show(p5);
   };
 
 };
