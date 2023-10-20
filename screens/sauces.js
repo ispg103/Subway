@@ -12,7 +12,7 @@ export class Sauces{
       this.sauce =this.p5.loadImage('../SUBWAY FOTOS/TITLES/Sauce.png');
 
       this.nextButton = this.p5.createButton('Next');
-      this.nextButton.position(this.p5.windowWidth / 7 - 50, this.p5.windowHeight / 2 + 300);
+      this.nextButton.position(this.p5.windowWidth / 7.3 - 50, this.p5.windowHeight / 2 + 300);
       this.nextButton.mousePressed(this.navigate);
 
     }

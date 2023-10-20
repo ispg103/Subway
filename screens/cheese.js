@@ -14,7 +14,7 @@ export class Cheese{
       this.cheese =this.p5.loadImage('../SUBWAY FOTOS/TITLES/CHEESE.png');
 
       this.nextButton = this.p5.createButton('Next');
-      this.nextButton.position(this.p5.windowWidth / 6.8 - 50, this.p5.windowHeight / 2 + 280);
+      this.nextButton.position(this.p5.windowWidth / 7.3 - 50, this.p5.windowHeight / 2 + 300);
       this.nextButton.mousePressed(this.navigate);
 
     }
