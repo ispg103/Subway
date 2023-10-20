@@ -8,7 +8,7 @@ export class Home{
         this.startButton = this.p5.createButton('Start');
         this.startButton.position(this.p5.windowWidth / 10 - 87, this.p5.windowHeight / 2 + 250);
         this.startButton.mousePressed(this.navigate);
-
+      
         this.hideInput();
     }
     show(p5){
@@ -22,9 +22,9 @@ export class Home{
       this.startButton.style('color', '#003308');
       this.startButton.style('font-size', '29px');
       this.startButton.style('width', '249px');
+      this.startButton.style('height', '50px');
       this.startButton.style('border-radius', '39.5px');
       this.startButton.style('border', 'none');
-
     }
 
     hideInput(){
