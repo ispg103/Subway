@@ -31,8 +31,6 @@ export class Cheese{
         p5.image(this.provoText,77,578);
         p5.image(this.cheddar,185,470);
         p5.image(this.cheddarText,237,578);
-        p5.image(this.tuna,50,520);
-        p5.image(this.ribs,200,522);
 
     }
 
