@@ -3,9 +3,13 @@ export class Cheese{
       this.p5=p5;
       this.logo =this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
       this.american =this.p5.loadImage('../SUBWAY FOTOS/CHEESE/AmericanCheese.png');
+      this.ameText =this.p5.loadImage('../SUBWAY FOTOS/TEXTS/american.png');
       this.mozzarella =this.p5.loadImage('../SUBWAY FOTOS/CHEESE/MozzarellaCheese.png');
+      this.mozzaText =this.p5.loadImage('../SUBWAY FOTOS/TEXTS/mozzarella.png');
       this.provolone =this.p5.loadImage('../SUBWAY FOTOS/CHEESE/ProvoloneCheese.png');
+      this.provoText =this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Provolone.png');
       this.cheddar =this.p5.loadImage('../SUBWAY FOTOS/CHEESE/CheddarCheese.png');
+      this.cheddarText =this.p5.loadImage('../SUBWAY FOTOS/TEXTS/cheddar.png');
       this.choose =this.p5.loadImage('../SUBWAY FOTOS/TITLES/choose.png');
       this.cheese =this.p5.loadImage('../SUBWAY FOTOS/TITLES/CHEESE.png');
 
@@ -20,9 +24,13 @@ export class Cheese{
         p5.image(this.choose,55,155);
         p5.image(this.cheese,155,265);
         p5.image(this.american,30,300);
+        p5.image(this.ameText,77,420);
         p5.image(this.mozzarella,210,315);
-        p5.image(this.provolone,70,475);
+        p5.image(this.mozzaText,231,420);
+        p5.image(this.provolone,65,475);
+        p5.image(this.provoText,77,580);
         p5.image(this.cheddar,185,470);
+        p5.image(this.cheddarText,237,580);
         p5.image(this.tuna,50,520);
         p5.image(this.ribs,200,522);
 
