@@ -18,15 +18,15 @@ export class Vegetables{
       this.vegetables =this.p5.loadImage('../SUBWAY FOTOS/TITLES/Vegetables.png');
 
       this.nextButton = this.p5.createButton('Next');
-      this.nextButton.position(this.p5.windowWidth / 7.3 - 50, this.p5.windowHeight / 2 + 300);
+      this.nextButton.position(this.p5.windowWidth / 10 - 87, this.p5.windowHeight / 2 + 275);
       this.nextButton.mousePressed(this.navigate);
 
     }
     show(p5){
         p5.background('green');
-        p5.image(this.logo,65,75);
-        p5.image(this.choose,55,155);
-        p5.image(this.vegetables,130,265);
+        p5.image(this.logo,65,60);
+        p5.image(this.choose,55,140);
+        p5.image(this.vegetables,130,250);
         p5.image(this.tomato,75,310);
         p5.image(this.tomatoText,86,385);
         p5.image(this.lettuce,200,270);
@@ -39,6 +39,17 @@ export class Vegetables{
         p5.image(this.jalaText,80,612);
         p5.image(this.bellpepper,212,522);
         p5.image(this.pepperText,230,612);
+
+
+        
+        this.nextButton.style('background-color', '#F3B90C');
+        this.nextButton.style('color', '#003308');
+        this.nextButton.style('font-size', '29px');
+        this.nextButton.style('width', '249px');
+        this.nextButton.style('height', '50px');
+        this.nextButton.style('border-radius', '39.5px');
+        this.nextButton.style('border', 'none');
+        this.nextButton.style('box-shadow', '0px 4px 4px 0px rgba(0, 0, 0, 0.25');
 
     }
 

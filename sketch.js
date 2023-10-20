@@ -14,7 +14,7 @@ let meats;
 let cheese;
 
 const app = p5 => {
-  const userInfo = new UserInfo(p5);
+  const vegetables= new Vegetables(p5);
 
   p5.setup = function() {
     p5.createCanvas(393, 715);
@@ -22,7 +22,7 @@ const app = p5 => {
 
   p5.draw = function() {
     p5.background(220);
-    userInfo.show(p5);
+    vegetables.show(p5);
   };
 
 };
