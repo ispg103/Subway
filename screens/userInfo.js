@@ -3,25 +3,25 @@ export class UserInfo{
       this.p5=p5;
       this.logo =this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
 
-        this.startButton = this.p5.createButton('Start');
-        this.startButton.position(this.p5.windowWidth / 2 - 50, this.p5.windowHeight / 2 + 60);
-        this.startButton.mousePressed(this.navigate);
+      this.continueButton = this.p5.createButton('Continue');
+      this.continueButton.position(this.p5.windowWidth / 7.5 - 50, this.p5.windowHeight / 2 + 250);
+      this.continueButton.mousePressed(this.navigate);
 
         this.hideInput();
     }
     show(p5){
         p5.background('green');
         p5.image(this.logo,40,100);
-      this.startButton.show();
+      this.continueButton.show();
 
     }
 
     hideInput(){
-        this.startButton.hide();
+        this.continueButton.hide();
     }
 
     showInput(){
-        this.startButton.show();
+        this.continueButton.show();
     }
 
   }

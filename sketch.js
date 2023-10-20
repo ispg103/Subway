@@ -9,7 +9,7 @@ const app = p5 => {
   const bread = new Bread(p5);
 
   p5.setup = function() {
-    p5.createCanvas(700, 850);
+    p5.createCanvas(393, 715);
   };
 
   p5.draw = function() {
