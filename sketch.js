@@ -4,15 +4,17 @@ import { Bread } from "./screens/bread.js";
 import { Sauces } from "./screens/sauces.js";
 import { Vegetables } from "./screens/vegetables.js";
 import { Meats } from "./screens/meats.js";
+import { Cheese } from "./screens/cheese.js";
 let home;
 let userInfo;
 let bread;
 let sauces;
 let vegetables;
 let meats;
+let cheese;
 
 const app = p5 => {
-  const meats = new Meats(p5);
+  const cheese = new Cheese(p5);
 
   p5.setup = function() {
     p5.createCanvas(393, 715);
@@ -20,7 +22,7 @@ const app = p5 => {
 
   p5.draw = function() {
     p5.background(220);
-    meats.show(p5);
+    cheese.show(p5);
   };
 
 };
