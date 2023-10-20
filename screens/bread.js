@@ -17,6 +17,7 @@ export class Bread{
         p5.image(this.oregano,85,440);
         p5.image(this.wheat,85,540);
         p5.image(this.bread,150,280);
+        this.continueButton.show();
     }
 
     hideInput(){

@@ -1,12 +1,14 @@
 import { Home } from "./screens/home.js";
 import { UserInfo } from "./screens/userInfo.js";
 import { Bread } from "./screens/bread.js";
+import { Sauces } from "./screens/sauces.js";
 let home;
 let userInfo;
 let bread;
+let sauces;
 
 const app = p5 => {
-  const bread = new Bread(p5);
+  const sauces = new Sauces(p5);
 
   p5.setup = function() {
     p5.createCanvas(393, 715);
@@ -14,7 +16,7 @@ const app = p5 => {
 
   p5.draw = function() {
     p5.background(220);
-    bread.show(p5);
+    sauces.show(p5);
   };
 
 };
