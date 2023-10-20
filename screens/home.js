@@ -15,7 +15,7 @@ export class Home{
         p5.background('green');
         p5.image(this.logo,65,85);
         p5.image(this.icon,100,200);
-        p5.image(this.build,90,470);
+        p5.image(this.build,95,470);
       this.startButton.show();
 
     }
