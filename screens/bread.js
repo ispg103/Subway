@@ -11,10 +11,10 @@ export class Bread{
     show(p5){
         p5.background('green');
         p5.image(this.logo,65,75);
+        p5.image(this.choose,55,170);
         p5.image(this.white,90,320);
         p5.image(this.oregano,85,430);
         p5.image(this.wheat,85,530);
-        p5.image(this.choose,55,170);
     }
 
     hideInput(){
