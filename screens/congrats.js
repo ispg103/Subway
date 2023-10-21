@@ -12,7 +12,7 @@ export class Congrats{
         this.hideInput();
     }
     show(p5){
-        p5.background('#FF830E');
+        p5.background('#FF811F');
         p5.image(this.sorry,45,70);
         p5.image(this.icon,100,265);
         p5.image(this.enjoy,50,520);
