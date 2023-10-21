@@ -14,15 +14,15 @@ export class Cheese{
       this.cheese =this.p5.loadImage('../SUBWAY FOTOS/TITLES/CHEESE.png');
 
       this.nextButton = this.p5.createButton('Next');
-      this.nextButton.position(this.p5.windowWidth / 7.3 - 50, this.p5.windowHeight / 2 + 300);
+      this.nextButton.position(this.p5.windowWidth / 10 - 87, this.p5.windowHeight / 2 + 275);
       this.nextButton.mousePressed(this.navigate);
 
     }
     show(p5){
         p5.background('green');
-        p5.image(this.logo,65,75);
-        p5.image(this.choose,55,155);
-        p5.image(this.cheese,155,265);
+        p5.image(this.logo,65,60);
+        p5.image(this.choose,55,140);
+        p5.image(this.cheese,155,257);
         p5.image(this.american,30,300);
         p5.image(this.ameText,77,420);
         p5.image(this.mozzarella,210,315);
@@ -31,6 +31,16 @@ export class Cheese{
         p5.image(this.provoText,77,578);
         p5.image(this.cheddar,185,470);
         p5.image(this.cheddarText,237,578);
+
+
+        this.nextButton.style('background-color', '#F3B90C');
+        this.nextButton.style('color', '#003308');
+        this.nextButton.style('font-size', '29px');
+        this.nextButton.style('width', '249px');
+        this.nextButton.style('height', '50px');
+        this.nextButton.style('border-radius', '39.5px');
+        this.nextButton.style('border', 'none');
+        this.nextButton.style('box-shadow', '0px 4px 4px 0px rgba(0, 0, 0, 0.25');
 
     }
 
