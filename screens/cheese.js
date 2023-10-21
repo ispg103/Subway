@@ -17,12 +17,14 @@ export class Cheese{
       this.nextButton.position(this.p5.windowWidth / 10 - 87, this.p5.windowHeight / 2 + 275);
       this.nextButton.mousePressed(this.navigate);
 
+      this.hideInput();
+
     }
     show(p5){
         p5.background('green');
         p5.image(this.logo,65,60);
         p5.image(this.choose,55,140);
-        p5.image(this.cheese,155,257);
+        p5.image(this.cheese,145,257);
         p5.image(this.american,30,300);
         p5.image(this.ameText,77,420);
         p5.image(this.mozzarella,210,315);

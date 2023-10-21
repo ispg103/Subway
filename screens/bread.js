@@ -26,11 +26,9 @@ export class Bread{
     }
 
     hideInput(){
-        this.continueButton.hide();
     }
 
     showInput(){
-        this.continueButton.show();
     }
 
   }

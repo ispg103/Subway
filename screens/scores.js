@@ -12,6 +12,8 @@ export class Scores{
       this.continueButton.position(this.p5.windowWidth / 10 - 87, this.p5.windowHeight / 2 + 250);
       this.continueButton.mousePressed(this.navigate);
 
+      this.hideInput();
+
     }
     show(p5){
         p5.background('green');
@@ -35,11 +37,11 @@ export class Scores{
     }
 
     hideInput(){
-        this.nextButton.hide();
+        this.continueButton.hide();
     }
 
     showInput(){
-        this.nextButton.show();
+        this.continueButton.show();
     }
 
   }

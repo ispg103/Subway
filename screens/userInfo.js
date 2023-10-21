@@ -45,10 +45,12 @@ export class UserInfo{
 
     hideInput(){
         this.continueButton.hide();
+        this.emailInput.hide();
     }
 
     showInput(){
         this.continueButton.show();
+        this.emailInput.show();
     }
 
   }

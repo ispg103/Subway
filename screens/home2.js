@@ -10,6 +10,7 @@ export class Home2{
         this.startButton.mousePressed(this.navigate);
       
         this.hideInput();
+
     }
     show(p5){
         p5.background('green');
@@ -26,7 +27,8 @@ export class Home2{
       this.startButton.style('border-radius', '39.5px');
       this.startButton.style('border', 'none');
       this.startButton.style('box-shadow', '0px 4px 4px 0px rgba(0, 0, 0, 0.25');
-    }
+    };
+
 
     hideInput(){
         this.startButton.hide();

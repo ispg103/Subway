@@ -21,6 +21,8 @@ export class Vegetables{
       this.nextButton.position(this.p5.windowWidth / 10 - 87, this.p5.windowHeight / 2 + 275);
       this.nextButton.mousePressed(this.navigate);
 
+      this.hideInput();
+
     }
     show(p5){
         p5.background('green');
