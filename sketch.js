@@ -21,7 +21,7 @@ let scores;
 let sorry;
 
 const app = p5 => {
-  const scores= new Scores(p5);
+  const sorry= new Sorry(p5);
 
   p5.setup = function() {
     p5.createCanvas(393, 715);
@@ -29,7 +29,7 @@ const app = p5 => {
 
   p5.draw = function() {
     p5.background(220);
-    scores.show(p5);
+    sorry.show(p5);
   };
 
 };

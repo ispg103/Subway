@@ -1,21 +1,21 @@
 export class Sorry{
     constructor(p5){
       this.p5=p5;
-      this.logo =this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
+      this.sorry =this.p5.loadImage('../SUBWAY FOTOS/TITLES/sorry.png');
       this.icon=this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayIcon.png');
-      this.combination=this.p5.loadImage('../SUBWAY FOTOS/TITLES/combination.png');
+      this.try=this.p5.loadImage('../SUBWAY FOTOS/TEXTS/try.png');
 
-      this.nextButton = this.p5.createButton('Next');
-      this.nextButton.position(this.p5.windowWidth / 10 - 87, this.p5.windowHeight / 2 + 275);
-      this.nextButton.mousePressed(this.navigate);
+        this.nextButton = this.p5.createButton('Next');
+        this.nextButton.position(this.p5.windowWidth / 10 - 87, this.p5.windowHeight / 2 + 250);
+        this.nextButton.mousePressed(this.navigate);
       
         this.hideInput();
     }
     show(p5){
-        p5.background('green');
-        p5.image(this.logo,65,85);
-        p5.image(this.icon,100,200);
-        p5.image(this.combination,30,470);
+        p5.background('#CE0800');
+        p5.image(this.sorry,35,70);
+        p5.image(this.icon,100,238);
+        p5.image(this.try,78,505);
       this.nextButton.show();
       
       this.nextButton.style('background-color', '#F3B90C');
@@ -29,11 +29,11 @@ export class Sorry{
     }
 
     hideInput(){
-        this.startButton.hide();
+        this.nextButton.hide();
     }
 
     showInput(){
-        this.startButton.show();
+        this.nextButton.show();
     }
 
   }
