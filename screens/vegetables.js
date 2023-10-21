@@ -27,18 +27,18 @@ export class Vegetables{
         p5.image(this.logo,65,60);
         p5.image(this.choose,55,140);
         p5.image(this.vegetables,130,250);
-        p5.image(this.tomato,75,310);
-        p5.image(this.tomatoText,86,385);
-        p5.image(this.lettuce,200,270);
-        p5.image(this.lettuceText,245,385);
-        p5.image(this.pickle,50,408);
-        p5.image(this.pickleText,90,490);
-        p5.image(this.onion,210,403);
-        p5.image(this.onionText,251,491);
-        p5.image(this.jalapeño,70,520);
-        p5.image(this.jalaText,80,612);
-        p5.image(this.bellpepper,212,522);
-        p5.image(this.pepperText,230,612);
+        p5.image(this.tomato,75,290);
+        p5.image(this.tomatoText,86,366);
+        p5.image(this.lettuce,200,250);
+        p5.image(this.lettuceText,245,366);
+        p5.image(this.pickle,50,392);
+        p5.image(this.pickleText,90,477);
+        p5.image(this.onion,210,388);
+        p5.image(this.onionText,251,477);
+        p5.image(this.jalapeño,70,506);
+        p5.image(this.jalaText,80,597);
+        p5.image(this.bellpepper,212,510);
+        p5.image(this.pepperText,230,597);
 
 
         
