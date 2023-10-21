@@ -31,6 +31,7 @@ export class Cheese{
         p5.image(this.provoText,77,578);
         p5.image(this.cheddar,185,470);
         p5.image(this.cheddarText,237,578);
+        this.nextButton.show();
 
 
         this.nextButton.style('background-color', '#F3B90C');

@@ -39,6 +39,7 @@ export class Sauces{
         p5.image(this.garlicText,94,594);
         p5.image(this.mayo,212,502);
         p5.image(this.mayoText,210,594);
+        this.nextButton.show();
 
 
         this.nextButton.style('background-color', '#F3B90C');

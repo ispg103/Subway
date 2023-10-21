@@ -7,6 +7,7 @@ import { Vegetables } from "./screens/vegetables.js";
 import { Meats } from "./screens/meats.js";
 import { Cheese } from "./screens/cheese.js";
 import { Scores } from "./screens/scores.js";
+import { Sorry } from "./screens/sorry.js";
 
 let home;
 let home2;
@@ -17,9 +18,10 @@ let vegetables;
 let meats;
 let cheese;
 let scores;
+let sorry;
 
 const app = p5 => {
-  const home2= new Home2(p5);
+  const scores= new Scores(p5);
 
   p5.setup = function() {
     p5.createCanvas(393, 715);
@@ -27,7 +29,7 @@ const app = p5 => {
 
   p5.draw = function() {
     p5.background(220);
-    home2.show(p5);
+    scores.show(p5);
   };
 
 };

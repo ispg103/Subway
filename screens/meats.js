@@ -39,6 +39,7 @@ export class Meats{
         p5.image(this.tunaText,90,597);
         p5.image(this.ribs,210,514);
         p5.image(this.ribsText,230,595);
+        this.nextButton.show();
 
 
         this.nextButton.style('background-color', '#F3B90C');

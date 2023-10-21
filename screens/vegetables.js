@@ -39,8 +39,7 @@ export class Vegetables{
         p5.image(this.jalaText,80,597);
         p5.image(this.bellpepper,212,510);
         p5.image(this.pepperText,230,597);
-
-
+        this.nextButton.show();
         
         this.nextButton.style('background-color', '#F3B90C');
         this.nextButton.style('color', '#003308');

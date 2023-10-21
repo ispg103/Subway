@@ -21,8 +21,7 @@ export class Scores{
         p5.image(this.first,70,330);
         p5.image(this.second,40,460);
         p5.image(this.third,200,460);
-        
-
+        this.continueButton.show();
 
         this.continueButton.style('background-color', '#F3B90C');
         this.continueButton.style('color', '#003308');
