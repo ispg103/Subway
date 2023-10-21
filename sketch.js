@@ -9,6 +9,7 @@ import { Cheese } from "./screens/cheese.js";
 import { Scores } from "./screens/scores.js";
 import { Sorry } from "./screens/sorry.js";
 import { Congrats } from "./screens/congrats.js";
+import { Thanks } from "./screens/thanks.js";
 
 let home;
 let home2;
@@ -21,9 +22,10 @@ let cheese;
 let scores;
 let sorry;
 let congrats;
+let thanks;
 
 const app = p5 => {
-  const congrats= new Congrats(p5);
+  const thanks= new Thanks(p5);
 
   p5.setup = function() {
     p5.createCanvas(393, 715);
@@ -31,7 +33,7 @@ const app = p5 => {
 
   p5.draw = function() {
     p5.background(220);
-    congrats.show(p5);
+    thanks.show(p5);
   };
 
 };
