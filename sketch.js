@@ -74,19 +74,19 @@ p5.draw = function() {
       console.log("Cambio a 3")
     }else if (p5.key === '4') {
       currentScreen.hideInput();
-      currentScreen = sauces;
+      currentScreen = meats;
       console.log("Cambio a 4")
     }else if (p5.key === '5') {
       currentScreen.hideInput();
-      currentScreen = vegetables;
+      currentScreen = cheese;
       console.log("Cambio a 5")
     }else if (p5.key === '6') {
       currentScreen.hideInput();
-      currentScreen = cheese;
+      currentScreen = vegetables;
       console.log("Cambio a 6")
     }else if (p5.key === '7') {
       currentScreen.hideInput();
-      currentScreen = meats;
+      currentScreen = sauces;
       console.log("Cambio a 7")
     }else if (p5.key === '8') {
       currentScreen.hideInput();
