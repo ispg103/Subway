@@ -5,9 +5,15 @@ export class Sorry{
       this.icon=this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayIcon.png');
       this.try=this.p5.loadImage('../SUBWAY FOTOS/TEXTS/try.png');
 
-        this.nextButton = this.p5.createButton('Next');
-        this.nextButton.position(this.p5.windowWidth / 10 - 87, this.p5.windowHeight / 2 + 250);
-        this.nextButton.mousePressed(this.navigate);
+      const buttonXPercentage = 15; 
+      const buttonYPercentage = 75;
+    
+      const buttonX = (buttonXPercentage / 100) * this.p5.width;
+      const buttonY = (buttonYPercentage / 100) * this.p5.height;
+  
+      this.nextButton = this.p5.createButton('Next');
+      this.nextButton.position(buttonX, buttonY);
+      this.nextButton.mousePressed(this.navigate);
       
         this.hideInput();
     }

@@ -1,16 +1,23 @@
 export class Home{
-    constructor(p5){
-      this.p5=p5;
-      this.logo =this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
-      this.icon=this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayIcon.png');
-      this.build=this.p5.loadImage('../SUBWAY FOTOS/TITLES/build.png');
-
-        this.startButton = this.p5.createButton('Start');
-        this.startButton.position(this.p5.windowWidth / 10 - 87, this.p5.windowHeight / 2 + 250);
-        this.startButton.mousePressed(this.navigate);
-      
-        this.hideInput();
-    }
+  constructor(p5) {
+    this.p5 = p5;
+    this.logo = this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
+    this.icon = this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayIcon.png');
+    this.build = this.p5.loadImage('../SUBWAY FOTOS/TITLES/build.png');
+  
+    const buttonXPercentage = 15; 
+    const buttonYPercentage = 80;
+    
+    const buttonX = (buttonXPercentage / 100) * this.p5.width;
+    const buttonY = (buttonYPercentage / 100) * this.p5.height;
+  
+    this.startButton = this.p5.createButton('Start');
+    this.startButton.position(buttonX, buttonY);
+    this.startButton.mousePressed(this.navigate);
+  
+    this.hideInput();
+   }
+  
     show(p5){
         p5.background('green');
         p5.image(this.logo,65,85);

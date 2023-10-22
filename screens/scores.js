@@ -8,8 +8,14 @@ export class Scores{
       this.second =this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SecondPlace.png');
       this.third =this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/ThirdPlace.png');
 
+      const buttonXPercentage = 15; 
+      const buttonYPercentage = 80;
+    
+      const buttonX = (buttonXPercentage / 100) * this.p5.width;
+      const buttonY = (buttonYPercentage / 100) * this.p5.height;
+  
       this.continueButton = this.p5.createButton('Continue');
-      this.continueButton.position(this.p5.windowWidth / 10 - 87, this.p5.windowHeight / 2 + 250);
+      this.continueButton.position(buttonX, buttonY);
       this.continueButton.mousePressed(this.navigate);
 
       this.hideInput();

@@ -27,7 +27,7 @@ let thanks;
 let currentScreen;
 
 p5.setup = function() {
-  p5.createCanvas(393, 715);
+  p5.createCanvas(393, 760);
   userInfo = new UserInfo(p5);
   home = new Home(p5);
 

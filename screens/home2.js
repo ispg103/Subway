@@ -5,9 +5,15 @@ export class Home2{
       this.icon=this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayIcon.png');
       this.combination=this.p5.loadImage('../SUBWAY FOTOS/TITLES/combination.png');
 
-        this.startButton = this.p5.createButton('Start');
-        this.startButton.position(this.p5.windowWidth / 10 - 87, this.p5.windowHeight / 2 + 250);
-        this.startButton.mousePressed(this.navigate);
+      const buttonXPercentage = 15; 
+      const buttonYPercentage = 80;
+    
+      const buttonX = (buttonXPercentage / 100) * this.p5.width;
+      const buttonY = (buttonYPercentage / 100) * this.p5.height;
+  
+      this.startButton = this.p5.createButton('Start');
+      this.startButton.position(buttonX, buttonY);
+      this.startButton.mousePressed(this.navigate);
       
         this.hideInput();
 
