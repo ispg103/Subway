@@ -1,74 +1,86 @@
-export class Meats{
-    constructor(p5,navigateCallback){
-      this.p5=p5;
-      this.logo =this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
-      this.jam =this.p5.loadImage('../SUBWAY FOTOS/MEAT/Jam.png');
-      this.jamText =this.p5.loadImage('../SUBWAY FOTOS/TEXTS/jam.png');
-      this.chicken =this.p5.loadImage('../SUBWAY FOTOS/MEAT/ChickenStrips.png');
-      this.chickenText =this.p5.loadImage('../SUBWAY FOTOS/TEXTS/strips.png');
-      this.turkey =this.p5.loadImage('../SUBWAY FOTOS/MEAT/Turkey.png');
-      this.turkeyText =this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Turkey.png');
-      this.salami =this.p5.loadImage('../SUBWAY FOTOS/MEAT/Salami.png');
-      this.salamiText =this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Salami.png');
-      this.tuna =this.p5.loadImage('../SUBWAY FOTOS/MEAT/Tuna.png');
-      this.tunaText =this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Tuna.png');
-      this.ribs =this.p5.loadImage('../SUBWAY FOTOS/MEAT/BBQrips.png');
-      this.ribsText =this.p5.loadImage('../SUBWAY FOTOS/TEXTS/ribs.png');
-      this.choose =this.p5.loadImage('../SUBWAY FOTOS/TITLES/choose.png');
-      this.meat =this.p5.loadImage('../SUBWAY FOTOS/TITLES/Meat.png');
-
-      const buttonXPercentage = 15;
-      const buttonYPercentage = 85;
-
-      const buttonX = (buttonXPercentage / 100) * this.p5.width;
-      const buttonY = (buttonYPercentage / 100) * this.p5.height;
-
-      this.nextButton = this.p5.createButton('Next');
-      this.nextButton.position(buttonX, buttonY);
-      this.nextButton.mousePressed(()=>{
-        navigateCallback();
-      });
-
-      this.hideInput();
-
-    }
-    show(p5){
-        p5.background('green');
-        p5.image(this.logo,65,60);
-        p5.image(this.choose,55,140);
-        p5.image(this.meat,155,250);
-        p5.image(this.jam,55,275);
-        p5.image(this.jamText,92,363);
-        p5.image(this.chicken,200,275);
-        p5.image(this.chickenText,215,362);
-        p5.image(this.turkey,50,383);
-        p5.image(this.turkeyText,85,484);
-        p5.image(this.salami,200,403);
-        p5.image(this.salamiText,240,482);
-        p5.image(this.tuna,50,515);
-        p5.image(this.tunaText,90,597);
-        p5.image(this.ribs,210,514);
-        p5.image(this.ribsText,230,595);
-        this.nextButton.show();
-
-
-        this.nextButton.style('background-color', '#F3B90C');
-        this.nextButton.style('color', '#003308');
-        this.nextButton.style('font-size', '29px');
-        this.nextButton.style('width', '249px');
-        this.nextButton.style('height', '50px');
-        this.nextButton.style('border-radius', '39.5px');
-        this.nextButton.style('border', 'none');
-        this.nextButton.style('box-shadow', '0px 4px 4px 0px rgba(0, 0, 0, 0.25');
-
-    }
-
-    hideInput(){
-        this.nextButton.hide();
-    }
-
-    showInput(){
-        this.nextButton.show();
-    }
-
+class Meat {
+  constructor(image, text) {
+    this.image = image;
+    this.text = text;
   }
+}
+
+export class Meats {
+  constructor(p5, navigateCallback) {
+    this.p5 = p5;
+    this.logo = this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
+    this.choose = this.p5.loadImage('../SUBWAY FOTOS/TITLES/choose.png');
+    this.meat = this.p5.loadImage('../SUBWAY FOTOS/TITLES/Meat.png');
+
+    this.meats = [
+      new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/Jam.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/jam.png')),
+      new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/ChickenStrips.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/strips.png')),
+      new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/Turkey.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Turkey.png')),
+      new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/Salami.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Salami.png')),
+      new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/Tuna.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Tuna.png')),
+      new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/BBQrips.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/ribs.png')),
+    ];
+
+    const buttonXPercentage = 15;
+    const buttonYPercentage = 85;
+
+    const buttonX = (buttonXPercentage / 100) * this.p5.width;
+    const buttonY = (buttonYPercentage / 100) * this.p5.height;
+
+    this.nextButton = this.p5.createButton('Next');
+    this.nextButton.position(buttonX, buttonY);
+    this.nextButton.mousePressed(() => {
+      navigateCallback();
+    });
+
+    this.hideInput();
+  }
+
+  show(p5) {
+    p5.background('green');
+    p5.image(this.logo, 65, 60);
+    p5.image(this.choose, 55, 140);
+    p5.image(this.meat, 155, 250);
+
+    this.nextButton.show();
+
+    this.nextButton.style('background-color', '#F3B90C');
+    this.nextButton.style('color', '#003308');
+    this.nextButton.style('font-size', '29px');
+    this.nextButton.style('width', '249px');
+    this.nextButton.style('height', '50px');
+    this.nextButton.style('border-radius', '39.5px');
+    this.nextButton.style('border', 'none');
+    this.nextButton.style('box-shadow', '0px 4px 4px 0px rgba(0, 0, 0, 0.25');
+
+    let xColumn1 = 40;
+    let xColumn2 = 190;
+    let y = 290;
+
+    const columnSpacing = 150;
+    const textSize = 16;
+
+    for (let i = 0; i < this.meats.length; i++) {
+      const meat = this.meats[i];
+      const x = i % 2 === 0 ? xColumn1 : xColumn2;
+      const imageX = x + (columnSpacing - meat.image.width) / 2;
+      p5.image(meat.image, imageX, y);
+
+      const textX = x + (columnSpacing - meat.text.width) / 2;
+      const textY = y + meat.image.height;
+      p5.image(meat.text, textX, textY);
+
+      if (i % 2 !== 0) {
+        y += 120;
+      }
+    }
+  }
+
+  hideInput() {
+    this.nextButton.hide();
+  }
+
+  showInput() {
+    this.nextButton.show();
+  }
+}
