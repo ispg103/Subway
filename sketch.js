@@ -10,6 +10,7 @@ import { Scores } from "./screens/scores.js";
 import { Sorry } from "./screens/sorry.js";
 import { Congrats } from "./screens/congrats.js";
 import { Thanks } from "./screens/thanks.js";
+//import {getRandomFromDB} from "./firebase.js"
 
 const app = (p5) => {
   let home;
@@ -25,9 +26,7 @@ const app = (p5) => {
   let congrats;
   let thanks;
   let currentScreen;
-
-  let selectedIngredients = [];
-
+  
 
   p5.setup = function() {
     p5.createCanvas(393, 760);
@@ -122,30 +121,14 @@ const app = (p5) => {
       //const randomSauces = selectRandomItems(sauces, 2).map(item => item?.name || 'No definido');varias salsa
       const randomSauces = sauces[Math.floor(Math.random() * sauces.length)]?.name || 'No definido';
 
-      const selectedIngredient = {
-        Bread: randomBread,
-        Meat: randomMeat,
-        Cheese: randomCheese,
-        Vegetable: randomVegetables,
-        Sauces: randomSauces,
-      };
-    
-      selectedIngredients.push(selectedIngredient);
-
-      console.log("All Selected Ingredients:");
-      console.log(selectedIngredients);
-    
       console.log("Ingredients:");
-      console.log("Bread:", randomBread);
+      console.log("Bread:", randomBread);      
       console.log("Meat:", randomMeat);
       console.log("Cheese:", randomCheese);
       console.log("Vegetable:", randomVegetables);
       console.log("Sauces:", randomSauces);
-
-  
   };
-  
-  
+
   p5.draw = function() {
     p5.background(0);
     currentScreen.show(p5);
