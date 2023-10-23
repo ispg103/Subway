@@ -11,6 +11,7 @@ import { Sorry } from "./screens/sorry.js";
 import { Congrats } from "./screens/congrats.js";
 import { Thanks } from "./screens/thanks.js";
 
+
 const app = (p5) => {
   let home;
   let home2;
@@ -25,6 +26,7 @@ const app = (p5) => {
   let congrats;
   let thanks;
   let currentScreen;
+  
 
   p5.setup = function() {
     p5.createCanvas(393, 760);
@@ -125,7 +127,6 @@ const app = (p5) => {
       console.log("Cheese:", randomCheese);
       console.log("Vegetable:", randomVegetables);
       console.log("Sauces:", randomSauces);
-
   };
 
   p5.draw = function() {

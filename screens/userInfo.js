@@ -4,6 +4,7 @@ export class UserInfo{
     this.logo = this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
     this.email = this.p5.loadImage('../SUBWAY FOTOS/TITLES/email.png');
     this.coupon = this.p5.loadImage('../SUBWAY FOTOS/TITLES/coupon.png');
+    this.emailValues = [];
 
     const buttonXPercentage = 15;
     const buttonYPercentage = 80;
@@ -14,11 +15,13 @@ export class UserInfo{
     const buttonY = (buttonYPercentage / 100) * this.p5.height;
     const inputX = (inputXPercentage / 100) * this.p5.width;
     const inputY = (inputYPercentage / 100) * this.p5.height;
-
+    
     this.continueButton = this.p5.createButton('Continue');
     this.continueButton.position(buttonX, buttonY);
     this.continueButton.mousePressed(()=>{
       navigateCallback();
+      const emailValue = this.emailInput.value();
+      this.emailValues.push(emailValue);
     });
 
     this.emailInput = this.p5.createInput();
@@ -27,7 +30,7 @@ export class UserInfo{
 
     this.hideInput();
     }
-
+    
     show(p5){
         p5.background('green');
         p5.image(this.logo,65,75);
