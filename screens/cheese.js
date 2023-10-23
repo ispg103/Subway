@@ -13,10 +13,10 @@ export class Cheese {
     this.cheeseTitle = this.p5.loadImage('../SUBWAY FOTOS/TITLES/CHEESE.png');
 
     this.cheeseItems = [
-      { name: 'American Cheese', images: { CheeseItem: this.p5.loadImage('../SUBWAY FOTOS/CHEESE/AmericanCheese.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/american.png') } },
-      { name: 'Mozzarella Cheese', images: { CheeseItem: this.p5.loadImage('../SUBWAY FOTOS/CHEESE/MozzarellaCheese.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/mozzarella.png') } },
-      { name: 'Provolone Cheese', images: { CheeseItem: this.p5.loadImage('../SUBWAY FOTOS/CHEESE/ProvoloneCheese.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Provolone.png') } },
-      { name: 'Cheddar Cheese', images: { CheeseItem: this.p5.loadImage('../SUBWAY FOTOS/CHEESE/CheddarCheese.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/cheddar.png') } },
+      { name: 'American', images: { CheeseItem: this.p5.loadImage('../SUBWAY FOTOS/CHEESE/AmericanCheese.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/american.png') } },
+      { name: 'Mozzarella', images: { CheeseItem: this.p5.loadImage('../SUBWAY FOTOS/CHEESE/MozzarellaCheese.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/mozzarella.png') } },
+      { name: 'Provolone', images: { CheeseItem: this.p5.loadImage('../SUBWAY FOTOS/CHEESE/ProvoloneCheese.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Provolone.png') } },
+      { name: 'Cheddar', images: { CheeseItem: this.p5.loadImage('../SUBWAY FOTOS/CHEESE/CheddarCheese.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/cheddar.png') } },
     ];
 
     const buttonXPercentage = 15;

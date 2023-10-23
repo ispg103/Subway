@@ -113,16 +113,18 @@ const app = (p5) => {
 
       const randomBread = breadItems[Math.floor(Math.random() * breadItems.length)]?.name || 'No definido';
       const randomCheese = cheeseItems[Math.floor(Math.random() * cheeseItems.length)]?.name || 'No definido';
-      const randomVegetables = selectRandomItems(vegetables, 2).map(item => item?.name || 'No definido');
+      const randomVegetables = vegetables[Math.floor(Math.random() * vegetables.length)]?.name || 'No definido';
+      //const randomVegetables = selectRandomItems(vegetables, 2).map(item => item?.name || 'No definido'); Varios Vegetales
       const randomMeat = meats[Math.floor(Math.random() * meats.length)]?.name || 'No definido';
-      const randomSauces = selectRandomItems(sauces, 2).map(item => item?.name || 'No definido');
+      //const randomSauces = selectRandomItems(sauces, 2).map(item => item?.name || 'No definido');varias salsa
+      const randomSauces = sauces[Math.floor(Math.random() * sauces.length)]?.name || 'No definido';
 
-      console.log("Ingredientes Aleatorios:");
-      console.log("Pan:", randomBread);
-      console.log("Queso:", randomCheese);
-      console.log("Vegetales:", randomVegetables);
-      console.log("Carne:", randomMeat);
-      console.log("Salsas:", randomSauces);
+      console.log("Ingredients:");
+      console.log("Bread:", randomBread);      
+      console.log("Meat:", randomMeat);
+      console.log("Cheese:", randomCheese);
+      console.log("Vegetable:", randomVegetables);
+      console.log("Sauces:", randomSauces);
 
   };
 
