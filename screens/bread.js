@@ -18,7 +18,7 @@ export class Bread {
       new BreadItem(this.p5.loadImage('../SUBWAY FOTOS/BREAD/WholeWheat.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/wheat.png'))
     ];
 
-    const buttonXPercentage = 15;
+    const buttonXPercentage = 18;
     const buttonYPercentage = 85;
 
     const buttonX = (buttonXPercentage / 100) * this.p5.width;
