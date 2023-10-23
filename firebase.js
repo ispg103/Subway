@@ -20,3 +20,16 @@ querySnapshot.forEach((doc) => {
   console.log(doc.id, " => ", data);
   dailyRandomSubs.push(data);
 });
+
+const getRandomFromDB = async () => {
+  const dailyRandomSubs = []; 
+  const querySnapshot = await getDocs(collection(db, "sub-collection"));
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    console.log(doc.id, " => ", data);
+    dailyRandomSubs.push(data);
+  });
+  return dailyRandomSubs;
+};
+
+export default {getRandomFromDB}

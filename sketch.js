@@ -10,7 +10,7 @@ import { Scores } from "./screens/scores.js";
 import { Sorry } from "./screens/sorry.js";
 import { Congrats } from "./screens/congrats.js";
 import { Thanks } from "./screens/thanks.js";
-
+//import {getRandomFromDB} from "./firebase.js"
 
 const app = (p5) => {
   let home;
