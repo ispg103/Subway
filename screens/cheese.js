@@ -1,5 +1,5 @@
 export class Cheese{
-    constructor(p5){
+    constructor(p5,navigateCallback){
       this.p5=p5;
       this.logo =this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
       this.american =this.p5.loadImage('../SUBWAY FOTOS/CHEESE/AmericanCheese.png');
@@ -13,15 +13,17 @@ export class Cheese{
       this.choose =this.p5.loadImage('../SUBWAY FOTOS/TITLES/choose.png');
       this.cheese =this.p5.loadImage('../SUBWAY FOTOS/TITLES/CHEESE.png');
 
-      const buttonXPercentage = 15; 
+      const buttonXPercentage = 15;
       const buttonYPercentage = 85;
-    
+
       const buttonX = (buttonXPercentage / 100) * this.p5.width;
       const buttonY = (buttonYPercentage / 100) * this.p5.height;
-  
+
       this.nextButton = this.p5.createButton('Next');
       this.nextButton.position(buttonX, buttonY);
-      this.nextButton.mousePressed(this.navigate);
+      this.nextButton.mousePressed(()=>{
+        navigateCallback();
+      });
 
       this.hideInput();
 

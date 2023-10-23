@@ -28,28 +28,66 @@ let currentScreen;
 
 p5.setup = function() {
   p5.createCanvas(393, 760);
-  userInfo = new UserInfo(p5);
-  home = new Home(p5);
 
-  home2 = new Home2(p5);
+  home = new Home(p5,()=>{
+    currentScreen.hideInput();
+    currentScreen=home2;
+  });
 
-  bread = new Bread(p5);
+  home2 = new Home2(p5,()=>{
+    currentScreen.hideInput();
+    currentScreen=userInfo;
+  });
 
-  sauces = new Sauces(p5);
+  userInfo=new UserInfo(p5,()=>{
+    currentScreen.hideInput();
+    currentScreen=bread;
+  });
 
-  vegetables = new Vegetables(p5);
+  bread = new Bread(p5,()=>{
+    currentScreen.hideInput();
+    currentScreen=meats;
+  });
 
-  meats = new Meats(p5);
+  meats = new Meats(p5,()=>{
+    currentScreen.hideInput();
+    currentScreen=cheese;
+  });
 
-  cheese = new Cheese(p5);
+  cheese = new Cheese(p5,()=>{
+    currentScreen.hideInput();
+    currentScreen=vegetables;
+  });
 
-  scores = new Scores(p5);
+  vegetables = new Vegetables(p5,()=>{
+    currentScreen.hideInput();
+    currentScreen=sauces;
+  });
 
-  sorry=new Sorry(p5);
+  sauces = new Sauces(p5,()=>{
+    currentScreen.hideInput();
+    currentScreen=scores;
+  });
 
-  congrats=new Congrats(p5);
+  scores = new Scores(p5,()=>{
+    currentScreen.hideInput();
+    currentScreen=sorry;
+  });
 
-  thanks=new Thanks(p5);
+  sorry=new Sorry(p5,()=>{
+    currentScreen.hideInput();
+    currentScreen=thanks;
+  });
+
+  congrats=new Congrats(p5,()=>{
+    currentScreen.hideInput();
+    currentScreen=thanks;
+  });
+
+  thanks=new Thanks(p5,()=>{
+    currentScreen.hideInput();
+    currentScreen=home;
+  });
 
   currentScreen = home;
 
@@ -59,7 +97,7 @@ p5.draw = function() {
   p5.background(0);
   currentScreen.show(p5);
 
-  if (p5.keyIsPressed) {
+  `if (p5.keyIsPressed) {
     if (p5.key === '1') {
       currentScreen.hideInput();
       currentScreen = home2;
@@ -108,7 +146,7 @@ p5.draw = function() {
       currentScreen = thanks;
       console.log("Cambio a +")
     }
-  }
+  }`
 };
 
 }

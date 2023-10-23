@@ -1,5 +1,5 @@
 export class Scores{
-    constructor(p5){
+    constructor(p5,navigateCallback){
       this.p5=p5;
       this.logo =this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
       this.scores =this.p5.loadImage('../SUBWAY FOTOS/TITLES/scores.png');
@@ -8,15 +8,17 @@ export class Scores{
       this.second =this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SecondPlace.png');
       this.third =this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/ThirdPlace.png');
 
-      const buttonXPercentage = 15; 
+      const buttonXPercentage = 15;
       const buttonYPercentage = 80;
-    
+
       const buttonX = (buttonXPercentage / 100) * this.p5.width;
       const buttonY = (buttonYPercentage / 100) * this.p5.height;
-  
+
       this.continueButton = this.p5.createButton('Continue');
       this.continueButton.position(buttonX, buttonY);
-      this.continueButton.mousePressed(this.navigate);
+      this.continueButton.mousePressed(()=>{
+        navigateCallback();
+      });
 
       this.hideInput();
 

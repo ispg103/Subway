@@ -1,20 +1,22 @@
 export class Thanks{
-    constructor(p5){
+    constructor(p5,navigateCallback){
       this.p5=p5;
       this.thanks =this.p5.loadImage('../SUBWAY FOTOS/TITLES/thanks.png');
       this.icon=this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayIcon.png');
       this.come=this.p5.loadImage('../SUBWAY FOTOS/TEXTS/tomorrow.png');
 
-      const buttonXPercentage = 15; 
+      const buttonXPercentage = 15;
       const buttonYPercentage = 85;
-    
+
       const buttonX = (buttonXPercentage / 100) * this.p5.width;
       const buttonY = (buttonYPercentage / 100) * this.p5.height;
-  
+
       this.finishButton = this.p5.createButton('Finish');
       this.finishButton.position(buttonX, buttonY);
-      this.finishButton.mousePressed(this.navigate);
-      
+      this.finishButton.mousePressed(()=>{
+        navigateCallback();
+      });
+
         this.hideInput();
     }
     show(p5){
@@ -23,7 +25,7 @@ export class Thanks{
         p5.image(this.icon,100,235);
         p5.image(this.come,50,500);
       this.finishButton.show();
-      
+
       this.finishButton.style('background-color', '#F3B90C');
       this.finishButton.style('color', '#003308');
       this.finishButton.style('font-size', '29px');
