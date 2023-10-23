@@ -19,7 +19,7 @@ export class Bread {
     ];
 
 
-    const buttonXPercentage = 15;
+    const buttonXPercentage = 18;
     const buttonYPercentage = 85;
 
     const buttonX = (buttonXPercentage / 100) * this.p5.width;
