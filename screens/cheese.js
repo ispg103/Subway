@@ -13,22 +13,10 @@ export class Cheese {
     this.cheeseTitle = this.p5.loadImage('../SUBWAY FOTOS/TITLES/CHEESE.png');
 
     this.cheeseItems = [
-      new CheeseItem(
-        this.p5.loadImage('../SUBWAY FOTOS/CHEESE/AmericanCheese.png'),
-        this.p5.loadImage('../SUBWAY FOTOS/TEXTS/american.png')
-      ),
-      new CheeseItem(
-        this.p5.loadImage('../SUBWAY FOTOS/CHEESE/MozzarellaCheese.png'),
-        this.p5.loadImage('../SUBWAY FOTOS/TEXTS/mozzarella.png')
-      ),
-      new CheeseItem(
-        this.p5.loadImage('../SUBWAY FOTOS/CHEESE/ProvoloneCheese.png'),
-        this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Provolone.png')
-      ),
-      new CheeseItem(
-        this.p5.loadImage('../SUBWAY FOTOS/CHEESE/CheddarCheese.png'),
-        this.p5.loadImage('../SUBWAY FOTOS/TEXTS/cheddar.png')
-      ),
+      { name: 'American Cheese', images: { CheeseItem: this.p5.loadImage('../SUBWAY FOTOS/CHEESE/AmericanCheese.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/american.png') } },
+      { name: 'Mozzarella Cheese', images: { CheeseItem: this.p5.loadImage('../SUBWAY FOTOS/CHEESE/MozzarellaCheese.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/mozzarella.png') } },
+      { name: 'Provolone Cheese', images: { CheeseItem: this.p5.loadImage('../SUBWAY FOTOS/CHEESE/ProvoloneCheese.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Provolone.png') } },
+      { name: 'Cheddar Cheese', images: { CheeseItem: this.p5.loadImage('../SUBWAY FOTOS/CHEESE/CheddarCheese.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/cheddar.png') } },
     ];
 
     const buttonXPercentage = 15;
@@ -72,18 +60,19 @@ export class Cheese {
     for (let i = 0; i < this.cheeseItems.length; i++) {
       const cheeseItem = this.cheeseItems[i];
       const x = i % 2 === 0 ? xColumn1 : xColumn2;
-      const imageX = x + (columnSpacing - cheeseItem.image.width) / 2;
-      p5.image(cheeseItem.image, imageX, y);
+      const imageX = x + (columnSpacing - cheeseItem.images.CheeseItem.width) / 2;
+      p5.image(cheeseItem.images.CheeseItem, imageX, y);
 
-      const textX = x + (columnSpacing - cheeseItem.text.width) / 2;
-      const textY = y + cheeseItem.image.height;
-      p5.image(cheeseItem.text, textX, textY);
+      const textX = x + (columnSpacing - cheeseItem.images.text.width) / 2;
+      const textY = y + cheeseItem.images.CheeseItem.height;
+      p5.image(cheeseItem.images.text, textX, textY);
 
       if (i % 2 !== 0) {
         y += 190;
       }
     }
   }
+
 
   hideInput() {
     this.nextButton.hide();

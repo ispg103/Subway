@@ -12,26 +12,14 @@ export class Vegetables {
     this.vegetablesTitle = this.p5.loadImage('../SUBWAY FOTOS/TITLES/Vegetables.png');
 
     this.vegetables = [
-      new Vegetable(this.p5.loadImage('../SUBWAY FOTOS/VEGETABLES/Tomato.png'),
-      this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Tomato.png')),
-
-      new Vegetable(this.p5.loadImage('../SUBWAY FOTOS/VEGETABLES/Pickle.png'),
-      this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Pickle.png')),
-
-      new Vegetable(this.p5.loadImage('../SUBWAY FOTOS/VEGETABLES/Onion.png'),
-      this.p5.loadImage('../SUBWAY FOTOS/TEXTS/onion.png')),
-
-      new Vegetable(this.p5.loadImage('../SUBWAY FOTOS/VEGETABLES/Lettuce.png'),
-      this.p5.loadImage('../SUBWAY FOTOS/TEXTS/lettuce.png')),
-
-
-      new Vegetable(this.p5.loadImage('../SUBWAY FOTOS/VEGETABLES/Jalapeño.png'),
-      this.p5.loadImage('../SUBWAY FOTOS/TEXTS/jalapeño.png')),
-
-      new Vegetable(this.p5.loadImage('../SUBWAY FOTOS/VEGETABLES/BellPepper.png'),
-      this.p5.loadImage('../SUBWAY FOTOS/TEXTS/pepper.png')),
-
+      { name: 'Tomato', images: { vegetable: this.p5.loadImage('../SUBWAY FOTOS/VEGETABLES/Tomato.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Tomato.png') } },
+      { name: 'Pickle', images: { vegetable: this.p5.loadImage('../SUBWAY FOTOS/VEGETABLES/Pickle.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Pickle.png') } },
+      { name: 'Onion', images: { vegetable: this.p5.loadImage('../SUBWAY FOTOS/VEGETABLES/Onion.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/onion.png') } },
+      { name: 'Lettuce', images: { vegetable: this.p5.loadImage('../SUBWAY FOTOS/VEGETABLES/Lettuce.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/lettuce.png') } },
+      { name: 'Jalapeño', images: { vegetable: this.p5.loadImage('../SUBWAY FOTOS/VEGETABLES/Jalapeño.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/jalapeño.png') } },
+      { name: 'Bell Pepper', images: { vegetable: this.p5.loadImage('../SUBWAY FOTOS/VEGETABLES/BellPepper.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/pepper.png') } },
     ];
+
 
     const buttonXPercentage = 15;
     const buttonYPercentage = 85;
@@ -54,7 +42,6 @@ export class Vegetables {
     p5.image(this.choose, 55, 140);
     p5.image(this.vegetablesTitle, 130, 250);
 
-
     this.nextButton.show();
 
     this.nextButton.style('background-color', '#F3B90C');
@@ -66,7 +53,6 @@ export class Vegetables {
     this.nextButton.style('border', 'none');
     this.nextButton.style('box-shadow', '0px 4px 4px 0px rgba(0, 0, 0, 0.25');
 
-
     let xColumn1 = 40;
     let xColumn2 = 190;
     let y = 290;
@@ -77,18 +63,20 @@ export class Vegetables {
     for (let i = 0; i < this.vegetables.length; i++) {
       const vegetable = this.vegetables[i];
       const x = i % 2 === 0 ? xColumn1 : xColumn2;
-      const imageX = x + (columnSpacing - vegetable.image.width) / 2;
-      p5.image(vegetable.image, imageX, y);
+      const imageX = x + (columnSpacing - vegetable.images.vegetable.width) / 2;
+      p5.image(vegetable.images.vegetable, imageX, y);
 
-      const textX = x + (columnSpacing - vegetable.text.width) / 2;
-      const textY = y + vegetable.image.height;
-      p5.image(vegetable.text, textX, textY);
+      const textX = x + (columnSpacing - vegetable.images.text.width) / 2;
+      const textY = y + vegetable.images.vegetable.height;
+      p5.image(vegetable.images.text, textX, textY);
 
       if (i % 2 !== 0) {
         y += 120;
       }
     }
-    }
+  }
+
+
 
   hideInput() {
     this.nextButton.hide();

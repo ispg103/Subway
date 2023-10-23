@@ -13,10 +13,11 @@ export class Bread {
     this.breadTitle = this.p5.loadImage('../SUBWAY FOTOS/TITLES/Bread.png');
 
     this.breadItems = [
-      new BreadItem(this.p5.loadImage('../SUBWAY FOTOS/BREAD/Bread.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/White.png')),
-      new BreadItem(this.p5.loadImage('../SUBWAY FOTOS/BREAD/OreganoParmesan.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/oregano.png')),
-      new BreadItem(this.p5.loadImage('../SUBWAY FOTOS/BREAD/WholeWheat.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/wheat.png'))
+      { name: 'White Bread', images: { bread: this.p5.loadImage('../SUBWAY FOTOS/BREAD/Bread.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/White.png') } },
+      { name: 'Oregano Parmesan', images: { bread: this.p5.loadImage('../SUBWAY FOTOS/BREAD/OreganoParmesan.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/oregano.png') } },
+      { name: 'Whole Wheat', images: { bread: this.p5.loadImage('../SUBWAY FOTOS/BREAD/WholeWheat.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/wheat.png') } },
     ];
+
 
     const buttonXPercentage = 15;
     const buttonYPercentage = 85;
@@ -50,25 +51,25 @@ export class Bread {
     this.nextButton.style('border', 'none');
     this.nextButton.style('box-shadow', '0px 4px 4px 0px rgba(0, 0, 0, 0.25');
 
-
     const columnSpacing = 150;
     let y = 310;
 
     for (let i = 0; i < this.breadItems.length; i++) {
       const breadItem = this.breadItems[i];
-      const x = (this.p5.width - breadItem.image.width) / 2;
+      const x = (this.p5.width - breadItem.images.bread.width) / 2;
       const imageX = x;
-      p5.image(breadItem.image, imageX, y);
+      p5.image(breadItem.images.bread, imageX, y);
 
-      const textX = (this.p5.width - breadItem.text.width) / 2;
-      const textY = y + breadItem.image.height;
-      p5.image(breadItem.text, textX, textY);
+      const textX = (this.p5.width - breadItem.images.text.width) / 2;
+      const textY = y + breadItem.images.bread.height;
+      p5.image(breadItem.images.text, textX, textY);
 
-      y += breadItem.image.height + 20;
+      y += breadItem.images.bread.height + 20;
     }
 
     this.nextButton.show();
   }
+
 
   hideInput() {
     this.nextButton.hide();

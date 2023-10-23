@@ -11,142 +11,126 @@ import { Sorry } from "./screens/sorry.js";
 import { Congrats } from "./screens/congrats.js";
 import { Thanks } from "./screens/thanks.js";
 
-const app = p5 => {
-let home;
-let home2;
-let userInfo;
-let bread;
-let sauces;
-let vegetables;
-let meats;
-let cheese;
-let scores;
-let sorry;
-let congrats;
-let thanks;
-let currentScreen;
+const app = (p5) => {
+  let home;
+  let home2;
+  let userInfo;
+  let bread;
+  let sauces;
+  let vegetables;
+  let meats;
+  let cheese;
+  let scores;
+  let sorry;
+  let congrats;
+  let thanks;
+  let currentScreen;
 
-p5.setup = function() {
-  p5.createCanvas(393, 760);
+  p5.setup = function() {
+    p5.createCanvas(393, 760);
 
-  home = new Home(p5,()=>{
-    currentScreen.hideInput();
-    currentScreen=home2;
-  });
-
-  home2 = new Home2(p5,()=>{
-    currentScreen.hideInput();
-    currentScreen=userInfo;
-  });
-
-  userInfo=new UserInfo(p5,()=>{
-    currentScreen.hideInput();
-    currentScreen=bread;
-  });
-
-  bread = new Bread(p5,()=>{
-    currentScreen.hideInput();
-    currentScreen=meats;
-  });
-
-  meats = new Meats(p5,()=>{
-    currentScreen.hideInput();
-    currentScreen=cheese;
-  });
-
-  cheese = new Cheese(p5,()=>{
-    currentScreen.hideInput();
-    currentScreen=vegetables;
-  });
-
-  vegetables = new Vegetables(p5,()=>{
-    currentScreen.hideInput();
-    currentScreen=sauces;
-  });
-
-  sauces = new Sauces(p5,()=>{
-    currentScreen.hideInput();
-    currentScreen=scores;
-  });
-
-  scores = new Scores(p5,()=>{
-    currentScreen.hideInput();
-    currentScreen=sorry;
-  });
-
-  sorry=new Sorry(p5,()=>{
-    currentScreen.hideInput();
-    currentScreen=thanks;
-  });
-
-  congrats=new Congrats(p5,()=>{
-    currentScreen.hideInput();
-    currentScreen=thanks;
-  });
-
-  thanks=new Thanks(p5,()=>{
-    currentScreen.hideInput();
-    currentScreen=home;
-  });
-
-  currentScreen = home;
-
-};
-
-p5.draw = function() {
-  p5.background(0);
-  currentScreen.show(p5);
-
-  `if (p5.keyIsPressed) {
-    if (p5.key === '1') {
+    home = new Home(p5, () => {
       currentScreen.hideInput();
       currentScreen = home2;
-      console.log("Cambio a 1")
-    } else if (p5.key === '2') {
+    });
+
+    home2 = new Home2(p5, () => {
       currentScreen.hideInput();
       currentScreen = userInfo;
-      console.log("Cambio a 2")
-    }else if (p5.key === '3') {
+    });
+
+    userInfo = new UserInfo(p5, () => {
       currentScreen.hideInput();
       currentScreen = bread;
-      console.log("Cambio a 3")
-    }else if (p5.key === '4') {
+    });
+
+    bread = new Bread(p5, () => {
       currentScreen.hideInput();
       currentScreen = meats;
-      console.log("Cambio a 4")
-    }else if (p5.key === '5') {
+    });
+
+    meats = new Meats(p5, () => {
       currentScreen.hideInput();
       currentScreen = cheese;
-      console.log("Cambio a 5")
-    }else if (p5.key === '6') {
+    });
+
+    cheese = new Cheese(p5, () => {
       currentScreen.hideInput();
       currentScreen = vegetables;
-      console.log("Cambio a 6")
-    }else if (p5.key === '7') {
+    });
+
+    vegetables = new Vegetables(p5, () => {
       currentScreen.hideInput();
       currentScreen = sauces;
-      console.log("Cambio a 7")
-    }else if (p5.key === '8') {
+    });
+
+    sauces = new Sauces(p5, () => {
       currentScreen.hideInput();
       currentScreen = scores;
-      console.log("Cambio a 8")
-    }
-    else if (p5.key === '9') {
+    });
+
+    scores = new Scores(p5, () => {
       currentScreen.hideInput();
       currentScreen = sorry;
-      console.log("Cambio a 9")
-    }
-    else if (p5.key === '0') {
-      currentScreen.hideInput();
-      currentScreen = congrats;
-      console.log("Cambio a 0")
-    }
-    else if (p5.key === '+') {
+    });
+
+    sorry = new Sorry(p5, () => {
       currentScreen.hideInput();
       currentScreen = thanks;
-      console.log("Cambio a +")
-    }
-  }`
+    });
+
+    congrats = new Congrats(p5, () => {
+      currentScreen.hideInput();
+      currentScreen = thanks;
+    });
+
+    thanks = new Thanks(p5, () => {
+      currentScreen.hideInput();
+      currentScreen = home;
+    });
+
+    currentScreen = home;
+
+    selectRandomIngredients(
+      bread.breadItems,
+      cheese.cheeseItems,
+      vegetables.vegetables,
+      meats.meats,
+      sauces.sauces
+    );
+
+    function selectRandomIngredients(breadItems, cheeseItems, vegetables, meats, sauces) {
+      function selectRandomItems(array, n) {
+        const selectedItems = [];
+        const shuffled = array.slice();
+        for (let i = shuffled.length - 1; i > 0 && selectedItems.length < n; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+          selectedItems.push(shuffled[i]);
+        }
+        return selectedItems;
+      }
+
+      const randomBread = breadItems[Math.floor(Math.random() * breadItems.length)]?.name || 'No definido';
+      const randomCheese = cheeseItems[Math.floor(Math.random() * cheeseItems.length)]?.name || 'No definido';
+      const randomVegetables = selectRandomItems(vegetables, 2).map(item => item?.name || 'No definido');
+      const randomMeat = meats[Math.floor(Math.random() * meats.length)]?.name || 'No definido';
+      const randomSauces = selectRandomItems(sauces, 2).map(item => item?.name || 'No definido');
+
+      console.log("Ingredientes Aleatorios:");
+      console.log("Pan:", randomBread);
+      console.log("Queso:", randomCheese);
+      console.log("Vegetales:", randomVegetables);
+      console.log("Carne:", randomMeat);
+      console.log("Salsas:", randomSauces);
+
+  };
+
+  p5.draw = function() {
+    p5.background(0);
+    currentScreen.show(p5);
+  };
+
 };
 
 }

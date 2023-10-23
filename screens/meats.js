@@ -12,13 +12,13 @@ export class Meats {
     this.choose = this.p5.loadImage('../SUBWAY FOTOS/TITLES/choose.png');
     this.meat = this.p5.loadImage('../SUBWAY FOTOS/TITLES/Meat.png');
 
-    this.meats = [
-      new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/Jam.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/jam.png')),
-      new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/ChickenStrips.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/strips.png')),
-      new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/Turkey.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Turkey.png')),
-      new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/Salami.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Salami.png')),
-      new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/Tuna.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Tuna.png')),
-      new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/BBQrips.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/ribs.png')),
+      this.meats = [
+        { name: 'Jam', image: new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/Jam.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/jam.png')) },
+        { name: 'Chicken Strips', image: new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/ChickenStrips.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/strips.png')) },
+        { name: 'Turkey', image: new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/Turkey.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Turkey.png')) },
+        { name: 'Salami', image: new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/Salami.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Salami.png')) },
+        { name: 'Tuna', image: new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/Tuna.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Tuna.png')) },
+        { name: 'BBQ Ribs', image: new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/BBQrips.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/ribs.png')) },
     ];
 
     const buttonXPercentage = 15;
@@ -63,18 +63,19 @@ export class Meats {
     for (let i = 0; i < this.meats.length; i++) {
       const meat = this.meats[i];
       const x = i % 2 === 0 ? xColumn1 : xColumn2;
-      const imageX = x + (columnSpacing - meat.image.width) / 2;
-      p5.image(meat.image, imageX, y);
+      const imageX = x + (columnSpacing - meat.image.image.width) / 2;
+      p5.image(meat.image.image, imageX, y);
 
-      const textX = x + (columnSpacing - meat.text.width) / 2;
-      const textY = y + meat.image.height;
-      p5.image(meat.text, textX, textY);
+      const textX = x + (columnSpacing - meat.image.text.width) / 2;
+      const textY = y + meat.image.image.height;
+      p5.image(meat.image.text, textX, textY);
 
       if (i % 2 !== 0) {
         y += 120;
       }
     }
   }
+
 
   hideInput() {
     this.nextButton.hide();
