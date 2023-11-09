@@ -18,7 +18,6 @@ export class Bread {
       { name: 'Whole Wheat', images: { bread: this.p5.loadImage('../SUBWAY FOTOS/BREAD/WholeWheat.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/wheat.png') } },
     ];
 
-
     const buttonXPercentage = 18;
     const buttonYPercentage = 85;
 

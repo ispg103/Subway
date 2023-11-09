@@ -6,6 +6,7 @@ export class UserInfo{
     this.coupon = this.p5.loadImage('../SUBWAY FOTOS/TITLES/coupon.png');
     this.emailValues = [];
 
+
     const buttonXPercentage = 15;
     const buttonYPercentage = 80;
     const inputXPercentage = 11;
@@ -19,9 +20,19 @@ export class UserInfo{
     this.continueButton = this.p5.createButton('Continue');
     this.continueButton.position(buttonX, buttonY);
     this.continueButton.mousePressed(()=>{
-      navigateCallback();
+      let userData = [];
       const emailValue = this.emailInput.value();
-      this.emailValues.push(emailValue);
+      userData.push(emailValue);
+      this.emailInput.value('');
+      console.log(userData);
+      let users = JSON.parse(localStorage.getItem('userData')) || [];
+      function saveUsersToLocalStorage() {
+        users.push(userData);
+        localStorage.setItem('users', JSON.stringify(users));
+      }
+      saveUsersToLocalStorage()
+      console.log(users);
+      navigateCallback();
     });
 
     this.emailInput = this.p5.createInput();

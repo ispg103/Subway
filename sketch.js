@@ -10,7 +10,7 @@ import { Scores } from "./screens/scores.js";
 import { Sorry } from "./screens/sorry.js";
 import { Congrats } from "./screens/congrats.js";
 import { Thanks } from "./screens/thanks.js";
-//import {getRandomFromDB} from "./firebase.js"
+import {getRandomFromDB} from './firebase.js';
 
 const app = (p5) => {
   let home;
@@ -27,6 +27,7 @@ const app = (p5) => {
   let thanks;
   let currentScreen;
   
+  let selectedIngredients = [];
 
   p5.setup = function() {
     p5.createCanvas(393, 760);
@@ -100,7 +101,8 @@ const app = (p5) => {
       meats.meats,
       sauces.sauces
     );
-
+  
+  
     function selectRandomIngredients(breadItems, cheeseItems, vegetables, meats, sauces) {
       function selectRandomItems(array, n) {
         const selectedItems = [];
