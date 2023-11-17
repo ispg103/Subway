@@ -19,6 +19,7 @@ export class UserInfo{
     
     this.continueButton = this.p5.createButton('Continue');
     this.continueButton.position(buttonX, buttonY);
+    
     this.continueButton.mousePressed(()=>{
       let userData = [];
       const emailValue = this.emailInput.value();

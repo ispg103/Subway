@@ -1,14 +1,19 @@
 const express = require('express');
-const http = require('http');
-const socketIo = require('socket.io');
-const app = express();
-const server = http.createServer(app);
-const io = socketIo(server);
+const expressApp = express();
+const PORT = 5050;
+const httpServer = expressApp.listen(PORT);
+const { Server } = require('socket.io');
+const ioServer = new Server(httpServer);
 
-app.use(express.static('public'));
+const staticController = express.static('public-controller');
+const staticDisplay = express.static('public-display');
 
-const PORT = process.env.PORT || 3000;
+expressApp.use('/controller', staticController);
+expressApp.use('/display', staticDisplay);
 
-server.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+ioServer.on('connection', (socket) => {
+    socket.on('confirmation', (data) => {
+        socket.broadcast.emit('confirmation', data)
+    })
+})
+

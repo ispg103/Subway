@@ -1,4 +1,5 @@
 const socket = io();
+import {io} from 'https://cdn.socket.io/4.4.1/socket.io.esm.min.js'
 import { Home } from "./screens/home.js";
 import { Home2 } from "./screens/home2.js";
 import { UserInfo } from "./screens/userInfo.js";
@@ -12,6 +13,7 @@ import { Sorry } from "./screens/sorry.js";
 import { Congrats } from "./screens/congrats.js";
 import { Thanks } from "./screens/thanks.js";
 //import {getRandomFromDB} from './firebase.js';
+let user = [];
 
 const app = (p5) => {
   let home;
@@ -28,10 +30,20 @@ const app = (p5) => {
   let thanks;
   let currentScreen;
   
+  //Timer
+  let startingTime = 60;// el timer empezara desde 60 segundos
+  let lastUpdateTime = 0;
+  let currentDisplayTime = startingTime; // Tiempo que se muestra actualmente 
+  let timeStarted = false; //indica si el temporizador ya esta activo
+  let timerVisible = false; // Controla la visibilidad del temporizador
+
   let selectedIngredients = [];
 
   p5.setup = function() {
     p5.createCanvas(393, 760);
+
+    socket = io.connect('http://localhost:3000', {path: '/real-time'});
+    socket.emit("mupi-connected");
 
     home = new Home(p5, () => {
       currentScreen.hideInput();
@@ -102,7 +114,26 @@ const app = (p5) => {
       meats.meats,
       sauces.sauces
     );
-  
+
+    socket.on('users-data', (data) => {
+      user = data
+      console.log(user)
+
+    });
+    
+    //socket.on('update-score-player', (winner) => {
+      //if(players.player1.id == winner.id){
+        //players.player1.score = winner.score
+        //console.log("score", players.player1.score)
+      //} else if (players.player2.id == winner.id) {
+        //players.player2.score = winner.score
+        //console.log("score", players.player2.score)
+      //}
+      //console.log(players)
+
+    //});
+
+
   
     function selectRandomIngredients(breadItems, cheeseItems, vegetables, meats, sauces) {
       function selectRandomItems(array, n) {
@@ -137,8 +168,16 @@ const app = (p5) => {
     currentScreen.show(p5);
   };
 
+  /*function probarMandarDatos() {
+    if (dist() < size) {
+        console.log("aqui toy")
+        socket.emit('confirmation', "aqui toy")
+        console.log("ha sido enviado exitosamente")
+    }
+  };*/
 };
 
 }
 
 new p5(app);
+
