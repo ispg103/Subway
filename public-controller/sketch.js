@@ -29,7 +29,7 @@ const app = (p5) => {
   let congrats;
   let thanks;
   let currentScreen;
-  
+
   //Timer
   let startingTime = 60;// el timer empezara desde 60 segundos
   let lastUpdateTime = 0;
@@ -132,7 +132,23 @@ const app = (p5) => {
       //console.log(players)
 
     //});
+    
+    //socket.on('screen-change', () => {
+      //currentScreen = playersScreen;
 
+    //});
+
+    //socket.on('go-to-main-screen', () => {
+        //currentScreen = scoreScreen;
+
+    //});
+
+    //socket.on('start-timer', () => {
+      //if (!timeStarted && currentScreen === scoreScreen) {
+          //timeStarted = true;
+          //console.log("Comienza el temporizador");
+      //}
+  //});
 
   
     function selectRandomIngredients(breadItems, cheeseItems, vegetables, meats, sauces) {
