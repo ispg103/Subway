@@ -114,15 +114,6 @@ const app = (p5) => {
     }
     });
 
-    //NO MOVER ETO DE AQUI PLISSSSSSSSSSSS
-   ` p5.draw = function () {
-      p5.background(0);
-      start.show(p5);
-    };`
-
-
-
-
 
     /*function probarMandarDatos() {
       if (dist() < size) {
