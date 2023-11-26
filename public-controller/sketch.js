@@ -1,5 +1,4 @@
-const socket = io();
-import {io} from 'https://cdn.socket.io/4.4.1/socket.io.esm.min.js'
+import { io } from 'https://cdn.socket.io/4.4.1/socket.io.esm.min.js'
 import { Home } from "./screens/home.js";
 import { Home2 } from "./screens/home2.js";
 import { UserInfo } from "./screens/userInfo.js";
@@ -13,6 +12,8 @@ import { Sorry } from "./screens/sorry.js";
 import { Congrats } from "./screens/congrats.js";
 import { Thanks } from "./screens/thanks.js";
 //import {getRandomFromDB} from './firebase.js';
+
+const socket = io();
 let user = [];
 
 const app = (p5) => {
@@ -30,20 +31,26 @@ const app = (p5) => {
   let thanks;
   let currentScreen;
 
+  let UserData = {
+    email: "",
+    score: 0,
+  }
+
   //Timer
   let startingTime = 60;// el timer empezara desde 60 segundos
   let lastUpdateTime = 0;
-  let currentDisplayTime = startingTime; // Tiempo que se muestra actualmente 
+  let currentDisplayTime = startingTime; // Tiempo que se muestra actualmente
   let timeStarted = false; //indica si el temporizador ya esta activo
   let timerVisible = false; // Controla la visibilidad del temporizador
 
   let selectedIngredients = [];
 
-  p5.setup = function() {
+  p5.setup = function () {
     p5.createCanvas(393, 760);
 
-    socket = io.connect('http://localhost:3000', {path: '/real-time'});
+    socket = io.connect('http://localhost:3000', { path: '/real-time' });
     socket.emit("mupi-connected");
+
 
     home = new Home(p5, () => {
       currentScreen.hideInput();
@@ -56,6 +63,13 @@ const app = (p5) => {
     });
 
     userInfo = new UserInfo(p5, () => {
+      userInfo.setSubmitCallback((userData)=>{
+        userData={
+          email:"",
+          score:0,
+        }
+        console.log("Email recibido:",userData)
+      })
       currentScreen.hideInput();
       currentScreen = bread;
     });
@@ -107,7 +121,34 @@ const app = (p5) => {
 
     currentScreen = home;
 
-    selectRandomIngredients(
+    socket.on('start-timer', () => {
+      if (!timeStarted && currentScreen === bread) {
+          timeStarted = true;
+          console.log("Comienza el temporizador");
+      }
+  });
+
+  //Actualizar el puntaje
+  socket.on('updateScore', (winnerUser) => {
+    const currentUserEmail = user.email;
+
+    if (winnerUser.email === currentUserEmail) {
+        user.score = winnerUser.score;
+    }
+
+    //Capaz hay que crear otra función para diferenciarlo dentro del ranking o tal vez no (La esquizofrenia me esta consumiendo TT) ATT: Lau
+  });
+
+// Crear funcion de ganador
+
+
+//Crear funcion de perdedor
+
+
+
+
+
+    `  selectRandomIngredients(
       bread.breadItems,
       cheese.cheeseItems,
       vegetables.vegetables,
@@ -120,7 +161,7 @@ const app = (p5) => {
       console.log(user)
 
     });
-    
+
     //socket.on('update-score-player', (winner) => {
       //if(players.player1.id == winner.id){
         //players.player1.score = winner.score
@@ -132,7 +173,7 @@ const app = (p5) => {
       //console.log(players)
 
     //});
-    
+
     //socket.on('screen-change', () => {
       //currentScreen = playersScreen;
 
@@ -150,39 +191,39 @@ const app = (p5) => {
       //}
   //});
 
-  
-    function selectRandomIngredients(breadItems, cheeseItems, vegetables, meats, sauces) {
-      function selectRandomItems(array, n) {
-        const selectedItems = [];
-        const shuffled = array.slice();
-        for (let i = shuffled.length - 1; i > 0 && selectedItems.length < n; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-          selectedItems.push(shuffled[i]);
-        }
-        return selectedItems;
-      }
-
-      const randomBread = breadItems[Math.floor(Math.random() * breadItems.length)]?.name || 'No definido';
-      const randomCheese = cheeseItems[Math.floor(Math.random() * cheeseItems.length)]?.name || 'No definido';
-      const randomVegetables = vegetables[Math.floor(Math.random() * vegetables.length)]?.name || 'No definido';
-      //const randomVegetables = selectRandomItems(vegetables, 2).map(item => item?.name || 'No definido'); Varios Vegetales
-      const randomMeat = meats[Math.floor(Math.random() * meats.length)]?.name || 'No definido';
-      //const randomSauces = selectRandomItems(sauces, 2).map(item => item?.name || 'No definido');varias salsa
-      const randomSauces = sauces[Math.floor(Math.random() * sauces.length)]?.name || 'No definido';
-
-      console.log("Ingredients:");
-      console.log("Bread:", randomBread);      
-      console.log("Meat:", randomMeat);
-      console.log("Cheese:", randomCheese);
-      console.log("Vegetable:", randomVegetables);
-      console.log("Sauces:", randomSauces);
-  };
-
   p5.draw = function() {
     p5.background(0);
     currentScreen.show(p5);
   };
+
+
+  function selectRandomIngredients(breadItems, cheeseItems, vegetables, meats, sauces) {
+    function selectRandomItems(array, n) {
+      const selectedItems = [];
+      const shuffled = array.slice();
+      for (let i = shuffled.length - 1; i > 0 && selectedItems.length < n; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        selectedItems.push(shuffled[i]);
+      }
+      return selectedItems;
+    }
+
+    const randomBread = breadItems[Math.floor(Math.random() * breadItems.length)]?.name || 'No definido';
+    const randomCheese = cheeseItems[Math.floor(Math.random() * cheeseItems.length)]?.name || 'No definido';
+    const randomVegetables = vegetables[Math.floor(Math.random() * vegetables.length)]?.name || 'No definido';
+    //const randomVegetables = selectRandomItems(vegetables, 2).map(item => item?.name || 'No definido'); Varios Vegetales
+    const randomMeat = meats[Math.floor(Math.random() * meats.length)]?.name || 'No definido';
+    //const randomSauces = selectRandomItems(sauces, 2).map(item => item?.name || 'No definido');varias salsa
+    const randomSauces = sauces[Math.floor(Math.random() * sauces.length)]?.name || 'No definido';
+
+    console.log("Ingredients:");
+    console.log("Bread:", randomBread);
+    console.log("Meat:", randomMeat);
+    console.log("Cheese:", randomCheese);
+    console.log("Vegetable:", randomVegetables);
+    console.log("Sauces:", randomSauces);
+};
 
   /*function probarMandarDatos() {
     if (dist() < size) {
@@ -190,8 +231,8 @@ const app = (p5) => {
         socket.emit('confirmation', "aqui toy")
         console.log("ha sido enviado exitosamente")
     }
-  };*/
-};
+  };*/`
+  };
 
 }
 

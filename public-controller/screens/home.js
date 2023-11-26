@@ -18,7 +18,7 @@ export class Home{
     });
 
     this.hideInput();
-   }
+  }
 
     show(p5){
         p5.background('green');

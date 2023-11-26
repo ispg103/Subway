@@ -1,42 +1,38 @@
-const express = require('express');
-const http = require("http")
-const cors = require('cors');
-const PORT = 3000
-const {SerialPort} = require('serialport');
-const {ReadlineParser} = require('@serialport/parser-readline');
+import express from 'express';
+import { createServer } from 'http';
+import cors from 'cors';
+import { SerialPort } from 'serialport';
+import { ReadlineParser } from 'serialport';
+import { Server } from 'socket.io';
 
-
+const PORT = 3000;
 const app = express();
-app.use(cors())
-const server = http.createServer(app);;
 
-//ArduANO
+// Configuración CORS y creación del servidor HTTP
+app.use(cors());
+const httpServer = createServer(app);
 
+// Configuración de puerto serial
 const protocolConfiguration = {
-  path: 'COM3',
+  path: 'COM10',
   baudRate: 9600
-}
+};
 
 const port = new SerialPort(protocolConfiguration);
 const parser = port.pipe(new ReadlineParser());
 
-
-
-SerialPort.list().then(
-  ports => ports.forEach(port => console.log(port.path)), //COM3
-  err => console.log(err)
-)
-
-server.listen(PORT, () => {
+// Escucha en el puerto especificado
+httpServer.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
 
-app.use('/public-display', express.static('mupi'))
-app.use('/public-controller', express.static('client'))
-app.use(express.json())
+// Rutas estáticas
+app.use('/public-display', express.static('mupi'));
+app.use('/public-controller', express.static('client'));
+app.use(express.json());
 
-//Comportamiento del servidor
-const io = require('socket.io')(server, {
+// Configuración de Socket.IO
+const io = new Server(httpServer, {
   path: '/real-time',
   cors: {
     origin: "*",
@@ -44,119 +40,29 @@ const io = require('socket.io')(server, {
   }
 });
 
+// Manejo de conexiones y eventos de Socket.IO
+io.on('connect', (socket) => {
+  console.log("Client connected:");
 
+  // ... Lógica para eventos y manejo de sockets
 
-//let playersConnected = 0;
-//let firstPressed = false;
-//let colors = ['red', 'magenta', 'yellow', 'bopIt', 'orange', 'blue', 'button'];
-//function randomColor() {
-  //const index = Math.floor(Math.random() * colors.length);
-  //return colors[index];
-//}
-//let currentColor = randomColor();
+  // Ejemplo de uso de eventos
+  socket.on('waiting-screen', () => {
+    io.emit("screen-change");
+  });
 
-const users = []
-
-//let assigned = {};
-
-app.get('/', (req, res) => {
-  res.send('¡Hola Mundo!');
+  socket.on('updateScore', (winner) => {
+    io.emit('update-score-player', winner);
+  });
 });
 
+// Manejo de datos del puerto serial
 parser.on('data', (data) => {
   console.log("data", data);
   io.emit('pressed', data);
 });
 
-io.on('connect', (socket) => {
-    console.log("Client connected:" );
-    
-    console.log("players connected:", playersConnected)
-
-    socket.on('mupi-connected', () => {
-      console.log("mupi connected")
-    });
-
-    parser.on('data', (data) => {
-      console.log("this is my data", data);
-      socket.emit('pressed', data);
-    });
-    
-    socket.on('user-connected', () => {
-      usersConnected++;
-      console.log("users connected:", usersConnected)
-      console.log(users)
-
-    });
-    
-    //socket.on('users-details', (data) => {
-      //if (data.id == users.id) {
-        //users = data;
-      //} else if(data.id == players.player2.id) {
-        //players.player2 = data;
-      //}
-
-      //console.log("Players: ", players)
-      //io.emit('players-data', players);
-    //})
-
-
-  socket.on('waiting-screen', () => {
-    io.emit("screen-change");
-  });
-
-
-    //socket.on("send-item", (user) => {
-        //if (!firstPressed) {
-            //firstPressed = true;
-            //io.emit('first-player-pressed', user.name); // Emitir a todos los jugadores
-        //}
-        
-        //console.log(user.name, user.score)
-        //socket.broadcast.emit("other-player-pressed", user.name);
-    //})
-
-    socket.on('updateScore', (winner) => {
-        io.emit('update-score-player', winner);
-    
-      
-    });
-
-    //socket.on("disconnect", () => {
-      //console.log("Cliente desconectado:", socket.id);
-      //if (players.player1.id === socket.id || players.player2.id === socket.id) { 
-          //if (players.player1.id === socket.id) {
-            //players.player1 =
-           //{
-            //id: 0,
-            //name: "",
-            //birthday: "",
-            //email: "",
-            //score: 0,
-            //color: "",
-            //isWaiting: false,
-          //}
-          //}
-          
-          //if (players.player2.id === socket.id) 
-          //{ players.player2 = {
-            //id: 0,
-            //name: "",
-            ////birthday: "",
-            //email: "",
-            //score: 0,
-           // color: "",
-            //isWaiting: false,
-          //}
-          //};
-
-          //playersConnected--;
-          //console.log("Jugador desconectado. Total de jugadores:", playersConnected);
-      //} else {
-          //console.log("Mupi desconectado");
-          // Código para manejar la desconexión del mupi...
-      //}
-  //});
+// Ruta de prueba
+app.get('/', (req, res) => {
+  res.send('¡Hola Mundo!');
 });
-
-
