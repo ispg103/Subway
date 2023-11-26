@@ -1,10 +1,3 @@
-class BreadItem {
-    constructor(image, text) {
-      this.image = image;
-      this.text = text;
-    }
-  }
-
   export class Bread {
     constructor(p5, navigateCallback) {
       this.p5 = p5;
@@ -16,7 +9,7 @@ class BreadItem {
         //navigateCallback();
       //});
 
-      this.hideInput();
+      //this.hideInput();
     }
 
     show(p5) {

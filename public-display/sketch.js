@@ -54,42 +54,26 @@ const app = (p5) => {
     socket.emit("mupi-connected");
 
 
-    start = new Start(p5, () => {
-      currentScreen.hideInput();
-      currentScreen = qr;
-    });
+    start = new Start(p5)
 
-    `qr = new QR(p5, () => {
-      currentScreen.hideInput();
-      currentScreen = bread;
-    });
+    qr = new QR(p5)
 
-    bread = new Bread(p5, () => {
-      currentScreen.hideInput();
-      currentScreen = vegetables;
-    });
+    bread = new Bread(p5)
 
-    vegetables = new Vegetables(p5, () => {
-      currentScreen.hideInput();
-      currentScreen = cheese;
-    });
+    vegetables = new Vegetables(p5)
 
-    cheese = new Cheese(p5, () => {
-      currentScreen.hideInput();
-      currentScreen = meats;
-    });
+    cheese = new Cheese(p5)
 
-    meats = new Meats(p5, () => {
-      currentScreen.hideInput();
-      currentScreen = sauces;
-    });
+    meats = new Meats(p5)
 
-    sauces = new Sauces(p5, () => {
-      currentScreen.hideInput();
-      currentScreen = scores;
-    });`
+    sauces = new Sauces(p5)
 
-    currentScreen = home;
+
+
+
+
+
+    currentScreen = start;
 
     socket.on('users-data', (data) => {
       users = data
@@ -113,10 +97,10 @@ const app = (p5) => {
 
 
 
-    //socket.on('screen-change', () => {
-    //currentScreen = playersScreen;
+    socket.on('screen-change', () => {
+    currentScreen = qr;
 
-    //});
+    });
 
     //socket.on('go-to-main-screen', () => {
     //currentScreen = scoreScreen;
@@ -130,10 +114,15 @@ const app = (p5) => {
     }
     });
 
-    p5.draw = function () {
+    //NO MOVER ETO DE AQUI PLISSSSSSSSSSSS
+   ` p5.draw = function () {
       p5.background(0);
-      currentScreen.show(p5);
-    };
+      start.show(p5);
+    };`
+
+
+
+
 
     /*function probarMandarDatos() {
       if (dist() < size) {
@@ -144,7 +133,26 @@ const app = (p5) => {
     };*/
   };
 
-}
+    //ESTA WEA HACE QUE IMPRIMA
+    p5.draw = function () {
+      p5.background(0);
+      start.show(p5); // PARA VER LAS PANTALLAS CAMBIAR EL(start)
+    };
+  };
+
+    p5.draw = function() {
+      p5.background(0);
+      currentScreen.show(p5);
+
+      if(p5.keyIsPressed){
+        if(p5.key === '2'){
+          currentScreen.hideInput();
+          currentScreen=qr;
+          console.log("Cambio a 2 (QR)")
+        }
+      }
+
+    }
+
 
 new p5(app);
-
