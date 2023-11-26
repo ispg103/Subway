@@ -140,19 +140,4 @@ const app = (p5) => {
     };
   };
 
-    p5.draw = function() {
-      p5.background(0);
-      currentScreen.show(p5);
-
-      if(p5.keyIsPressed){
-        if(p5.key === '2'){
-          currentScreen.hideInput();
-          currentScreen=qr;
-          console.log("Cambio a 2 (QR)")
-        }
-      }
-
-    }
-
-
 new p5(app);
