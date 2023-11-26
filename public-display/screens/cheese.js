@@ -8,9 +8,9 @@ class CheeseItem {
   export class Cheese {
     constructor(p5, navigateCallback) {
       this.p5 = p5;
-      this.logo = this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
-      this.choose = this.p5.loadImage('../SUBWAY FOTOS/TITLES/Bread_chosen.png');
-      this.cheese = this.p5.loadImage('../SUBWAY FOTOS/CHEESE/ProvoloneCheese.png');
+      this.logo = this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
+      this.choose = this.p5.loadImage('./SUBWAY FOTOS/TITLES/Bread_chosen.png');
+      this.cheese = this.p5.loadImage('./SUBWAY FOTOS/CHEESE/ProvoloneCheese.png');
 
       //this.next.mousePressed(()=>{
         //navigateCallback();

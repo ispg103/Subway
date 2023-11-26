@@ -8,9 +8,9 @@ class MeatsItem {
   export class Meats {
     constructor(p5, navigateCallback) {
       this.p5 = p5;
-      this.logo = this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
-      this.choose = this.p5.loadImage('../SUBWAY FOTOS/TITLES/Bread_chosen.png');
-      this.meat = this.p5.loadImage('../SUBWAY FOTOS/MEAT/Jam.png');
+      this.logo = this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
+      this.choose = this.p5.loadImage('./SUBWAY FOTOS/TITLES/Bread_chosen.png');
+      this.meat = this.p5.loadImage('./SUBWAY FOTOS/MEAT/Jam.png');
 
       //this.next.mousePressed(()=>{
         //navigateCallback();

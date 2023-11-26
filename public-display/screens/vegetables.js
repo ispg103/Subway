@@ -8,9 +8,9 @@ class Vegetable {
   export class Vegetables {
     constructor(p5, navigateCallback) {
       this.p5 = p5;
-      this.logo = this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
-      this.choose = this.p5.loadImage('../SUBWAY FOTOS/TITLES/Bread_chosen.png');
-      this.vegetable = this.p5.loadImage('../SUBWAY FOTOS/VEGETABLES/Tomato.png');
+      this.logo = this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
+      this.choose = this.p5.loadImage('./SUBWAY FOTOS/TITLES/Bread_chosen.png');
+      this.vegetable = this.p5.loadImage('./SUBWAY FOTOS/VEGETABLES/Tomato.png');
 
       //this.next.mousePressed(()=>{
         //navigateCallback();
