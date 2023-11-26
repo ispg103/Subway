@@ -12,7 +12,7 @@ const app = express();
 app.use(cors());
 const httpServer = createServer(app);
 
-// Configuración de puerto serial
+// Configuración de puerto serial - ARDUINO
 const protocolConfiguration = {
   path: 'COM10',
   baudRate: 9600
@@ -27,8 +27,8 @@ httpServer.listen(PORT, () => {
 });
 
 // Rutas estáticas
-app.use('/public-display', express.static('mupi'));
-app.use('/public-controller', express.static('client'));
+app.use('/public-display', express.static('public-display'));
+app.use('/public-controller', express.static('public-controller'));
 app.use(express.json());
 
 // Configuración de Socket.IO
@@ -39,6 +39,8 @@ const io = new Server(httpServer, {
     methods: ["GET", "POST"]
   }
 });
+
+
 
 // Manejo de conexiones y eventos de Socket.IO
 io.on('connect', (socket) => {
@@ -64,5 +66,6 @@ parser.on('data', (data) => {
 
 // Ruta de prueba
 app.get('/', (req, res) => {
-  res.send('¡Hola Mundo!');
+  res.send('¡El server esta vivo!');
+  console.log("El servidor funciona");
 });
