@@ -21,14 +21,18 @@ const protocolConfiguration = {
 const port = new SerialPort(protocolConfiguration);
 const parser = port.pipe(new ReadlineParser());
 
-// Escucha en el puerto especificado
-httpServer.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
+port.on('error', function (err) {
+  console.log('Error: ', err.message);
+})
+
+// Comunicación Arduino
+let counter=""; // C para correcto - I para incorrecto
+let arduinoInput=[];
+
 
 // Rutas estáticas
-app.use('/public-display', express.static('public-display'));
-app.use('/public-controller', express.static('public-controller'));
+app.use(express.static('public-display'));  // Sirve archivos desde la carpeta public-diplay/Mupi
+app.use( express.static('public-controller')); //Sirve archivos desde la carpeta public-controller/Celular
 app.use(express.json());
 
 // Configuración de Socket.IO
@@ -44,7 +48,7 @@ const io = new Server(httpServer, {
 
 // Manejo de conexiones y eventos de Socket.IO
 io.on('connect', (socket) => {
-  console.log("Client connected:");
+  console.log("Usuario conectado:");
 
   // ... Lógica para eventos y manejo de sockets
 
@@ -56,7 +60,16 @@ io.on('connect', (socket) => {
   socket.on('updateScore', (winner) => {
     io.emit('update-score-player', winner);
   });
+
+  socket.on('disconnect', () => {
+    // Manejar la desconexión del cliente
+    console.log('Usuario desconectado');
+  });
+
 });
+
+
+
 
 // Manejo de datos del puerto serial
 parser.on('data', (data) => {
@@ -68,4 +81,9 @@ parser.on('data', (data) => {
 app.get('/', (req, res) => {
   res.send('¡El server esta vivo!');
   console.log("El servidor funciona");
+});
+
+// Inicia el servidor
+httpServer.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
 });

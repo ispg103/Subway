@@ -1,13 +1,13 @@
 //Crear el socket
 let socket = io();
 import { io } from 'https://cdn.socket.io/4.4.1/socket.io.esm.min.js'
-import { Start } from "./screens/start";
-import { QR } from "./screens/QR.js";
-import { Bread } from "./screens/bread.js";
-import { Sauces } from "./screens/sauces.js";
-import { Vegetables } from "./screens/vegetables.js";
-import { Meats } from "./screens/meats.js";
-import { Cheese } from "./screens/cheese.js";
+import { Start } from './screens/start.js';
+import { QR } from './screens/QR.js';
+import { Bread } from './screens/bread.js';
+import { Sauces } from './screens/sauces.js';
+import { Vegetables } from './screens/vegetables.js';
+import { Meats } from './screens/meats.js';
+import { Cheese } from './screens/cheese.js';
 
 let users = {
   email: "",
@@ -53,12 +53,13 @@ const app = (p5) => {
     socket = io.connect('http://localhost:3000', { path: '/real-time' });
     socket.emit("mupi-connected");
 
+
     start = new Start(p5, () => {
       currentScreen.hideInput();
       currentScreen = qr;
     });
 
-    qr = new QR(p5, () => {
+    `qr = new QR(p5, () => {
       currentScreen.hideInput();
       currentScreen = bread;
     });
@@ -86,7 +87,7 @@ const app = (p5) => {
     sauces = new Sauces(p5, () => {
       currentScreen.hideInput();
       currentScreen = scores;
-    });
+    });`
 
     currentScreen = home;
 

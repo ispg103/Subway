@@ -4,7 +4,7 @@ class BreadItem {
       this.text = text;
     }
   }
-  
+
   export class Bread {
     constructor(p5, navigateCallback) {
       this.p5 = p5;
@@ -15,23 +15,23 @@ class BreadItem {
       //this.next.mousePressed(()=>{
         //navigateCallback();
       //});
-  
-      //this.hideInput();
+
+      this.hideInput();
     }
-  
+
     show(p5) {
       p5.background('green');
       p5.image(this.logo, 65, 75);
       p5.image(this.choose, 55, 140);
       p5.image(this.bread, 150, 260);
-  
+
     }
-  
-  
+
+
     //hideInput() {
       //this.nextButton.hide();
     //}
-  
+
     //showInput() {
       //this.nextButton.show();
     //}

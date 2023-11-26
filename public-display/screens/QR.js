@@ -8,11 +8,11 @@ export class QR {
     this.textQR = this.p5.loadImage('../SUBWAY FOTOS/TITLES/ScanQR.png');
     this.next = this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/NextIcon2.png');
 
-    this.next.mousePressed(() => {
+`   this.next.mousePressed(() => {
       navigateCallback();
     });
 
-    this.hideInput();
+    this.hideInput();`
   }
 
   show(p5) {

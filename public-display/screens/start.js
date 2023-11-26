@@ -7,12 +7,12 @@ export class Start{
       this.subway = this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/sub.png');
       this.textWin = this.p5.loadImage('../SUBWAY FOTOS/TITLES/WWIN.png');
 
-      this.next.mousePressed(()=>{
+      `this.next.mousePressed(()=>{
         navigateCallback();
-      });
+      });`
 
       this.hideInput();
-     }
+    }
 
       show(p5){
           p5.background('green');
@@ -24,12 +24,12 @@ export class Start{
           //this.next.show();
       }
 
-      hideInput(){
-          this.next.hide();
-      }
+      //hideInput(){
+        //  this.next.hide();
+      //}
 
-      showInput(){
-          this.next.show();
-      }
+      //showInput(){
+        //  this.next.show();
+      //}
 
     }
