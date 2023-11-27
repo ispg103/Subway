@@ -1,5 +1,4 @@
-import firebase from  'firebase/compat/app'
-import 'firebase/firestore';
+import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc, getDocs, doc, updateDoc } from 'firebase/firestore';
 
 
@@ -14,7 +13,7 @@ const firebaseConfig = {
 };
 
 // Inicializar Firebase
-const app = firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // Función para crear un nuevo usuario
@@ -63,12 +62,7 @@ export async function updateUserScore(usersId, newScore) {
 
 // Exportar el objeto db
 
-module.exports.db = db;
-module.exports = {
-    createUser,
-    getUsers,
-    getDailySubs,
-    updateUserScore
-};
+export { db };
+
 
 //export { db };
