@@ -3,7 +3,7 @@
       this.p5 = p5;
       this.logo = this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayLogo2.png');
       this.choose = this.p5.loadImage('./SUBWAY FOTOS/TITLES/Bread_chosen.png');
-      this.bread = this.p5.loadImage('./SUBWAY FOTOS/BREAD/Bread.png');
+      this.bread = this.p5.loadImage('./SUBWAY FOTOS/BREAD/WhiteBread.png');
 
       //this.next.mousePressed(()=>{
         //navigateCallback();
