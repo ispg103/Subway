@@ -9,6 +9,7 @@ import { Cheese } from './screens/cheese.js';
 import { Meats } from './screens/meats.js';
 import { Vegetables } from './screens/vegetables.js';
 import { Sauces } from './screens/sauces.js';
+import { Done } from './screens/done.js';
 
 let users = {
   email: "",
@@ -24,6 +25,7 @@ const app = (p5) => {
   let meats;
   let vegetables;
   let sauces;
+  let done;
   let currentScreen;
 
   //Timer
@@ -72,9 +74,11 @@ const app = (p5) => {
 
     sauces=new Sauces(p5);
 
+    done=new Done(p5);
+
 
     //CAMBIAR DESDE AQUI
-    currentScreen = sauces; // PARA VER LAS PANTALLAS CAMBIAR EL(start)
+    currentScreen = done; // PARA VER LAS PANTALLAS CAMBIAR EL(start)
 
 
 
