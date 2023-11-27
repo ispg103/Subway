@@ -4,7 +4,9 @@ import cors from 'cors';
 import { SerialPort } from 'serialport';
 import { ReadlineParser } from 'serialport';
 import { Server } from 'socket.io';
-const Firebase = require("./firebase.js");
+import {firebase} from 'firebase/app';
+
+
 
 const PORT = 3000;
 const app = express();

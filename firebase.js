@@ -1,5 +1,7 @@
-const firebase = require("firebase/app");
-const { getFirestore, collection, setDoc, doc, addDoc, updateDoc, getDocs, query, orderBy } = require("firebase/firestore");
+import firebase from  'firebase/compat/app'
+import 'firebase/firestore';
+import { getFirestore, collection, addDoc, getDocs, doc, updateDoc } from 'firebase/firestore';
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -10,53 +12,56 @@ const firebaseConfig = {
   messagingSenderId: "560805339123",
   appId: "1:560805339123:web:3ad11b616b9ca00f56fc86"
 };
-// Initialize Firebase
+
+// Inicializar Firebase
 const app = firebase.initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-
-// Function to create a new user
-const createUser = async (users) => {
+// Función para crear un nuevo usuario
+export async function createUser(users) {
   try {
     await addDoc(collection(db, "users"), users);
-    console.log("User added successfully");
+    console.log("Usuario añadido exitosamente");
   } catch (error) {
-    console.error("Error adding user: ", error);
+    console.error("Error al agregar usuario: ", error);
   }
-};
+}
 
-// Function to get all users
-const getUsers = async () => {
+// Función para obtener todos los usuarios
+export async function getUsers() {
   try {
     const querySnapshot = await getDocs(collection(db, "users"));
     querySnapshot.forEach((doc) => {
       console.log(doc.id, " => ", doc.data());
     });
   } catch (error) {
-    console.error("Error getting users: ", error);
+    console.error("Error al obtener usuarios: ", error);
   }
-};
+}
 
-// Function to get all DailySubs
-const getDailySubs = async () => {
+// Función para obtener todos los DailySubs
+export async function getDailySubs() {
   try {
     const querySnapshot = await getDocs(collection(db, "DailySubs"));
     querySnapshot.forEach((doc) => {
       console.log(doc.id, " => ", doc.data());
     });
   } catch (error) {
-    console.error("Error getting DailySubs: ", error);
+    console.error("Error al obtener DailySubs: ", error);
   }
-};
+}
 
-const updateUserScore = async (usersId, newScore) => {
+// Función para actualizar el puntaje de un usuario
+export async function updateUserScore(usersId, newScore) {
   const usersRef = doc(db, 'users', usersId);
 
-  // Set the 'score' field of the user
+  // Establecer el campo 'score' del usuario
   await updateDoc(usersRef, {
     score: newScore
   });
 }
+
+// Exportar el objeto db
 
 module.exports.db = db;
 module.exports = {
@@ -66,3 +71,4 @@ module.exports = {
     updateUserScore
 };
 
+//export { db };
