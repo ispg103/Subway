@@ -48,6 +48,8 @@ export class Vegetables {
     this.nextButton.style('color', '#003308');
     this.nextButton.style('font-size', '29px');
     this.nextButton.style('width', '249px');
+    this.nextButton.style('top', '735px');
+    this.nextButton.style('left', '68px');
     this.nextButton.style('height', '50px');
     this.nextButton.style('border-radius', '39.5px');
     this.nextButton.style('border', 'none');

@@ -22,14 +22,16 @@ export class Sorry{
     show(p5){
         p5.background('#CE0800');
         p5.image(this.sorry,35,70);
-        p5.image(this.icon,100,238);
-        p5.image(this.try,78,505);
+        p5.image(this.icon,110,280);
+        p5.image(this.try,80,540);
       this.nextButton.show();
 
       this.nextButton.style('background-color', '#F3B90C');
       this.nextButton.style('color', '#003308');
       this.nextButton.style('font-size', '29px');
       this.nextButton.style('width', '249px');
+      this.nextButton.style('top', '735px');
+      this.nextButton.style('left', '68px');
       this.nextButton.style('height', '50px');
       this.nextButton.style('border-radius', '39.5px');
       this.nextButton.style('border', 'none');

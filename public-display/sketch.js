@@ -34,7 +34,7 @@ const app = (p5) => {
   let selectedIngredients = [];
 
   p5.setup = function () {
-    p5.createCanvas(393, 760);
+    p5.createCanvas(676, 986);
 
 
     // Obtener el ancho y alto de la ventana del navegador

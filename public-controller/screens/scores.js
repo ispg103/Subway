@@ -28,15 +28,17 @@ export class Scores{
         p5.image(this.logo,65,60);
         p5.image(this.scores,55,150);
         p5.image(this.players,55,265);
-        p5.image(this.first,70,330);
-        p5.image(this.second,40,460);
-        p5.image(this.third,200,460);
+        p5.image(this.first,80,330);
+        p5.image(this.second,50,460);
+        p5.image(this.third,210,460);
         this.continueButton.show();
 
         this.continueButton.style('background-color', '#F3B90C');
         this.continueButton.style('color', '#003308');
         this.continueButton.style('font-size', '29px');
         this.continueButton.style('width', '249px');
+        this.continueButton.style('top', '735px');
+        this.continueButton.style('left', '68px');
         this.continueButton.style('height', '50px');
         this.continueButton.style('border-radius', '39.5px');
         this.continueButton.style('border', 'none');

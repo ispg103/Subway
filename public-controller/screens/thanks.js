@@ -22,14 +22,16 @@ export class Thanks{
     show(p5){
         p5.background('green');
         p5.image(this.thanks,50,100);
-        p5.image(this.icon,100,235);
-        p5.image(this.come,50,500);
+        p5.image(this.icon,110,280);
+        p5.image(this.come,55,540);
       this.finishButton.show();
 
       this.finishButton.style('background-color', '#F3B90C');
       this.finishButton.style('color', '#003308');
       this.finishButton.style('font-size', '29px');
       this.finishButton.style('width', '249px');
+      this.finishButton.style('top', '735px');
+      this.finishButton.style('left', '68px');
       this.finishButton.style('height', '50px');
       this.finishButton.style('border-radius', '39.5px');
       this.finishButton.style('border', 'none');

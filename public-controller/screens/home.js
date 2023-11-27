@@ -24,14 +24,16 @@ export class Home {
 
   show(p5) {
     p5.background('green');
-    p5.image(this.logo, 65, 85);
-    p5.image(this.icon, 100, 200);
-    p5.image(this.build, 100, 470);
+    p5.image(this.logo, 70, 85);
+    p5.image(this.icon, 110, 220);
+    p5.image(this.build, 110, 488);
 
     this.startButton.style('background-color', '#F3B90C');
     this.startButton.style('color', '#003308');
     this.startButton.style('font-size', '29px');
     this.startButton.style('width', '249px');
+    this.startButton.style('top', '720px');
+    this.startButton.style('left', '68px');
     this.startButton.style('height', '50px');
     this.startButton.style('border-radius', '39.5px');
     this.startButton.style('border', 'none');

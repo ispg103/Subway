@@ -47,7 +47,7 @@ export class UserInfo{
         p5.background('green');
         p5.image(this.logo,65,75);
         p5.image(this.email,55,170);
-        p5.image(this.coupon,55,520);
+        p5.image(this.coupon,55,450);
       this.continueButton.show();
       this.emailInput.show();
 
@@ -55,6 +55,8 @@ export class UserInfo{
       this.continueButton.style('color', '#003308');
       this.continueButton.style('font-size', '29px');
       this.continueButton.style('width', '249px');
+      this.continueButton.style('top', '735px');
+      this.continueButton.style('left', '68px');
       this.continueButton.style('height', '50px');
       this.continueButton.style('border-radius', '39.5px');
       this.continueButton.style('border', 'none');
@@ -65,6 +67,7 @@ export class UserInfo{
       this.emailInput.style('color', '#003308');
       this.emailInput.style('font-size', '20px');
       this.emailInput.style('width', '280px');
+      this.emailInput.style('top', '435px');
       this.emailInput.style('height', '30px');
       this.emailInput.style('border-radius', '15px');
       this.emailInput.style('border', 'none');

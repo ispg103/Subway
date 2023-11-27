@@ -121,7 +121,7 @@ const app = (p5) => {
     });
 
     // VER LAS PANTALLAS DESDE AQUI
-    currentScreen = home;
+    currentScreen = vegetables;
 
     `userInfo = new UserInfo(p5, () => {
       userInfo.setSubmitCallback((userData)=>{
@@ -159,7 +159,6 @@ const app = (p5) => {
 
 
     //Crear funcion de perdedor
-
 
 
 

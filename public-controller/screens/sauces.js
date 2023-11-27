@@ -13,7 +13,7 @@ export class Sauces{
       this.sauce =this.p5.loadImage('./SUBWAY FOTOS/TITLES/Sauce.png');
 
       this.sauces = [
-        { name: 'BBQ', image: new Sauce(this.p5.loadImage('./SUBWAY FOTOS/SAUCE/BBQ.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/BBQ.png')) },
+        { name: 'BBQ', image: new Sauce(this.p5.loadImage('./SUBWAY FOTOS/SAUCE/BBQ.png'), this.p5.loadImage('./SUBWAY FOTOS/TEXTS/BBQ.png')) },
         { name: 'Mustard', image: new Sauce(this.p5.loadImage('./SUBWAY FOTOS/SAUCE/Mustard.png'), this.p5.loadImage('./SUBWAY FOTOS/TEXTS/mustard.png')) },
         { name: 'Honey Mustard', image: new Sauce(this.p5.loadImage('./SUBWAY FOTOS/SAUCE/HoneyMustard.png'), this.p5.loadImage('./SUBWAY FOTOS/TEXTS/honey.png')) },
         { name: 'Chipotle', image: new Sauce(this.p5.loadImage('./SUBWAY FOTOS/SAUCE/Chipotle.png'), this.p5.loadImage('./SUBWAY FOTOS/TEXTS/Chipotle.png')) },
@@ -41,12 +41,14 @@ export class Sauces{
       p5.background('green');
       p5.image(this.logo, 65, 60);
       p5.image(this.choose, 55, 140);
-      p5.image(this.sauce, 150, 250);
+      p5.image(this.sauce, 155, 250);
       this.nextButton.show();
       this.nextButton.style('background-color', '#F3B90C');
       this.nextButton.style('color', '#003308');
       this.nextButton.style('font-size', '29px');
       this.nextButton.style('width', '249px');
+      this.nextButton.style('top', '735px');
+      this.nextButton.style('left', '68px');
       this.nextButton.style('height', '50px');
       this.nextButton.style('border-radius', '39.5px');
       this.nextButton.style('border', 'none');

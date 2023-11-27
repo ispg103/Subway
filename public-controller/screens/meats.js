@@ -40,7 +40,7 @@ export class Meats {
     p5.background('green');
     p5.image(this.logo, 65, 60);
     p5.image(this.choose, 55, 140);
-    p5.image(this.meat, 155, 250);
+    p5.image(this.meat, 163, 250);
 
     this.nextButton.show();
 
@@ -48,6 +48,8 @@ export class Meats {
     this.nextButton.style('color', '#003308');
     this.nextButton.style('font-size', '29px');
     this.nextButton.style('width', '249px');
+    this.nextButton.style('top', '735px');
+    this.nextButton.style('left', '68px');
     this.nextButton.style('height', '50px');
     this.nextButton.style('border-radius', '39.5px');
     this.nextButton.style('border', 'none');

@@ -22,14 +22,16 @@ export class Congrats{
     show(p5){
         p5.background('#FF811F');
         p5.image(this.sorry,45,70);
-        p5.image(this.icon,100,265);
-        p5.image(this.enjoy,50,520);
+        p5.image(this.icon,110,280);
+        p5.image(this.enjoy,45,540);
       this.nextButton.show();
 
       this.nextButton.style('background-color', '#F3B90C');
       this.nextButton.style('color', '#003308');
       this.nextButton.style('font-size', '29px');
       this.nextButton.style('width', '249px');
+      this.nextButton.style('top', '720px');
+      this.nextButton.style('left', '68px');
       this.nextButton.style('height', '50px');
       this.nextButton.style('border-radius', '39.5px');
       this.nextButton.style('border', 'none');
