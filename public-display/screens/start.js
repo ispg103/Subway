@@ -16,11 +16,12 @@ export class Start{
 
     show(p5){
         p5.background('green');
-        p5.image(this.logo,65,85);
-        p5.image(this.icon,100,200);
-        p5.image(this.next,100,470);
-        p5.image(this.subway,100,470);
-        p5.image(this.textWin,100,470);
+        p5.image(this.icon,0,0);
+        p5.image(this.subway,0,315);
+        p5.image(this.next,548,470);
+        p5.image(this.logo,180,865);
+        p5.image(this.textWin,100,60);
+
         //this.next.show();
     }
 
