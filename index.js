@@ -4,6 +4,7 @@ import cors from 'cors';
 import { SerialPort } from 'serialport';
 import { ReadlineParser } from 'serialport';
 import { Server } from 'socket.io';
+const Firebase = require("./firebase.js");
 
 const PORT = 3000;
 const app = express();
@@ -44,12 +45,19 @@ const io = new Server(httpServer, {
   }
 });
 
-
+Firebase.getUsers(users);
+console.log(users)
 
 // Manejo de conexiones y eventos de Socket.IO
 io.on('connect', (socket) => {
   console.log("Usuario conectado:");
-
+  try {
+    socket.on('new-user', (users) => {
+      Firebase.createUser(users);
+    });
+  } catch (error) {
+    console.error("Error al crear usuario en Firebase:", error);
+  }
   // ... Lógica para eventos y manejo de sockets
 
   // Ejemplo de uso de eventos
@@ -57,8 +65,13 @@ io.on('connect', (socket) => {
     io.emit("screen-change");
   });
 
-  socket.on('updateScore', (winner) => {
-    io.emit('update-score-player', winner);
+  socket.on('updateScore', (users) => {
+    io.emit('update-score-player', users);
+    try{
+      Firebase.updateUserScore(users, 1);
+    }catch{
+      console.error("Error al ,odificar score de usuario en Firebase:", error);
+    }
   });
 
   socket.on('disconnect', () => {
@@ -78,7 +91,7 @@ parser.on('data', (data) => {
 });
 
 // Ruta de prueba
-app.get('/', (req, res) => {
+app.get('/', (_, res) => {
   res.send('¡El server esta vivo!');
   console.log("El servidor funciona");
 });
