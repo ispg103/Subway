@@ -1,5 +1,5 @@
 import { io } from 'https://cdn.socket.io/4.4.1/socket.io.esm.min.js'
-import { Home } from "./screens/home.js";
+import { Home } from './screens/home.js';
 import { Home2 } from "./screens/home2.js";
 import { UserInfo } from "./screens/userInfo.js";
 import { Bread } from "./screens/bread.js";
@@ -13,7 +13,7 @@ import { Congrats } from "./screens/congrats.js";
 import { Thanks } from "./screens/thanks.js";
 //import {getRandomFromDB} from './firebase.js';
 
-const socket = io();
+let socket = io();
 let user = [];
 
 const app = (p5) => {
@@ -51,6 +51,7 @@ const app = (p5) => {
     socket = io.connect('http://localhost:3000', { path: '/real-time' });
     socket.emit("mupi-connected");
 
+    //PANTALLAS
 
     home = new Home(p5, () => {
       currentScreen.hideInput();
@@ -119,30 +120,45 @@ const app = (p5) => {
       currentScreen = home;
     });
 
+    // VER LAS PANTALLAS DESDE AQUI
     currentScreen = home;
+
+    `userInfo = new UserInfo(p5, () => {
+      userInfo.setSubmitCallback((userData)=>{
+        userData={
+          email:"",
+          score:0,
+        }
+        console.log("Email recibido:",userData)
+      })
+      currentScreen.hideInput();
+      currentScreen = bread;
+    });`
+
+
 
     socket.on('start-timer', () => {
       if (!timeStarted && currentScreen === bread) {
-          timeStarted = true;
-          console.log("Comienza el temporizador");
+        timeStarted = true;
+        console.log("Comienza el temporizador");
       }
-  });
+    });
 
-  //Actualizar el puntaje
-  socket.on('updateScore', (winnerUser) => {
-    const currentUserEmail = user.email;
+    //Actualizar el puntaje
+    socket.on('updateScore', (winnerUser) => {
+      const currentUserEmail = user.email;
 
-    if (winnerUser.email === currentUserEmail) {
+      if (winnerUser.email === currentUserEmail) {
         user.score = winnerUser.score;
-    }
+      }
 
-    //Capaz hay que crear otra función para diferenciarlo dentro del ranking o tal vez no (La esquizofrenia me esta consumiendo TT) ATT: Lau
-  });
+      //Capaz hay que crear otra función para diferenciarlo dentro del ranking o tal vez no (La esquizofrenia me esta consumiendo TT) ATT: Lau
+    });
 
-// Crear funcion de ganador
+    // Crear funcion de ganador
 
 
-//Crear funcion de perdedor
+    //Crear funcion de perdedor
 
 
 
@@ -191,10 +207,6 @@ const app = (p5) => {
       //}
   //});
 
-  p5.draw = function() {
-    p5.background(0);
-    currentScreen.show(p5);
-  };
 
 
   function selectRandomIngredients(breadItems, cheeseItems, vegetables, meats, sauces) {
@@ -232,6 +244,11 @@ const app = (p5) => {
         console.log("ha sido enviado exitosamente")
     }
   };*/`
+  };
+
+  p5.draw = function () {
+    p5.background(0);
+    currentScreen.show(p5);
   };
 
 }

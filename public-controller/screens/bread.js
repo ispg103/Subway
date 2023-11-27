@@ -8,14 +8,14 @@ class BreadItem {
 export class Bread {
   constructor(p5, navigateCallback) {
     this.p5 = p5;
-    this.logo = this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
-    this.choose = this.p5.loadImage('../SUBWAY FOTOS/TITLES/choose.png');
-    this.breadTitle = this.p5.loadImage('../SUBWAY FOTOS/TITLES/Bread.png');
+    this.logo = this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
+    this.choose = this.p5.loadImage('./SUBWAY FOTOS/TITLES/choose.png');
+    this.breadTitle = this.p5.loadImage('./SUBWAY FOTOS/TITLES/Bread.png');
 
     this.breadItems = [
-      { name: 'White Bread', images: { bread: this.p5.loadImage('../SUBWAY FOTOS/BREAD/Bread.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/White.png') } },
-      { name: 'Oregano Parmesan', images: { bread: this.p5.loadImage('../SUBWAY FOTOS/BREAD/OreganoParmesan.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/oregano.png') } },
-      { name: 'Whole Wheat', images: { bread: this.p5.loadImage('../SUBWAY FOTOS/BREAD/WholeWheat.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/wheat.png') } },
+      { name: 'White Bread', images: { bread: this.p5.loadImage('./SUBWAY FOTOS/BREAD/Bread.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/White.png') } },
+      { name: 'Oregano Parmesan', images: { bread: this.p5.loadImage('./SUBWAY FOTOS/BREAD/OreganoParmesan.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/oregano.png') } },
+      { name: 'Whole Wheat', images: { bread: this.p5.loadImage('./SUBWAY FOTOS/BREAD/WholeWheat.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/wheat.png') } },
     ];
 
     const buttonXPercentage = 18;

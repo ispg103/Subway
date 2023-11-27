@@ -7,17 +7,17 @@ class Vegetable {
 export class Vegetables {
   constructor(p5, navigateCallback) {
     this.p5 = p5;
-    this.logo = this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
-    this.choose = this.p5.loadImage('../SUBWAY FOTOS/TITLES/choose.png');
-    this.vegetablesTitle = this.p5.loadImage('../SUBWAY FOTOS/TITLES/Vegetables.png');
+    this.logo = this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
+    this.choose = this.p5.loadImage('./SUBWAY FOTOS/TITLES/choose.png');
+    this.vegetablesTitle = this.p5.loadImage('./SUBWAY FOTOS/TITLES/Vegetables.png');
 
     this.vegetables = [
-      { name: 'Tomato', images: { vegetable: this.p5.loadImage('../SUBWAY FOTOS/VEGETABLES/Tomato.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Tomato.png') } },
-      { name: 'Pickle', images: { vegetable: this.p5.loadImage('../SUBWAY FOTOS/VEGETABLES/Pickle.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Pickle.png') } },
-      { name: 'Onion', images: { vegetable: this.p5.loadImage('../SUBWAY FOTOS/VEGETABLES/Onion.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/onion.png') } },
-      { name: 'Lettuce', images: { vegetable: this.p5.loadImage('../SUBWAY FOTOS/VEGETABLES/Lettuce.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/lettuce.png') } },
-      { name: 'Jalapeño', images: { vegetable: this.p5.loadImage('../SUBWAY FOTOS/VEGETABLES/Jalapeño.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/jalapeño.png') } },
-      { name: 'Bell Pepper', images: { vegetable: this.p5.loadImage('../SUBWAY FOTOS/VEGETABLES/BellPepper.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/pepper.png') } },
+      { name: 'Tomato', images: { vegetable: this.p5.loadImage('./SUBWAY FOTOS/VEGETABLES/Tomato.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/Tomato.png') } },
+      { name: 'Pickle', images: { vegetable: this.p5.loadImage('./SUBWAY FOTOS/VEGETABLES/Pickle.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/Pickle.png') } },
+      { name: 'Onion', images: { vegetable: this.p5.loadImage('./SUBWAY FOTOS/VEGETABLES/Onion.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/onion.png') } },
+      { name: 'Lettuce', images: { vegetable: this.p5.loadImage('./SUBWAY FOTOS/VEGETABLES/Lettuce.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/lettuce.png') } },
+      { name: 'Jalapeño', images: { vegetable: this.p5.loadImage('./SUBWAY FOTOS/VEGETABLES/Jalapeño.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/jalapeño.png') } },
+      { name: 'Bell Pepper', images: { vegetable: this.p5.loadImage('./SUBWAY FOTOS/VEGETABLES/BellPepper.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/pepper.png') } },
     ];
 
 

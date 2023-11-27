@@ -8,17 +8,17 @@ class Sauce{
 export class Sauces{
     constructor(p5,navigateCallback){
       this.p5=p5;
-      this.logo =this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
-      this.choose =this.p5.loadImage('../SUBWAY FOTOS/TITLES/choose.png');
-      this.sauce =this.p5.loadImage('../SUBWAY FOTOS/TITLES/Sauce.png');
+      this.logo =this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
+      this.choose =this.p5.loadImage('./SUBWAY FOTOS/TITLES/choose.png');
+      this.sauce =this.p5.loadImage('./SUBWAY FOTOS/TITLES/Sauce.png');
 
       this.sauces = [
-        { name: 'BBQ', image: new Sauce(this.p5.loadImage('../SUBWAY FOTOS/SAUCE/BBQ.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/BBQ.png')) },
-        { name: 'Mustard', image: new Sauce(this.p5.loadImage('../SUBWAY FOTOS/SAUCE/Mustard.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/mustard.png')) },
-        { name: 'Honey Mustard', image: new Sauce(this.p5.loadImage('../SUBWAY FOTOS/SAUCE/HoneyMustard.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/honey.png')) },
-        { name: 'Chipotle', image: new Sauce(this.p5.loadImage('../SUBWAY FOTOS/SAUCE/Chipotle.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Chipotle.png')) },
-        { name: 'Garlic', image: new Sauce(this.p5.loadImage('../SUBWAY FOTOS/SAUCE/Garlic.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Garlic.png')) },
-        { name: 'Mayonnaise', image: new Sauce(this.p5.loadImage('../SUBWAY FOTOS/SAUCE/Mayonnaise.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/mayonnaise.png')) },
+        { name: 'BBQ', image: new Sauce(this.p5.loadImage('./SUBWAY FOTOS/SAUCE/BBQ.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/BBQ.png')) },
+        { name: 'Mustard', image: new Sauce(this.p5.loadImage('./SUBWAY FOTOS/SAUCE/Mustard.png'), this.p5.loadImage('./SUBWAY FOTOS/TEXTS/mustard.png')) },
+        { name: 'Honey Mustard', image: new Sauce(this.p5.loadImage('./SUBWAY FOTOS/SAUCE/HoneyMustard.png'), this.p5.loadImage('./SUBWAY FOTOS/TEXTS/honey.png')) },
+        { name: 'Chipotle', image: new Sauce(this.p5.loadImage('./SUBWAY FOTOS/SAUCE/Chipotle.png'), this.p5.loadImage('./SUBWAY FOTOS/TEXTS/Chipotle.png')) },
+        { name: 'Garlic', image: new Sauce(this.p5.loadImage('./SUBWAY FOTOS/SAUCE/Garlic.png'), this.p5.loadImage('./SUBWAY FOTOS/TEXTS/Garlic.png')) },
+        { name: 'Mayonnaise', image: new Sauce(this.p5.loadImage('./SUBWAY FOTOS/SAUCE/Mayonnaise.png'), this.p5.loadImage('./SUBWAY FOTOS/TEXTS/mayonnaise.png')) },
       ];
 
       const buttonXPercentage = 15;

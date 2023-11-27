@@ -1,12 +1,12 @@
 export class Scores{
     constructor(p5,navigateCallback){
       this.p5=p5;
-      this.logo =this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
-      this.scores =this.p5.loadImage('../SUBWAY FOTOS/TITLES/scores.png');
-      this.players =this.p5.loadImage('../SUBWAY FOTOS/TEXTS/players.png');
-      this.first =this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/FirstPlace.png');
-      this.second =this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SecondPlace.png');
-      this.third =this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/ThirdPlace.png');
+      this.logo =this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
+      this.scores =this.p5.loadImage('./SUBWAY FOTOS/TITLES/scores.png');
+      this.players =this.p5.loadImage('./SUBWAY FOTOS/TEXTS/players.png');
+      this.first =this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/FirstPlace.png');
+      this.second =this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SecondPlace.png');
+      this.third =this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/ThirdPlace.png');
 
       const buttonXPercentage = 15;
       const buttonYPercentage = 80;

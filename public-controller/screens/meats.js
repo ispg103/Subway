@@ -8,17 +8,17 @@ class Meat {
 export class Meats {
   constructor(p5, navigateCallback) {
     this.p5 = p5;
-    this.logo = this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
-    this.choose = this.p5.loadImage('../SUBWAY FOTOS/TITLES/choose.png');
-    this.meat = this.p5.loadImage('../SUBWAY FOTOS/TITLES/Meat.png');
+    this.logo = this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
+    this.choose = this.p5.loadImage('./SUBWAY FOTOS/TITLES/choose.png');
+    this.meat = this.p5.loadImage('./SUBWAY FOTOS/TITLES/Meat.png');
 
       this.meats = [
-        { name: 'Jam', image: new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/Jam.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/jam.png')) },
-        { name: 'Chicken Strips', image: new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/ChickenStrips.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/strips.png')) },
-        { name: 'Turkey', image: new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/Turkey.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Turkey.png')) },
-        { name: 'Salami', image: new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/Salami.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Salami.png')) },
-        { name: 'Tuna', image: new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/Tuna.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Tuna.png')) },
-        { name: 'BBQ Ribs', image: new Meat(this.p5.loadImage('../SUBWAY FOTOS/MEAT/BBQrips.png'), this.p5.loadImage('../SUBWAY FOTOS/TEXTS/ribs.png')) },
+        { name: 'Jam', image: new Meat(this.p5.loadImage('./SUBWAY FOTOS/MEAT/Jam.png'), this.p5.loadImage('./SUBWAY FOTOS/TEXTS/jam.png')) },
+        { name: 'Chicken Strips', image: new Meat(this.p5.loadImage('./SUBWAY FOTOS/MEAT/ChickenStrips.png'), this.p5.loadImage('./SUBWAY FOTOS/TEXTS/strips.png')) },
+        { name: 'Turkey', image: new Meat(this.p5.loadImage('./SUBWAY FOTOS/MEAT/Turkey.png'), this.p5.loadImage('./SUBWAY FOTOS/TEXTS/Turkey.png')) },
+        { name: 'Salami', image: new Meat(this.p5.loadImage('./SUBWAY FOTOS/MEAT/Salami.png'), this.p5.loadImage('./SUBWAY FOTOS/TEXTS/Salami.png')) },
+        { name: 'Tuna', image: new Meat(this.p5.loadImage('./SUBWAY FOTOS/MEAT/Tuna.png'), this.p5.loadImage('./SUBWAY FOTOS/TEXTS/Tuna.png')) },
+        { name: 'BBQ Ribs', image: new Meat(this.p5.loadImage('./SUBWAY FOTOS/MEAT/BBQrips.png'), this.p5.loadImage('./SUBWAY FOTOS/TEXTS/ribs.png')) },
     ];
 
     const buttonXPercentage = 15;

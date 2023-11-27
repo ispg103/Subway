@@ -1,9 +1,9 @@
 export class Home2{
     constructor(p5,navigateCallback){
       this.p5=p5;
-      this.logo =this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
-      this.icon=this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayIcon.png');
-      this.combination=this.p5.loadImage('../SUBWAY FOTOS/TITLES/combination.png');
+      this.logo =this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
+      this.icon=this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayIcon.png');
+      this.combination=this.p5.loadImage('./SUBWAY FOTOS/TITLES/combination.png');
 
       const buttonXPercentage = 15;
       const buttonYPercentage = 80;
@@ -11,11 +11,12 @@ export class Home2{
       const buttonX = (buttonXPercentage / 100) * this.p5.width;
       const buttonY = (buttonYPercentage / 100) * this.p5.height;
 
-      this.startButton = this.p5.createButton('Start');
-      this.startButton.position(buttonX, buttonY);
-      this.startButton.mousePressed(()=>{
-        navigateCallback();
-      });
+
+    this.startButton = this.p5.createButton('Start');
+    this.startButton.position(buttonX, buttonY);
+    this.startButton.mousePressed(()=>{
+      navigateCallback();
+    });
 
         this.hideInput();
 

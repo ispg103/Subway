@@ -1,9 +1,9 @@
 export class Thanks{
     constructor(p5,navigateCallback){
       this.p5=p5;
-      this.thanks =this.p5.loadImage('../SUBWAY FOTOS/TITLES/thanks.png');
-      this.icon=this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayIcon.png');
-      this.come=this.p5.loadImage('../SUBWAY FOTOS/TEXTS/tomorrow.png');
+      this.thanks =this.p5.loadImage('./SUBWAY FOTOS/TITLES/thanks.png');
+      this.icon=this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayIcon.png');
+      this.come=this.p5.loadImage('./SUBWAY FOTOS/TEXTS/tomorrow.png');
 
       const buttonXPercentage = 15;
       const buttonYPercentage = 85;

@@ -8,15 +8,15 @@ class CheeseItem {
 export class Cheese {
   constructor(p5, navigateCallback) {
     this.p5 = p5;
-    this.logo = this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
-    this.choose = this.p5.loadImage('../SUBWAY FOTOS/TITLES/choose.png');
-    this.cheeseTitle = this.p5.loadImage('../SUBWAY FOTOS/TITLES/CHEESE.png');
+    this.logo = this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
+    this.choose = this.p5.loadImage('./SUBWAY FOTOS/TITLES/choose.png');
+    this.cheeseTitle = this.p5.loadImage('./SUBWAY FOTOS/TITLES/CHEESE.png');
 
     this.cheeseItems = [
-      { name: 'American', images: { CheeseItem: this.p5.loadImage('../SUBWAY FOTOS/CHEESE/AmericanCheese.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/american.png') } },
-      { name: 'Mozzarella', images: { CheeseItem: this.p5.loadImage('../SUBWAY FOTOS/CHEESE/MozzarellaCheese.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/mozzarella.png') } },
-      { name: 'Provolone', images: { CheeseItem: this.p5.loadImage('../SUBWAY FOTOS/CHEESE/ProvoloneCheese.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/Provolone.png') } },
-      { name: 'Cheddar', images: { CheeseItem: this.p5.loadImage('../SUBWAY FOTOS/CHEESE/CheddarCheese.png'), text: this.p5.loadImage('../SUBWAY FOTOS/TEXTS/cheddar.png') } },
+      { name: 'American', images: { CheeseItem: this.p5.loadImage('./SUBWAY FOTOS/CHEESE/AmericanCheese.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/american.png') } },
+      { name: 'Mozzarella', images: { CheeseItem: this.p5.loadImage('./SUBWAY FOTOS/CHEESE/MozzarellaCheese.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/mozzarella.png') } },
+      { name: 'Provolone', images: { CheeseItem: this.p5.loadImage('./SUBWAY FOTOS/CHEESE/ProvoloneCheese.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/Provolone.png') } },
+      { name: 'Cheddar', images: { CheeseItem: this.p5.loadImage('./SUBWAY FOTOS/CHEESE/CheddarCheese.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/cheddar.png') } },
     ];
 
     const buttonXPercentage = 15;

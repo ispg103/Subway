@@ -1,9 +1,9 @@
 export class Sorry{
     constructor(p5,navigateCallback){
       this.p5=p5;
-      this.sorry =this.p5.loadImage('../SUBWAY FOTOS/TITLES/sorry.png');
-      this.icon=this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayIcon.png');
-      this.try=this.p5.loadImage('../SUBWAY FOTOS/TEXTS/try.png');
+      this.sorry =this.p5.loadImage('./SUBWAY FOTOS/TITLES/sorry.png');
+      this.icon=this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayIcon.png');
+      this.try=this.p5.loadImage('./SUBWAY FOTOS/TEXTS/try.png');
 
       const buttonXPercentage = 15;
       const buttonYPercentage = 75;

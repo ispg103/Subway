@@ -1,9 +1,9 @@
 export class UserInfo{
   constructor(p5,navigateCallback) {
     this.p5 = p5;
-    this.logo = this.p5.loadImage('../SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
-    this.email = this.p5.loadImage('../SUBWAY FOTOS/TITLES/email.png');
-    this.coupon = this.p5.loadImage('../SUBWAY FOTOS/TITLES/coupon.png');
+    this.logo = this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
+    this.email = this.p5.loadImage('./SUBWAY FOTOS/TITLES/email.png');
+    this.coupon = this.p5.loadImage('./SUBWAY FOTOS/TITLES/coupon.png');
     this.emailValues = [];
 
 
@@ -16,10 +16,10 @@ export class UserInfo{
     const buttonY = (buttonYPercentage / 100) * this.p5.height;
     const inputX = (inputXPercentage / 100) * this.p5.width;
     const inputY = (inputYPercentage / 100) * this.p5.height;
-    
+
     this.continueButton = this.p5.createButton('Continue');
     this.continueButton.position(buttonX, buttonY);
-    
+
     this.continueButton.mousePressed(()=>{
       let userData = [];
       const emailValue = this.emailInput.value();
@@ -42,7 +42,7 @@ export class UserInfo{
 
     this.hideInput();
     }
-    
+
     show(p5){
         p5.background('green');
         p5.image(this.logo,65,75);
