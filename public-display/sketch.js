@@ -133,7 +133,7 @@ const app = (p5) => {
     //ESTA WEA HACE QUE IMPRIMA
     p5.draw = function () {
       p5.background(0);
-      currentScreen.show(p5); // PARA VER LAS PANTALLAS CAMBIAR EL(start)
+      start.show(p5); // PARA VER LAS PANTALLAS CAMBIAR EL(start)
     };
   };
 
