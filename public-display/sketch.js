@@ -74,7 +74,7 @@ const app = (p5) => {
 
 
     //CAMBIAR DESDE AQUI
-    currentScreen = start; // PARA VER LAS PANTALLAS CAMBIAR EL(start)
+    currentScreen = sauces; // PARA VER LAS PANTALLAS CAMBIAR EL(start)
 
 
 
