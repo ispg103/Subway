@@ -33,6 +33,17 @@ let counter=""; // C para correcto - I para incorrecto
 let arduinoInput=[];
 
 
+
+
+// Inicia el servidor
+httpServer.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+  console.table({
+    'User:':`http://localhost:${PORT}/public-display`,
+    'Mupi:':`http://localhost:${PORT}/public-controller`,
+  })
+});
+
 // Rutas estáticas
 app.use(express.static('public-display'));  // Sirve archivos desde la carpeta public-diplay/Mupi
 app.use( express.static('public-controller')); //Sirve archivos desde la carpeta public-controller/Celular
@@ -98,7 +109,3 @@ app.get('/', (_, res) => {
   console.log("El servidor funciona");
 });
 
-// Inicia el servidor
-httpServer.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
