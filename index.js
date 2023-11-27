@@ -4,9 +4,9 @@ import cors from 'cors';
 import { SerialPort } from 'serialport';
 import { ReadlineParser } from 'serialport';
 import { Server } from 'socket.io';
-import {firebase} from 'firebase/app';
+import { initializeApp } from 'firebase/app';
 
-
+import * as Firebase from './firebase.js';
 
 const PORT = 3000;
 const app = express();
@@ -47,8 +47,8 @@ const io = new Server(httpServer, {
   }
 });
 
-Firebase.getUsers(users);
-console.log(users)
+Firebase.getUsers();
+console.log()
 
 // Manejo de conexiones y eventos de Socket.IO
 io.on('connect', (socket) => {
