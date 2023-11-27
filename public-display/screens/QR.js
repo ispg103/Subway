@@ -17,12 +17,12 @@ export class QR {
 
   show(p5) {
     p5.background('green');
-    p5.image(this.logo, 65, 85);
-    p5.image(this.qr, 100, 200);
-    p5.image(this.vector1, 100, 470);
-    p5.image(this.vector2, 100, 470);
-    p5.image(this.textQR, 100, 470);
-    p5.image(this.next, 100, 470);
+    p5.image(this.logo, 148, 170);
+    p5.image(this.qr, 200, 430);
+    p5.image(this.vector1, 110, 719);
+    p5.image(this.vector2, 0, 0);
+    p5.image(this.textQR, 130, 320);
+    p5.image(this.next, 290, 800);
     //this.next.show();
   }
 

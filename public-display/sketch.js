@@ -127,7 +127,7 @@ const app = (p5) => {
     //ESTA WEA HACE QUE IMPRIMA
     p5.draw = function () {
       p5.background(0);
-      start.show(p5); // PARA VER LAS PANTALLAS CAMBIAR EL(start)
+      qr.show(p5); // PARA VER LAS PANTALLAS CAMBIAR EL(start)
     };
   };
 
