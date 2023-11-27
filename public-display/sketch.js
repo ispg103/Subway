@@ -3,7 +3,12 @@ let socket = io();
 import { io } from 'https://cdn.socket.io/4.4.1/socket.io.esm.min.js'
 import { Start } from './screens/start.js';
 import { QR } from './screens/QR.js';
-import { Charging } from './screens/Charging.js';
+import { Charging } from './screens/charging.js'
+import { Bread } from './screens/bread.js';
+import { Cheese } from './screens/cheese.js';
+import { Meats } from './screens/meats.js';
+import { Vegetables } from './screens/vegetables.js';
+import { Sauces } from './screens/sauces.js';
 
 let users = {
   email: "",
@@ -14,6 +19,11 @@ const app = (p5) => {
   let start;
   let qr;
   let charging;
+  let bread;
+  let cheese;
+  let meats;
+  let vegetables;
+  let sauces;
   let currentScreen;
 
   //Timer
@@ -50,11 +60,26 @@ const app = (p5) => {
 
     qr = new QR(p5)
 
-    charging = new Charging(p5)
+    charging= new Charging(p5)
+
+    bread= new Bread(p5),
+
+    cheese=new Cheese(p5);
+
+    meats=new Meats(p5);
+
+    vegetables=new Vegetables(p5);
+
+    sauces=new Sauces(p5);
 
 
-
+    //CAMBIAR DESDE AQUI
     currentScreen = start;
+
+
+
+
+
 
     socket.on('users-data', (data) => {
       users = data
@@ -108,7 +133,7 @@ const app = (p5) => {
     //ESTA WEA HACE QUE IMPRIMA
     p5.draw = function () {
       p5.background(0);
-      charging.show(p5); // PARA VER LAS PANTALLAS CAMBIAR EL(start)
+      currentScreen.show(p5); // PARA VER LAS PANTALLAS CAMBIAR EL(start)
     };
   };
 
