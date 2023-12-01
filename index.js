@@ -11,7 +11,7 @@ const PORT = 5501;
 const app = express();
 app.use(express.json());
 app.use('/mupi', express.static('public-display'));  // Sirve archivos desde la carpeta public-diplay/Mupi
-app.use('/u ser', express.static('public-controller')); //Sirve archivos desde la carpeta public-controller/Celular
+app.use('/user', express.static('public-controller')); //Sirve archivos desde la carpeta public-controller/Celular
 
 const httpServer = createServer(app);
 
