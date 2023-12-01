@@ -69,9 +69,9 @@ const app = (p5) => {
 
     bread= new Bread(p5),
 
-    cheese=new Cheese(p5);
-
     meats=new Meats(p5);
+
+    cheese=new Cheese(p5);
 
     vegetables=new Vegetables(p5);
 
@@ -81,7 +81,7 @@ const app = (p5) => {
 
 
     //CAMBIAR DESDE AQUI
-    currentScreen = start; // PARA VER LAS PANTALLAS CAMBIAR EL(start)
+    currentScreen = done; // PARA VER LAS PANTALLAS CAMBIAR EL(start)
 
 
 
