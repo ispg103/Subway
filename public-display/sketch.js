@@ -1,5 +1,11 @@
-//Crear el socket
-let socket = io();
+const DNS = getDNS;
+
+const URL = `http://${window.location.hostname}:5501`;
+let socket = io(URL, {
+  path: "/real-time",
+});
+
+
 import { io } from 'https://cdn.socket.io/4.4.1/socket.io.esm.min.js'
 import { Start } from './screens/start.js';
 import { QR } from './screens/QR.js';
@@ -53,9 +59,6 @@ const app = (p5) => {
     p5.canvas.style.position = 'absolute';
     p5.canvas.style.left = `${centerX}px`;
     p5.canvas.style.top = `${centerY}px`;
-
-    socket = io.connect('http://localhost:3000', { path: '/real-time' });
-    socket.emit("mupi-connected");
 
 
     start = new Start(p5)

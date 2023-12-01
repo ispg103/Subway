@@ -1,3 +1,10 @@
+const DNS = getDNS;
+
+const URL = `http://${window.location.hostname}:5501`;
+let socket = io(URL, {
+  path: "/real-time",
+});
+
 import { io } from 'https://cdn.socket.io/4.4.1/socket.io.esm.min.js'
 import { Home } from './screens/home.js';
 import { Home2 } from "./screens/home2.js";
@@ -13,7 +20,6 @@ import { Congrats } from "./screens/congrats.js";
 import { Thanks } from "./screens/thanks.js";
 //import {getRandomFromDB} from './firebase.js';
 
-let socket = io();
 let user = [];
 
 const app = (p5) => {
@@ -47,9 +53,6 @@ const app = (p5) => {
 
   p5.setup = function () {
     p5.createCanvas(393, 760);
-
-    socket = io.connect('http://localhost:3000', { path: '/real-time' });
-    socket.emit("cellphone-connected");
 
     //PANTALLAS
 
