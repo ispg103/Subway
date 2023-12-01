@@ -1,6 +1,6 @@
 const DNS = getDNS;
 
-const URL = `http://${window.location.hostname}:5501`;
+const URL = `http://${window.location.hostname}:3000`;
 let socket = io(URL, {
   path: "/real-time",
 });
@@ -124,7 +124,7 @@ const app = (p5) => {
     });
 
     // VER LAS PANTALLAS DESDE AQUI
-    currentScreen = vegetables;
+    currentScreen = home;
 
     `userInfo = new UserInfo(p5, () => {
       userInfo.setSubmitCallback((userData)=>{

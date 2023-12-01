@@ -1,6 +1,6 @@
 const DNS = getDNS;
 
-const URL = `http://${window.location.hostname}:5501`;
+const URL = `http://${window.location.hostname}:3000`;
 let socket = io(URL, {
   path: "/real-time",
 });
@@ -81,7 +81,7 @@ const app = (p5) => {
 
 
     //CAMBIAR DESDE AQUI
-    currentScreen = done; // PARA VER LAS PANTALLAS CAMBIAR EL(start)
+    currentScreen = start; // PARA VER LAS PANTALLAS CAMBIAR EL(start)
 
 
 
@@ -109,7 +109,7 @@ const app = (p5) => {
 
 
     socket.on('screen-change', () => {
-    currentScreen = qr;
+    currentScreen;
     console.log("sirve!");
     });
 

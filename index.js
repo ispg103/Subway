@@ -6,7 +6,7 @@ import { Server } from 'socket.io';
 import { initializeApp } from 'firebase/app';
 import * as Firebase from './firebase.js';
 
-const PORT = 5501;
+const PORT = 3000;
 const app = express();
 app.use(express.json());
 app.use('/mupi', express.static('public-display'));  // Sirve archivos desde la carpeta public-diplay/Mupi
