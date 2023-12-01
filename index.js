@@ -45,8 +45,8 @@ httpServer.listen(PORT, () => {
 });
 
 // Rutas estáticas
-app.use(express.static('public-display'));  // Sirve archivos desde la carpeta public-diplay/Mupi
-app.use( express.static('public-controller')); //Sirve archivos desde la carpeta public-controller/Celular
+app.use('/Mupi', express.static('public-display'));  // Sirve archivos desde la carpeta public-diplay/Mupi
+app.use('/User', express.static('public-controller')); //Sirve archivos desde la carpeta public-controller/Celular
 app.use(express.json());
 
 // Configuración de Socket.IO
