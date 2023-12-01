@@ -1,8 +1,7 @@
 import express from 'express';
 import { createServer } from 'http';
-import cors from 'cors';
-import { SerialPort } from 'serialport';
-import { ReadlineParser } from 'serialport';
+import cors from 'cors';  
+import { SerialPort, ReadlineParser  } from 'serialport';
 import { Server } from 'socket.io';
 import { initializeApp } from 'firebase/app';
 import * as Firebase from './firebase.js';
@@ -56,8 +55,8 @@ Firebase.getUsers();
 console.log()
 
 // Manejo de conexiones y eventos de Socket.IO
-io.on('connect', (socket) => {
-  console.log("Usuario conectado:");
+io.on('connection', (socket) => {
+  console.log("Usuario conectado:", socket.id);
   try {
     socket.on('new-user', (users) => {
       Firebase.createUser(users);
@@ -70,6 +69,7 @@ io.on('connect', (socket) => {
   // Ejemplo de uso de eventos
   socket.on('waiting-screen', () => {
     io.emit("screen-change");
+    console.log("sirve");
   });
 
   socket.on('updateScore', (users) => {
@@ -77,7 +77,7 @@ io.on('connect', (socket) => {
     try{
       Firebase.updateUserScore(users, 1);
     }catch{
-      console.error("Error al ,odificar score de usuario en Firebase:", error);
+      console.error("Error al modificar score de usuario en Firebase:", error);
     }
   });
 
@@ -93,8 +93,8 @@ io.on('connect', (socket) => {
 
 // Manejo de datos del puerto serial
 parser.on('data', (data) => {
-  console.log("data", data);
   io.emit('pressed', data);
+  console.log("data", data);
 });
 
 // Ruta de prueba

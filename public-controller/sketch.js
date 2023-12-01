@@ -153,8 +153,10 @@ const app = (p5) => {
 
       if (winnerUser.email === currentUserEmail) {
         user.score = winnerUser.score;
+        console.log("sirve!");
       }
 
+      console.log("ojala sirva");
       //Capaz hay que crear otra función para diferenciarlo dentro del ranking o tal vez no (La esquizofrenia me esta consumiendo TT) ATT: Lau
     });
 

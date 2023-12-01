@@ -110,7 +110,7 @@ const app = (p5) => {
 
     socket.on('screen-change', () => {
     currentScreen = qr;
-
+    console.log("sirve!");
     });
 
     //socket.on('go-to-main-screen', () => {
