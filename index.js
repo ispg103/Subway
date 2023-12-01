@@ -9,7 +9,6 @@ import * as Firebase from './firebase.js';
 
 const PORT = 3000;
 const app = express();
-app.use(cors({ origin: "*" }));
 app.use(express.json());
 app.use('/mupi', express.static('public-display'));  // Sirve archivos desde la carpeta public-diplay/Mupi
 app.use('/u ser', express.static('public-controller')); //Sirve archivos desde la carpeta public-controller/Celular
@@ -24,14 +23,16 @@ httpServer.listen(PORT, () => {
   })
 });
 
+
 // Configuración de Socket.IO
 const io = new Server(httpServer, {
   path: '/real-time',
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  }
 });
 
-io.on("connection", (socket) =>{
-  console.log("Connected!", socket.id)
-})
 
 // Configuración de puerto serial - ARDUINO
 const protocolConfiguration = {

@@ -14,17 +14,23 @@
 
     <h1>MUPI</h1>
 
-    <!--<script src="libraries/p5.min.js"></script> -->
-    <!--<script src="libraries/p5.sound.min.js"></script> -->
+    <script>
+      const getDNS = "<%= DNS %>";
+    </script>
+    <!-- Import socket.io script-->
+    <script
+      src="https://cdn.socket.io/4.5.0/socket.io.min.js"
+      integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k"
+      crossorigin="anonymous"
+    ></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"
-
-    integrity="sha512-NxocnqsXP3zm0Xb42zqVMvjQIktKEpTIbCXXyhBPxqGZHqhcOXHs4pXI/GoZ8lE+2NJONRifuBpi9DxC58L0Lw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-
-    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
-    <!--<script src="/socket.io/socket.io.js"></script>-->
+    <!-- Import p5js script-->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.js"
+      integrity="sha512-+tu0+vUXyZX+S51npa//IN6znNTLZsBoy8mXn9WzHxfBqYMy6gOzzfTK0VqZf9O171RY9AJviHDokCnvEq8+1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="sketch.js" type="module"></script>
 
   </body>
