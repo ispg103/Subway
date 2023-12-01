@@ -80,20 +80,20 @@ const app = (p5) => {
 
     bread = new Bread(p5, () => {
       currentScreen.hideInput();
-      currentScreen = vegetables;
+      currentScreen = meats;
     });
 
-    vegetables = new Vegetables(p5, () => {
+    meats = new Meats(p5, () => {
       currentScreen.hideInput();
       currentScreen = cheese;
     });
 
     cheese = new Cheese(p5, () => {
       currentScreen.hideInput();
-      currentScreen = meats;
+      currentScreen = vegetables;
     });
 
-    meats = new Meats(p5, () => {
+    vegetables = new Vegetables(p5, () => {
       currentScreen.hideInput();
       currentScreen = sauces;
     });
@@ -124,7 +124,7 @@ const app = (p5) => {
     });
 
     // VER LAS PANTALLAS DESDE AQUI
-    currentScreen = home;
+    currentScreen = bread;
 
     `userInfo = new UserInfo(p5, () => {
       userInfo.setSubmitCallback((userData)=>{
