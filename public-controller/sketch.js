@@ -49,7 +49,7 @@ const app = (p5) => {
     p5.createCanvas(393, 760);
 
     socket = io.connect('http://localhost:3000', { path: '/real-time' });
-    socket.emit("mupi-connected");
+    socket.emit("cellphone-connected");
 
     //PANTALLAS
 
