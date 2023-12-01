@@ -5,15 +5,33 @@ import { SerialPort } from 'serialport';
 import { ReadlineParser } from 'serialport';
 import { Server } from 'socket.io';
 import { initializeApp } from 'firebase/app';
-
 import * as Firebase from './firebase.js';
 
 const PORT = 3000;
 const app = express();
+app.use(cors({ origin: "*" }));
+app.use(express.json());
+app.use('/mupi', express.static('public-display'));  // Sirve archivos desde la carpeta public-diplay/Mupi
+app.use('/u ser', express.static('public-controller')); //Sirve archivos desde la carpeta public-controller/Celular
 
-// Configuración CORS y creación del servidor HTTP
-app.use(cors());
 const httpServer = createServer(app);
+
+httpServer.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+  console.table({
+    'User:':`http://localhost:${PORT}/public-display`,
+    'Mupi:':`http://localhost:${PORT}/public-controller`,
+  })
+});
+
+// Configuración de Socket.IO
+const io = new Server(httpServer, {
+  path: '/real-time',
+});
+
+io.on("connection", (socket) =>{
+  console.log("Connected!", socket.id)
+})
 
 // Configuración de puerto serial - ARDUINO
 const protocolConfiguration = {
@@ -32,31 +50,6 @@ port.on('error', function (err) {
 let counter=""; // C para correcto - I para incorrecto
 let arduinoInput=[];
 
-
-
-
-// Inicia el servidor
-httpServer.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-  console.table({
-    'User:':`http://localhost:${PORT}/public-display`,
-    'Mupi:':`http://localhost:${PORT}/public-controller`,
-  })
-});
-
-// Rutas estáticas
-app.use('/Mupi', express.static('public-display'));  // Sirve archivos desde la carpeta public-diplay/Mupi
-app.use('/User', express.static('public-controller')); //Sirve archivos desde la carpeta public-controller/Celular
-app.use(express.json());
-
-// Configuración de Socket.IO
-const io = new Server(httpServer, {
-  path: '/real-time',
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"]
-  }
-});
 
 Firebase.getUsers();
 console.log()
