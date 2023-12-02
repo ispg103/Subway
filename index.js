@@ -1,6 +1,6 @@
 import express from 'express';
 import { createServer } from 'http';
-import cors from 'cors';  
+import cors from 'cors';
 import { SerialPort, ReadlineParser  } from 'serialport';
 import { Server } from 'socket.io';
 import { initializeApp } from 'firebase/app';
@@ -8,6 +8,7 @@ import * as Firebase from './firebase.js';
 
 const PORT = 3000;
 const app = express();
+app.use(cors({origin:"*"}));
 app.use(express.json());
 app.use('/mupi', express.static('public-display'));  // Sirve archivos desde la carpeta public-diplay/Mupi
 app.use('/user', express.static('public-controller')); //Sirve archivos desde la carpeta public-controller/Celular
@@ -60,6 +61,7 @@ io.on('connection', (socket) => {
   try {
     socket.on('new-user', (users) => {
       Firebase.createUser(users);
+      console.log('Firebase funcionando');
     });
   } catch (error) {
     console.error("Error al crear usuario en Firebase:", error);
@@ -67,13 +69,9 @@ io.on('connection', (socket) => {
   // ... Lógica para eventos y manejo de sockets
 
   // Ejemplo de uso de eventos
-  socket.on('waiting-screen', () => {
-    io.emit("screen-change");
-    console.log("sirve");
-  });
 
   socket.on('updateScore', (users) => {
-    io.emit('update-score-player', users);
+    io.emit('update-score-users', users);
     try{
       Firebase.updateUserScore(users, 1);
     }catch{

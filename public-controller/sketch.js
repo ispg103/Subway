@@ -5,7 +5,7 @@ let socket = io(URL, {
   path: "/real-time",
 });
 
-import { io } from 'https://cdn.socket.io/4.4.1/socket.io.esm.min.js'
+//import { io } from 'https://cdn.socket.io/4.4.1/socket.io.esm.min.js'
 import { Home } from './screens/home.js';
 import { Home2 } from "./screens/home2.js";
 import { UserInfo } from "./screens/userInfo.js";
@@ -67,12 +67,12 @@ const app = (p5) => {
     });
 
     userInfo = new UserInfo(p5, () => {
-      userInfo.setSubmitCallback((userData)=>{
-        userData={
-          email:"",
-          score:0,
+      userInfo.setSubmitCallback((userData) => {
+        userData = {
+          email: "",
+          score: 0,
         }
-        console.log("Email recibido:",userData)
+        console.log("Email recibido:", userData)
       })
       currentScreen.hideInput();
       currentScreen = bread;
@@ -124,28 +124,36 @@ const app = (p5) => {
     });
 
     // VER LAS PANTALLAS DESDE AQUI
-    currentScreen = bread;
-
-    `userInfo = new UserInfo(p5, () => {
-      userInfo.setSubmitCallback((userData)=>{
-        userData={
-          email:"",
-          score:0,
-        }
-        console.log("Email recibido:",userData)
-      })
-      currentScreen.hideInput();
-      currentScreen = bread;
-    });`
+    currentScreen = home;
 
 
+    //FUNCION PARA QUE AL MOMENTO DE ESCOGER EL PAN SE SINCRONIZE CON LA PANTALLA DE MUPI
 
-    socket.on('start-timer', () => {
-      if (!timeStarted && currentScreen === bread) {
-        timeStarted = true;
-        console.log("Comienza el temporizador");
-      }
-    });
+    //function changeBread(){
+    //console.log("Pan seleccionado",bread);
+    //};
+    //socket.emit('bread-screen',bread)
+
+    //userInfo = new UserInfo(p5, () => {
+      //userInfo.setSubmitCallback((userData)=>{
+        //userData={
+         // email:"",
+         // score:0,
+        //}
+        //console.log("Email recibido:",userData)
+      //})
+      //currentScreen.hideInput();
+      //currentScreen = bread;
+    //});
+
+
+
+    //socket.on('start-timer', () => {
+      //if (!timeStarted && currentScreen === bread) {
+       // timeStarted = true;
+       // console.log("Comienza el temporizador");
+     // }
+   // });
 
     //Actualizar el puntaje
     socket.on('updateScore', (winnerUser) => {

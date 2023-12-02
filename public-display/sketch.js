@@ -6,7 +6,7 @@ let socket = io(URL, {
 });
 
 
-import { io } from 'https://cdn.socket.io/4.4.1/socket.io.esm.min.js'
+//import { io } from 'https://cdn.socket.io/4.4.1/socket.io.esm.min.js'
 import { Start } from './screens/start.js';
 import { QR } from './screens/QR.js';
 import { Charging } from './screens/charging.js'
@@ -33,6 +33,7 @@ const app = (p5) => {
   let sauces;
   let done;
   let currentScreen;
+
 
   //Timer
   let startingTime = 60;// el timer empezara desde 60 segundos
@@ -81,11 +82,10 @@ const app = (p5) => {
 
 
     //CAMBIAR DESDE AQUI
-    currentScreen = done; // PARA VER LAS PANTALLAS CAMBIAR EL(start)
+    currentScreen = start
+    ; // PARA VER LAS PANTALLAS CAMBIAR EL(start)
 
-
-
-
+  };
     socket.on('users-data', (data) => {
       users = data
       console.log(users)
@@ -106,40 +106,50 @@ const app = (p5) => {
 
     }
 
+//-------------------------------------------------------------
 
 
-    socket.on('screen-change', () => {
-    currentScreen;
-    console.log("sirve!");
-    });
+socket.on('connect',function(){
+  console.log('Conectado al servidor') // ESTO CONFIRMA QUE ESTA CONECTADO AL SERVIDOR
+})
 
-    //socket.on('go-to-main-screen', () => {
-    //currentScreen = scoreScreen;
+// SOCKET CAMBIO PANTALLA MUPI
 
-    //});
+setTimeout(() => {
+  currentScreen = qr; // Cambiar a la pantalla QR después de 5 segundos
+  console.log('Cambiando a pantalla qr')
+  p5.redraw(); // Actualizar el lienzo
+}, 5000);
 
-    socket.on('start-timer', () => {
-    if (!timeStarted && currentScreen === scoreScreen) {
-    timeStarted = true;
-    console.log("Comienza el temporizador");
-    }
-    });
+    //socket.on('start-timer', () => {
+    //if (!timeStarted && currentScreen === scoreScreen) {
+    //timeStarted = true;
+    //console.log("Comienza el temporizador");
+    //}
+   // });
 
+//----------------------------------------------------
 
     /*function probarMandarDatos() {
       if (dist() < size) {
           console.log("aqui toy")
-          socket.emit('confirmation', "aqui toy")
+          socket.emit('confirmation', "aqui toy")z
           console.log("ha sido enviado exitosamente")
       }
     };*/
-  };
+
 
     //ESTA WEA HACE QUE IMPRIMA
     p5.draw = function () {
       p5.background(0);
-      currentScreen.show(p5); //NO MOVER
+      if (currentScreen) {
+        currentScreen.show(p5, users); // Renderizar la pantalla actual
+      } else {
+        console.log('No hay pantalla seleccionada');
+      }
     };
   };
+
+
 
 new p5(app);

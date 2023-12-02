@@ -64,5 +64,3 @@ export async function updateUserScore(usersId, newScore) {
 
 export { db };
 
-
-//export { db };

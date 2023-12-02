@@ -1,5 +1,5 @@
 export class Start{
-  constructor(p5,navigateCallback) {
+  constructor(p5) {
     this.p5 = p5;
     this.logo = this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
     this.icon = this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayIcon.png');
