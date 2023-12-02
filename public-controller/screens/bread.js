@@ -1,9 +1,16 @@
 class BreadItem {
-  constructor(image, text) {
+  constructor(image) {
     this.image = image;
     this.text = text;
   }
 }
+ let InterReg, InterLight, InterBold;
+ function preload() {
+ //Fonts
+ InterReg = loadFont('/fonts/static/Inter-Regular.ttf');
+ InterLight = loadFont('/fonts/static/Inter-Light.ttf');
+ InterBold = loadFont('/fonts/static/Inter-Bold.ttf');
+ }
 //:)
 export class Bread {
   constructor(p5, navigateCallback, onSelectBreadCallback) {
