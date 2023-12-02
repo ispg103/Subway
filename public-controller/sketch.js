@@ -41,7 +41,7 @@ const app = (p5) => {
     email: "",
     score: 0,
     subSelection: {
-      selectedBread: "",
+      bread: "",
       cheese: "",
       vegetables: "",
       meats: "",
@@ -91,8 +91,9 @@ const app = (p5) => {
       currentScreen = meats;
     }, (selectedBread) => {
       // Callback que se ejecuta cuando se selecciona un pan
-      // Guarda el valor en userData.subSelection.selectedBread
-      userData.subSelection.selectedBread = selectedBread;
+      // Guarda el valor en userData.subSelection.bread
+      userData.subSelection.bread = selectedBread;
+      console.log(userData); // Agrega este console.log para verificar si se está asignando correctamente
     });
 
     meats = new Meats(p5, () => {
