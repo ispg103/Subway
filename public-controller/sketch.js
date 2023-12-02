@@ -1,3 +1,10 @@
+const DNS = getDNS;
+
+const URL = `http://${window.location.hostname}:3000`;
+let socket = io(URL, {
+  path: "/real-time",
+});
+
 import { io } from 'https://cdn.socket.io/4.4.1/socket.io.esm.min.js'
 import { Home } from './screens/home.js';
 import { Home2 } from "./screens/home2.js";
@@ -13,7 +20,6 @@ import { Congrats } from "./screens/congrats.js";
 import { Thanks } from "./screens/thanks.js";
 //import {getRandomFromDB} from './firebase.js';
 
-let socket = io();
 let user = [];
 
 const app = (p5) => {
@@ -55,9 +61,6 @@ const app = (p5) => {
   p5.setup = function () {
     p5.createCanvas(393, 760);
 
-    socket = io.connect('http://localhost:3000', { path: '/real-time' });
-    socket.emit("mupi-connected");
-
     //PANTALLAS
 
     home = new Home(p5, () => {
@@ -91,20 +94,20 @@ const app = (p5) => {
         //console.log("Email recibido:", userData);
       //});
       currentScreen.hideInput();
-      currentScreen = vegetables;
+      currentScreen = meats;
     });
 
-    vegetables = new Vegetables(p5, () => {
+    meats = new Meats(p5, () => {
       currentScreen.hideInput();
       currentScreen = cheese;
     });
 
     cheese = new Cheese(p5, () => {
       currentScreen.hideInput();
-      currentScreen = meats;
+      currentScreen = vegetables;
     });
 
-    meats = new Meats(p5, () => {
+    vegetables = new Vegetables(p5, () => {
       currentScreen.hideInput();
       currentScreen = sauces;
     });
@@ -164,8 +167,10 @@ const app = (p5) => {
 
       if (winnerUser.email === currentUserEmail) {
         user.score = winnerUser.score;
+        console.log("sirve!");
       }
 
+      console.log("ojala sirva");
       //Capaz hay que crear otra función para diferenciarlo dentro del ranking o tal vez no (La esquizofrenia me esta consumiendo TT) ATT: Lau
     });
 
