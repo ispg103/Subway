@@ -17,7 +17,7 @@ export class Bread {
       { name: 'Oregano Parmesan', images: { bread: this.p5.loadImage('./SUBWAY FOTOS/BREAD/OreganoParmesan.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/oregano.png') } },
       { name: 'Whole Wheat', images: { bread: this.p5.loadImage('./SUBWAY FOTOS/BREAD/WholeWheat.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/wheat.png') } },
     ];
-
+    
     const buttonXPercentage = 18;
     const buttonYPercentage = 85;
 
@@ -29,8 +29,9 @@ export class Bread {
     this.nextButton.mousePressed(() => {
       navigateCallback();
     });
-
+    
     this.hideInput();
+    //this.breadItemSelected = null;
   }
 
   show(p5) {
@@ -68,11 +69,22 @@ export class Bread {
 
       y += breadItem.images.bread.height + 20;
     }
+    
 
+    //breadItems.forEach(breadItem => {
+      //breadItem.image.mousePressed(() => {
+        //breadItemSelected = breadItem.name;
+      //});
+    //});
+
+    //console.log(breadItemSelected);
     this.nextButton.show();
   }
-
-
+  
+  //getBreadItemSelected() {
+    //return this.breadItemSelected;
+  //}
+ 
   hideInput() {
     this.nextButton.hide();
   }

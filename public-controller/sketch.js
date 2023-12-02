@@ -31,9 +31,16 @@ const app = (p5) => {
   let thanks;
   let currentScreen;
 
-  let UserData = {
+  const userData = {
     email: "",
     score: 0,
+    subSelection: {
+      selectedBread: "",
+      cheese: "",
+      vegetables: "",
+      meats: "",
+      sauces: "",
+    }
   }
 
   //Timer
@@ -64,18 +71,25 @@ const app = (p5) => {
     });
 
     userInfo = new UserInfo(p5, () => {
-      userInfo.setSubmitCallback((userData)=>{
-        userData={
-          email:"",
-          score:0,
-        }
-        console.log("Email recibido:",userData)
-      })
+      //userInfo.setSubmitCallback((userData)=>{
+        //userData={
+          //email:"",
+          //score:0,
+        //}
+        //console.log("Email recibido:",userData)
+      //})
       currentScreen.hideInput();
       currentScreen = bread;
     });
 
     bread = new Bread(p5, () => {
+      //bread.setSubmitCallback((userData) => {
+        //const selectedBread = bread.getBreadItemSelected();
+        //userData.subSelection.push(selectedBread);
+        //bread.breadItemSelected = null;
+    
+        //console.log("Email recibido:", userData);
+      //});
       currentScreen.hideInput();
       currentScreen = vegetables;
     });
@@ -121,7 +135,7 @@ const app = (p5) => {
     });
 
     // VER LAS PANTALLAS DESDE AQUI
-    currentScreen = vegetables;
+    currentScreen = home;
 
     `userInfo = new UserInfo(p5, () => {
       userInfo.setSubmitCallback((userData)=>{
