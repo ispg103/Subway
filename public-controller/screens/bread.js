@@ -6,12 +6,12 @@ class BreadItem {
 }
 
 export class Bread {
-  constructor(p5, navigateCallback) {
+  constructor(p5, navigateCallback, onSelectBreadCallback) {
     this.p5 = p5;
     this.logo = this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
     this.choose = this.p5.loadImage('./SUBWAY FOTOS/TITLES/choose.png');
     this.breadTitle = this.p5.loadImage('./SUBWAY FOTOS/TITLES/Bread.png');
-
+    
     this.breadItems = [
       { name: 'White Bread', images: { bread: this.p5.loadImage('./SUBWAY FOTOS/BREAD/Bread.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/White.png') } },
       { name: 'Oregano Parmesan', images: { bread: this.p5.loadImage('./SUBWAY FOTOS/BREAD/OreganoParmesan.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/oregano.png') } },
@@ -23,10 +23,11 @@ export class Bread {
 
     const buttonX = (buttonXPercentage / 100) * this.p5.width;
     const buttonY = (buttonYPercentage / 100) * this.p5.height;
-
+    this.selectedBread = null; 
     this.nextButton = this.p5.createButton('Next');
     this.nextButton.position(buttonX, buttonY);
     this.nextButton.mousePressed(() => {
+      onSelectBreadCallback(this.selectedBread);
       navigateCallback();
     });
     
@@ -68,6 +69,12 @@ export class Bread {
       p5.image(breadItem.images.text, textX, textY);
 
       y += breadItem.images.bread.height + 20;
+      
+      if (breadItem.image) {
+        breadItem.image.mousePressed(() => {
+          this.selectedBread = breadItem.name;
+        });
+      }
     }
     
 
