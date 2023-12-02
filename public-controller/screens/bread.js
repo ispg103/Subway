@@ -4,7 +4,7 @@ class BreadItem {
     this.text = text;
   }
 }
-
+//:)
 export class Bread {
   constructor(p5, navigateCallback, onSelectBreadCallback) {
     this.p5 = p5;
