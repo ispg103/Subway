@@ -37,9 +37,16 @@ const app = (p5) => {
   let thanks;
   let currentScreen;
 
-  let UserData = {
+  const userData = {
     email: "",
     score: 0,
+    subSelection: {
+      selectedBread: "",
+      cheese: "",
+      vegetables: "",
+      meats: "",
+      sauces: "",
+    }
   }
 
   //Timer
@@ -79,6 +86,13 @@ const app = (p5) => {
     });
 
     bread = new Bread(p5, () => {
+      //bread.setSubmitCallback((userData) => {
+        //const selectedBread = bread.getBreadItemSelected();
+        //userData.subSelection.push(selectedBread);
+        //bread.breadItemSelected = null;
+
+        //console.log("Email recibido:", userData);
+      //});
       currentScreen.hideInput();
       currentScreen = meats;
     });
