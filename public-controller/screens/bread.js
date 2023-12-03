@@ -4,13 +4,7 @@ class BreadItem {
     this.text = text;
   }
 }
- let InterReg, InterLight, InterBold;
- function preload() {
- //Fonts
- InterReg = loadFont('/fonts/static/Inter-Regular.ttf');
- InterLight = loadFont('/fonts/static/Inter-Light.ttf');
- InterBold = loadFont('/fonts/static/Inter-Bold.ttf');
- }
+
 //:)
 export class Bread {
   constructor(p5, navigateCallback, onSelectBreadCallback) {
@@ -18,7 +12,6 @@ export class Bread {
     this.logo = this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
     this.choose = this.p5.loadImage('./SUBWAY FOTOS/TITLES/choose.png');
     this.breadTitle = this.p5.loadImage('./SUBWAY FOTOS/TITLES/Bread.png');
-    this.overlayImage = this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/Check.png');
     
     this.breadItems = [
       { name: 'White Bread', images: { bread: this.p5.loadImage('./SUBWAY FOTOS/BREAD/Bread.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/White.png') } },
@@ -70,11 +63,6 @@ export class Bread {
       const breadItem = this.breadItems[i];
       const x = (this.p5.width - breadItem.images.bread.width) / 2;
       const imageX = x;
-      if (breadItem.name === this.selectedBread) {
-        const overlayX = x;
-        const overlayY = y;
-        p5.image(this.overlayImage, overlayX, overlayY);
-      }
       p5.image(breadItem.images.bread, imageX, y);
 
       const textX = (this.p5.width - breadItem.images.text.width) / 2;
