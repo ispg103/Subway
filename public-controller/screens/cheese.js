@@ -65,35 +65,39 @@ export class Cheese {
 
     const columnSpacing = 150;
 
-for (let i = 0; i < this.cheeseItems.length; i++) {
-    const cheeseItem = this.cheeseItems[i];
-    const x = i % 2 === 0 ? xColumn1 : xColumn2;
-    const imageX = x + (columnSpacing - cheeseItem.images.CheeseItem.width) / 2;
-    const imageY = y; // Obtén la posición Y de la imagen
+    for (let i = 0; i < this.cheeseItems.length; i++) {
+      const cheeseItem = this.cheeseItems[i];
+      const x = i % 2 === 0 ? xColumn1 : xColumn2;
+      const imageX = x + (columnSpacing - cheeseItem.images.CheeseItem.width) / 2;
+      const imageY = y; // Obtén la posición Y de la imagen
 
+      const textX = x + (columnSpacing - cheeseItem.images.text.width) / 2;
+      const textY = imageY + cheeseItem.images.CheeseItem.height; // Alinea el texto debajo de la imagen del queso
+      p5.image(cheeseItem.images.text, textX, textY);
 
-    const textX = x + (columnSpacing - cheeseItem.images.text.width) / 2;
-    const textY = imageY + cheeseItem.images.CheeseItem.height; // Alinea el texto debajo de la imagen del queso
-    p5.image(cheeseItem.images.text, textX, textY);
+      // Dibuja el queso
+      p5.image(cheeseItem.images.CheeseItem, imageX, imageY);
 
-    if (i % 2 !== 0) {
-      y += 190;
-    }
-    // Dibuja el queso
-    p5.image(cheeseItem.images.CheeseItem, imageX, imageY);
+      // Asigna la función de selección al hacer clic en la imagen del queso
+      if (p5.mouseIsPressed) {
+        const mouseY = p5.mouseY; // Obtén la posición Y del mouse
+        // Verifica si se hizo clic en la imagen del queso actual
+        if (
+          mouseY > imageY &&
+          mouseY < imageY + cheeseItem.images.CheeseItem.height &&
+          p5.mouseX > imageX &&
+          p5.mouseX < imageX + cheeseItem.images.CheeseItem.width
+        ) {
+          this.selectedCheese = cheeseItem.name; // Guarda el queso seleccionado
+          console.log('Queso seleccionado:', this.selectedCheese);
+        }
+      }
 
-    // Asigna la función de selección al hacer clic en la imagen del queso
-    if (p5.mouseIsPressed) {
-      const mouseY = p5.mouseY; // Obtén la posición Y del mouse
-      // Verifica si se hizo clic en la imagen del queso actual
-      if (mouseY > imageY && mouseY < imageY + cheeseItem.images.CheeseItem.height) {
-        this.selectedCheese = cheeseItem.name; // Guarda el queso seleccionado
-        console.log('Queso seleccionado:', this.selectedCheese);
+      if (i % 2 !== 0) {
+        y += 190;
       }
     }
-
   }
-}
 
   hideInput() {
     this.nextButton.hide();
