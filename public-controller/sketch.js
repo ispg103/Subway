@@ -18,6 +18,7 @@ import { Scores } from "./screens/scores.js";
 import { Sorry } from "./screens/sorry.js";
 import { Congrats } from "./screens/congrats.js";
 import { Thanks } from "./screens/thanks.js";
+import { Start } from '../public-display/screens/start.js';
 //import {getRandomFromDB} from './firebase.js';
 
 let user = [];
@@ -41,13 +42,14 @@ const app = (p5) => {
     email: "",
     score: 0,
     subSelection: {
-      bread: "",
-      cheese: "",
-      vegetables: "",
-      meats: "",
-      sauces: "",
-    }
-  }
+      selectedBread: "",
+      selectedCheese: "",
+      selectedVegetables: "",
+      selectedMeats: "",
+      selectedSauces: "",
+    },
+  };
+
 
   //Timer
   let startingTime = 60;// el timer empezara desde 60 segundos
@@ -74,29 +76,23 @@ const app = (p5) => {
     });
 
     userInfo = new UserInfo(p5, () => {
-      //userInfo.setSubmitCallback((userData)=>{
-        //userData={
-          //email:"",
-          //score:0,
-        //}
-        //console.log("Email recibido:",userData)
-      //})
+      // Obtener el correo electrónico ingresado por el usuario
+      let userEmail = userInfo.getEmail();
+      console.log('user email:', userEmail)
       currentScreen.hideInput();
       currentScreen = bread;
     });
 
+
+
     bread = new Bread(p5, () => {
-      // Continuar con la lógica de navegación
       currentScreen.hideInput();
       currentScreen = meats;
-    }, (selectedBread) => {
-      // Callback que se ejecuta cuando se selecciona un pan
-      // Guarda el valor en userData.subSelection.bread
-      userData.subSelection.bread = selectedBread;
-      console.log(userData); // Agrega este console.log para verificar si se está asignando correctamente
-    });
+    })
 
     meats = new Meats(p5, () => {
+      const emailValue = userInfo.getEmail();
+
       currentScreen.hideInput();
       currentScreen = cheese;
     });
@@ -177,9 +173,7 @@ const app = (p5) => {
 
 
     //Crear funcion de perdedor
-
-
-
+    // Controlador principal
 
     `  selectRandomIngredients(
       bread.breadItems,

@@ -4,6 +4,7 @@ class Vegetable {
     this.text = text;
   }
 }
+
 export class Vegetables {
   constructor(p5, navigateCallback) {
     this.p5 = p5;
@@ -20,6 +21,7 @@ export class Vegetables {
       { name: 'Bell Pepper', images: { vegetable: this.p5.loadImage('./SUBWAY FOTOS/VEGETABLES/BellPepper.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/pepper.png') } },
     ];
 
+    this.selectedVegetable = null;
 
     const buttonXPercentage = 15;
     const buttonYPercentage = 85;
@@ -30,6 +32,10 @@ export class Vegetables {
     this.nextButton = this.p5.createButton('Next');
     this.nextButton.position(buttonX, buttonY);
     this.nextButton.mousePressed(() => {
+      const userData = {
+        selectedVegetable: this.selectedVegetable,
+      };
+      console.log('Vegetal seleccionado:', userData);
       navigateCallback();
     });
 
@@ -66,19 +72,34 @@ export class Vegetables {
       const vegetable = this.vegetables[i];
       const x = i % 2 === 0 ? xColumn1 : xColumn2;
       const imageX = x + (columnSpacing - vegetable.images.vegetable.width) / 2;
-      p5.image(vegetable.images.vegetable, imageX, y);
+      const imageY = y;
+
+      p5.image(vegetable.images.vegetable, imageX, imageY);
 
       const textX = x + (columnSpacing - vegetable.images.text.width) / 2;
       const textY = y + vegetable.images.vegetable.height;
       p5.image(vegetable.images.text, textX, textY);
+
+      if (p5.mouseIsPressed) {
+        const mouseX = p5.mouseX; // Obtén la posición X del mouse
+        const mouseY = p5.mouseY; // Obtén la posición Y del mouse
+
+        if (
+          mouseX > imageX &&
+          mouseX < imageX + vegetable.images.vegetable.width &&
+          mouseY > imageY &&
+          mouseY < imageY + vegetable.images.vegetable.height
+        ) {
+          this.selectedVegetable = vegetable.name;
+          console.log('Vegetal seleccionado:', this.selectedVegetable);
+        }
+      }
 
       if (i % 2 !== 0) {
         y += 120;
       }
     }
   }
-
-
 
   hideInput() {
     this.nextButton.hide();
