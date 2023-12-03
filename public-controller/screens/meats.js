@@ -20,6 +20,7 @@ export class Meats {
         { name: 'Tuna', image: new Meat(this.p5.loadImage('./SUBWAY FOTOS/MEAT/Tuna.png'), this.p5.loadImage('./SUBWAY FOTOS/TEXTS/Tuna.png')) },
         { name: 'BBQ Ribs', image: new Meat(this.p5.loadImage('./SUBWAY FOTOS/MEAT/BBQrips.png'), this.p5.loadImage('./SUBWAY FOTOS/TEXTS/ribs.png')) },
     ];
+    this.selectedMeat = null;
 
     const buttonXPercentage = 15;
     const buttonYPercentage = 85;
@@ -30,7 +31,13 @@ export class Meats {
     this.nextButton = this.p5.createButton('Next');
     this.nextButton.position(buttonX, buttonY);
     this.nextButton.mousePressed(() => {
+      const userData = {
+        selectedMeat: this.selectedMeat,
+      };
+      console.log('Carne seleccionada:', userData);
       navigateCallback();
+
+
     });
 
     this.hideInput();
@@ -61,22 +68,33 @@ export class Meats {
 
     const columnSpacing = 150;
     const textSize = 16;
-
     for (let i = 0; i < this.meats.length; i++) {
       const meat = this.meats[i];
       const x = i % 2 === 0 ? xColumn1 : xColumn2;
       const imageX = x + (columnSpacing - meat.image.image.width) / 2;
-      p5.image(meat.image.image, imageX, y);
-
       const textX = x + (columnSpacing - meat.image.text.width) / 2;
       const textY = y + meat.image.image.height;
+
+      p5.image(meat.image.image, imageX, y);
       p5.image(meat.image.text, textX, textY);
+
+      if (
+        (i % 2 === 0 && p5.mouseX > x && p5.mouseX < x + columnSpacing && p5.mouseY > y && p5.mouseY < y + meat.image.image.height) ||
+        (i % 2 !== 0 && p5.mouseX > xColumn2 && p5.mouseX < xColumn2 + columnSpacing && p5.mouseY > y && p5.mouseY < y + meat.image.image.height)
+      ) {
+        if (p5.mouseIsPressed) {
+          this.selectedMeat = meat.name;
+          console.log('Carne seleccionada:', this.selectedMeat);
+        }
+      }
 
       if (i % 2 !== 0) {
         y += 120;
       }
     }
+
   }
+
 
 
   hideInput() {

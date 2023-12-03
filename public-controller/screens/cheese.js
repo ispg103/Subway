@@ -19,6 +19,8 @@ export class Cheese {
       { name: 'Cheddar', images: { CheeseItem: this.p5.loadImage('./SUBWAY FOTOS/CHEESE/CheddarCheese.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/cheddar.png') } },
     ];
 
+    this.selectedCheese = null;
+
     const buttonXPercentage = 15;
     const buttonYPercentage = 85;
 
@@ -28,6 +30,10 @@ export class Cheese {
     this.nextButton = this.p5.createButton('Next');
     this.nextButton.position(buttonX, buttonY);
     this.nextButton.mousePressed(() => {
+      const userData = {
+        selectedCheese: this.selectedCheese,
+      };
+      console.log('Queso seleccionado:', userData);
       navigateCallback();
     });
 
@@ -59,22 +65,35 @@ export class Cheese {
 
     const columnSpacing = 150;
 
-    for (let i = 0; i < this.cheeseItems.length; i++) {
-      const cheeseItem = this.cheeseItems[i];
-      const x = i % 2 === 0 ? xColumn1 : xColumn2;
-      const imageX = x + (columnSpacing - cheeseItem.images.CheeseItem.width) / 2;
-      p5.image(cheeseItem.images.CheeseItem, imageX, y);
+for (let i = 0; i < this.cheeseItems.length; i++) {
+    const cheeseItem = this.cheeseItems[i];
+    const x = i % 2 === 0 ? xColumn1 : xColumn2;
+    const imageX = x + (columnSpacing - cheeseItem.images.CheeseItem.width) / 2;
+    const imageY = y; // Obtén la posición Y de la imagen
 
-      const textX = x + (columnSpacing - cheeseItem.images.text.width) / 2;
-      const textY = y + cheeseItem.images.CheeseItem.height;
-      p5.image(cheeseItem.images.text, textX, textY);
 
-      if (i % 2 !== 0) {
-        y += 190;
+    const textX = x + (columnSpacing - cheeseItem.images.text.width) / 2;
+    const textY = imageY + cheeseItem.images.CheeseItem.height; // Alinea el texto debajo de la imagen del queso
+    p5.image(cheeseItem.images.text, textX, textY);
+
+    if (i % 2 !== 0) {
+      y += 190;
+    }
+    // Dibuja el queso
+    p5.image(cheeseItem.images.CheeseItem, imageX, imageY);
+
+    // Asigna la función de selección al hacer clic en la imagen del queso
+    if (p5.mouseIsPressed) {
+      const mouseY = p5.mouseY; // Obtén la posición Y del mouse
+      // Verifica si se hizo clic en la imagen del queso actual
+      if (mouseY > imageY && mouseY < imageY + cheeseItem.images.CheeseItem.height) {
+        this.selectedCheese = cheeseItem.name; // Guarda el queso seleccionado
+        console.log('Queso seleccionado:', this.selectedCheese);
       }
     }
-  }
 
+  }
+}
 
   hideInput() {
     this.nextButton.hide();

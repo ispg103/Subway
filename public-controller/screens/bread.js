@@ -6,33 +6,40 @@ class BreadItem {
 }
 
 export class Bread {
-  constructor(p5, navigateCallback, onSelectBreadCallback) {
+  constructor(p5, navigateCallback) {
     this.p5 = p5;
     this.logo = this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
     this.choose = this.p5.loadImage('./SUBWAY FOTOS/TITLES/choose.png');
     this.breadTitle = this.p5.loadImage('./SUBWAY FOTOS/TITLES/Bread.png');
-    
+
     this.breadItems = [
       { name: 'White Bread', images: { bread: this.p5.loadImage('./SUBWAY FOTOS/BREAD/Bread.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/White.png') } },
       { name: 'Oregano Parmesan', images: { bread: this.p5.loadImage('./SUBWAY FOTOS/BREAD/OreganoParmesan.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/oregano.png') } },
       { name: 'Whole Wheat', images: { bread: this.p5.loadImage('./SUBWAY FOTOS/BREAD/WholeWheat.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/wheat.png') } },
     ];
-    
+
+    this.selectedBread = null;
+
     const buttonXPercentage = 18;
     const buttonYPercentage = 85;
 
     const buttonX = (buttonXPercentage / 100) * this.p5.width;
     const buttonY = (buttonYPercentage / 100) * this.p5.height;
-    this.selectedBread = null; 
+
     this.nextButton = this.p5.createButton('Next');
     this.nextButton.position(buttonX, buttonY);
     this.nextButton.mousePressed(() => {
-      onSelectBreadCallback(this.selectedBread);
+
+      const userData = {
+        selectedBread: this.selectedBread,
+      };
+      console.log('Pan seleccionado:', userData);
+
       navigateCallback();
     });
-    
+
     this.hideInput();
-    //this.breadItemSelected = null;
+
   }
 
   show(p5) {
@@ -62,36 +69,31 @@ export class Bread {
       const breadItem = this.breadItems[i];
       const x = (this.p5.width - breadItem.images.bread.width) / 2;
       const imageX = x;
+
       p5.image(breadItem.images.bread, imageX, y);
 
+      // Dibuja el texto debajo de la imagen del pan
       const textX = (this.p5.width - breadItem.images.text.width) / 2;
-      const textY = y + breadItem.images.bread.height;
+      const textY = y + breadItem.images.bread.height ;
       p5.image(breadItem.images.text, textX, textY);
 
-      y += breadItem.images.bread.height + 20;
-      
-      if (breadItem.image) {
-        breadItem.image.mousePressed(() => {
-          this.selectedBread = breadItem.name;
-        });
+      // Detectar clics en los elementos
+      if (
+        p5.mouseX > imageX &&
+        p5.mouseX < imageX + breadItem.images.bread.width &&
+        p5.mouseY > y &&
+        p5.mouseY < y + breadItem.images.bread.height &&
+        p5.mouseIsPressed
+      ) {
+        this.selectedBread = breadItem.name;
+        console.log('Pan seleccionado:', this.selectedBread);
       }
+
+      y += breadItem.images.bread.height + 20; // Incremento para la siguiente posición
     }
-    
-
-    //breadItems.forEach(breadItem => {
-      //breadItem.image.mousePressed(() => {
-        //breadItemSelected = breadItem.name;
-      //});
-    //});
-
-    //console.log(breadItemSelected);
-    this.nextButton.show();
   }
-  
-  //getBreadItemSelected() {
-    //return this.breadItemSelected;
-  //}
- 
+
+
   hideInput() {
     this.nextButton.hide();
   }

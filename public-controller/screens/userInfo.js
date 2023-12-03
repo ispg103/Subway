@@ -7,7 +7,6 @@ export class UserInfo {
     this.emailValues = [];
     this.callback = null;
     this.navigateCallback = navigateCallback;
-
     const buttonXPercentage = 15;
     const buttonYPercentage = 80;
     const inputXPercentage = 11;
@@ -24,6 +23,7 @@ export class UserInfo {
     this.continueButton.mousePressed(() => {
       let userData = [];
       const emailValue = this.emailInput.value();
+      this.enteredEmail = emailValue; // Almacena el correo electrónico ingresado
       userData.push(emailValue);
       this.emailInput.value('');
       console.log(userData);
@@ -77,6 +77,10 @@ export class UserInfo {
     this.emailInput.style('border', 'none');
     this.emailInput.style('padding', '15px');
 
+  }
+  // Método para obtener el correo electrónico ingresado por el usuario
+  getEmail() {
+    return this.emailInput.value(); // Retorna el valor actual del campo de entrada de correo
   }
 
   hideInput() {
