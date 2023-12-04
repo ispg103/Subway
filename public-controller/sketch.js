@@ -19,7 +19,7 @@ import { Sorry } from "./screens/sorry.js";
 import { Congrats } from "./screens/congrats.js";
 import { Thanks } from "./screens/thanks.js";
 import { Start } from '../public-display/screens/start.js';
-import { createUser, getUsers, updateUserScore } from '../firebase.js';
+import { createUser, getUsers } from '../firebase.js';
 
 let user = [];
 
@@ -169,7 +169,7 @@ const app = (p5) => {
         meats: selectedData.meats,
         sauces: selectedData.sauces,
       };
-      
+
       await sendDataToFirebase(userData);
     }
     
