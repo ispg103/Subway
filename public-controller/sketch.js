@@ -77,9 +77,11 @@ const app = (p5) => {
 
     userInfo = new UserInfo(p5, (emailValue) => {
       console.log('(Recibido en el sketch)Correo electrónico ingresado:', emailValue);
+      userData.email = emailValue;
       currentScreen.hideInput();
       currentScreen = bread;
     });
+    
 
 
 
@@ -88,6 +90,7 @@ const app = (p5) => {
       currentScreen = meats;
     }, (selectedData) => { // Recibir los datos seleccionados desde la pantalla de Bread
       console.log('(Info recibida en el sketch) Datos seleccionados de pan:', selectedData);
+      updateUserData(selectedData);
     });
 
     meats = new Meats(p5, () => {
@@ -95,14 +98,15 @@ const app = (p5) => {
       currentScreen = cheese;
     }, (selectedData) => { // Recibir los datos seleccionados desde la pantalla de Meats
       console.log('(Info recibida en el sketch) Datos seleccionados de carne:', selectedData);
+      updateUserData(selectedData);
     });
 
     cheese = new Cheese(p5, () => {
       currentScreen.hideInput();
       currentScreen = vegetables;
-
     }, (selectedData) => { // Recibir los datos seleccionados desde la pantalla de Cheese
       console.log('(Info recibida en el sketch) Datos seleccionados de queso:', selectedData);
+      updateUserData(selectedData);
     });
 
     vegetables = new Vegetables(p5, () => {
@@ -110,6 +114,7 @@ const app = (p5) => {
       currentScreen = sauces;
     }, (selectedData) => { // Recibir los datos seleccionados desde la pantalla de Vegetables
       console.log('(Info recibida en el sketch) Datos seleccionados de Vegetales:', selectedData);
+      updateUserData(selectedData);
     });
 
     sauces = new Sauces(p5, () => {
@@ -118,6 +123,7 @@ const app = (p5) => {
     }, (selectedData) => {
       // Recibir los datos seleccionados desde la pantalla de Salsas
       console.log('(Info recibida en el sketch) Datos seleccionados de Salsas:', selectedData);
+      updateUserData(selectedData);
 
     });
 
@@ -143,6 +149,17 @@ const app = (p5) => {
 
     // VER LAS PANTALLAS DESDE AQUI
     currentScreen = home;
+
+    function updateUserData(selectedData) {
+      userData.subSelection = {
+        selectedBread: selectedData.bread,
+        cheese: selectedData.cheese,
+        vegetables: selectedData.vegetables,
+        meats: selectedData.meats,
+        sauces: selectedData.sauces,
+      };
+    }
+    
 
     `userInfo = new UserInfo(p5, () => {
       userInfo.setSubmitCallback((userData)=>{
