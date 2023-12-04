@@ -6,7 +6,7 @@ class CheeseItem {
 }
 
 export class Cheese {
-  constructor(p5, navigateCallback) {
+  constructor(p5, navigateCallback,selectionCallback) {
     this.p5 = p5;
     this.logo = this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
     this.choose = this.p5.loadImage('./SUBWAY FOTOS/TITLES/choose.png');
@@ -19,6 +19,7 @@ export class Cheese {
       { name: 'Cheddar', images: { CheeseItem: this.p5.loadImage('./SUBWAY FOTOS/CHEESE/CheddarCheese.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/cheddar.png') } },
     ];
 
+    this.selectionCallback = selectionCallback;
     this.selectedCheese = null;
 
     const buttonXPercentage = 15;
@@ -34,6 +35,7 @@ export class Cheese {
         selectedCheese: this.selectedCheese,
       };
       console.log('Queso seleccionado:', userData);
+      this.selectionCallback({ selectedChesse: this.selectedCheese });
       navigateCallback();
     });
 

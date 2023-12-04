@@ -93,20 +93,25 @@ const app = (p5) => {
     });
 
     meats = new Meats(p5, () => {
-      const emailValue = userInfo.getEmail();
-
       currentScreen.hideInput();
       currentScreen = cheese;
+    }, (selectedData) => { // Recibir los datos seleccionados desde la pantalla de Meats
+      console.log('(Info recibida en el sketch) Datos seleccionados de carne:', selectedData);
     });
 
     cheese = new Cheese(p5, () => {
       currentScreen.hideInput();
       currentScreen = vegetables;
+
+    }, (selectedData) => { // Recibir los datos seleccionados desde la pantalla de Cheese
+      console.log('(Info recibida en el sketch) Datos seleccionados de queso:', selectedData);
     });
 
     vegetables = new Vegetables(p5, () => {
       currentScreen.hideInput();
       currentScreen = sauces;
+    }, (selectedData) => { // Recibir los datos seleccionados desde la pantalla de Vegetables
+      console.log('(Info recibida en el sketch) Datos seleccionados de Vegetales:', selectedData);
     });
 
     sauces = new Sauces(p5, () => {
