@@ -77,10 +77,15 @@ export class UserInfo {
     this.emailInput.style('border', 'none');
     this.emailInput.style('padding', '15px');
 
-  }
-  // Método para obtener el correo electrónico ingresado por el usuario
-  getEmail() {
-    return this.emailInput.value(); // Retorna el valor actual del campo de entrada de correo
+
+    this.continueButton.mousePressed(() => {
+      const emailValue = this.emailInput.value();
+      this.enteredEmail = emailValue; // Almacena el correo electrónico ingresado
+
+      // Aquí puedes pasar el correo electrónico a través de la función navigateCallback
+      console.log('Correo ingresado',emailValue);
+      this.navigateCallback(emailValue);})
+
   }
 
   hideInput() {

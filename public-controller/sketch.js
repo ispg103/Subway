@@ -75,10 +75,8 @@ const app = (p5) => {
       currentScreen = userInfo;
     });
 
-    userInfo = new UserInfo(p5, () => {
-      // Obtener el correo electrónico ingresado por el usuario
-      let userEmail = userInfo.getEmail();
-      console.log('user email:', userEmail)
+    userInfo = new UserInfo(p5, (emailValue) => {
+      console.log('(Recibido en el sketch)Correo electrónico ingresado:', emailValue);
       currentScreen.hideInput();
       currentScreen = bread;
     });
