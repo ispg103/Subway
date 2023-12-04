@@ -44,9 +44,9 @@ const app = (p5) => {
     subSelection: {
       selectedBread: "",
       selectedCheese: "",
-      selectedVegetables: "",
-      selectedMeats: "",
-      selectedSauces: "",
+      selectedVegetable: "",
+      selectedMeat: "",
+      selectedSauce: "",
     },
   };
 
@@ -88,28 +88,43 @@ const app = (p5) => {
     bread = new Bread(p5, () => {
       currentScreen.hideInput();
       currentScreen = meats;
-    })
+    }, (selectedBread) => {
+      userData.subSelection.selectedBread = selectedBread;
+      console.log(userData)
+    });
 
     meats = new Meats(p5, () => {
       const emailValue = userInfo.getEmail();
 
       currentScreen.hideInput();
       currentScreen = cheese;
+    }, (selectedMeat) => {
+      userData.subSelection.selectedMeat = selectedMeat;
+      console.log(userData)
     });
 
     cheese = new Cheese(p5, () => {
       currentScreen.hideInput();
       currentScreen = vegetables;
+    }, (selectedCheese) => {
+      userData.subSelection.selectedCheese = selectedCheese;
+      console.log(userData)
     });
 
     vegetables = new Vegetables(p5, () => {
       currentScreen.hideInput();
       currentScreen = sauces;
+    }, (selectedVegetable) => {
+      userData.subSelection.selectedVegetable = selectedVegetable;
+      console.log(userData)
     });
 
     sauces = new Sauces(p5, () => {
       currentScreen.hideInput();
       currentScreen = scores;
+    }, (selectedSauce) => {
+      userData.subSelection.selectedSauce = selectedSauce;
+      console.log(userData)
     });
 
     scores = new Scores(p5, () => {

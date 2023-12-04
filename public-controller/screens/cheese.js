@@ -6,7 +6,7 @@ class CheeseItem {
 }
 
 export class Cheese {
-  constructor(p5, navigateCallback) {
+  constructor(p5, navigateCallback, onSelectCheeseCallback) {
     this.p5 = p5;
     this.logo = this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
     this.choose = this.p5.loadImage('./SUBWAY FOTOS/TITLES/choose.png');
@@ -38,6 +38,7 @@ export class Cheese {
     });
 
     this.hideInput();
+    this.onSelectCheeseCallback = onSelectCheeseCallback;
   }
 
   show(p5) {
@@ -90,6 +91,7 @@ export class Cheese {
         ) {
           this.selectedCheese = cheeseItem.name; // Guarda el queso seleccionado
           console.log('Queso seleccionado:', this.selectedCheese);
+          this.onSelectCheeseCallback(this.selectedCheese);
         }
       }
 

@@ -6,7 +6,7 @@ class Meat {
 }
 
 export class Meats {
-  constructor(p5, navigateCallback) {
+  constructor(p5, navigateCallback, onSelectMeatCallback) {
     this.p5 = p5;
     this.logo = this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
     this.choose = this.p5.loadImage('./SUBWAY FOTOS/TITLES/choose.png');
@@ -41,6 +41,7 @@ export class Meats {
     });
 
     this.hideInput();
+    this.onSelectMeatCallback = onSelectMeatCallback;
   }
 
   show(p5) {
@@ -85,6 +86,7 @@ export class Meats {
         if (p5.mouseIsPressed) {
           this.selectedMeat = meat.name;
           console.log('Carne seleccionada:', this.selectedMeat);
+          this.onSelectMeatCallback(this.selectedMeat);
         }
       }
 

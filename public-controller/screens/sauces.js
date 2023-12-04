@@ -6,7 +6,7 @@ class Sauce {
 }
 
 export class Sauces {
-  constructor(p5, navigateCallback) {
+  constructor(p5, navigateCallback, onSelectSauceCallback) {
     this.p5 = p5;
     this.logo = this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
     this.choose = this.p5.loadImage('./SUBWAY FOTOS/TITLES/choose.png');
@@ -40,6 +40,7 @@ export class Sauces {
     });
 
     this.hideInput();
+    this.onSelectSauceCallback = onSelectSauceCallback;
   }
 
   show(p5) {
@@ -82,6 +83,7 @@ export class Sauces {
       ) {
         this.selectedSauce = sauce.name;
         console.log('Salsa seleccionada:', this.selectedSauce);
+        this.onSelectSauceCallback(this.selectedSauce);
       }
 
       p5.image(sauce.images.sauce, imageX, imageY);

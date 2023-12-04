@@ -6,7 +6,7 @@ class Vegetable {
 }
 
 export class Vegetables {
-  constructor(p5, navigateCallback) {
+  constructor(p5, navigateCallback, onSelectVegetableCallback) {
     this.p5 = p5;
     this.logo = this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
     this.choose = this.p5.loadImage('./SUBWAY FOTOS/TITLES/choose.png');
@@ -40,6 +40,7 @@ export class Vegetables {
     });
 
     this.hideInput();
+    this.onSelectVegetableCallback = onSelectVegetableCallback;
   }
 
   show(p5) {
@@ -92,6 +93,7 @@ export class Vegetables {
         ) {
           this.selectedVegetable = vegetable.name;
           console.log('Vegetal seleccionado:', this.selectedVegetable);
+          this.onSelectVegetableCallback(this.selectedVegetable);
         }
       }
 
