@@ -17,7 +17,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // Función para crear un nuevo usuario
-export async function createUser(users) {
+export async function createUser(userData) {
   try {
     await addDoc(collection(db, "users"), users);
     console.log("Usuario añadido exitosamente");

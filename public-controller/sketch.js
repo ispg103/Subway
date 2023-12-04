@@ -19,7 +19,7 @@ import { Sorry } from "./screens/sorry.js";
 import { Congrats } from "./screens/congrats.js";
 import { Thanks } from "./screens/thanks.js";
 import { Start } from '../public-display/screens/start.js';
-//import {getRandomFromDB} from './firebase.js';
+import { createUser, getUsers, updateUserScore } from '../firebase.js';
 
 let user = [];
 
@@ -150,7 +150,18 @@ const app = (p5) => {
     // VER LAS PANTALLAS DESDE AQUI
     currentScreen = home;
 
-    function updateUserData(selectedData) {
+    async function sendDataToFirebase(userData) {
+      try {
+        await createUser(userData);
+        await getUsers();
+        console.log("Datos enviados a Firebase exitosamente");
+      } catch (error) {
+        console.error("Error al enviar datos a Firebase: ", error);
+      }
+    }
+    
+
+    async function updateUserData(selectedData) {
       userData.subSelection = {
         selectedBread: selectedData.bread,
         cheese: selectedData.cheese,
@@ -158,6 +169,8 @@ const app = (p5) => {
         meats: selectedData.meats,
         sauces: selectedData.sauces,
       };
+      
+      await sendDataToFirebase(userData);
     }
     
 
