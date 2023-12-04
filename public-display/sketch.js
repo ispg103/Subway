@@ -16,6 +16,7 @@ import { Meats } from './screens/meats.js';
 import { Vegetables } from './screens/vegetables.js';
 import { Sauces } from './screens/sauces.js';
 import { Done } from './screens/done.js';
+import { currentScreen } from './sketch';
 
 let users = {
   email: "",
@@ -32,7 +33,7 @@ const app = (p5) => {
   let vegetables;
   let sauces;
   let done;
-  let currentScreen;
+  let currentScreenMupi;
 
 
   //Timer
@@ -82,7 +83,7 @@ const app = (p5) => {
 
 
     //CAMBIAR DESDE AQUI
-    currentScreen = start
+    currentScreenMupi = start
     ; // PARA VER LAS PANTALLAS CAMBIAR EL(start)
 
   };
@@ -116,7 +117,7 @@ socket.on('connect',function(){
 // SOCKET CAMBIO PANTALLA MUPI
 
 setTimeout(() => {
-  currentScreen = qr; // Cambiar a la pantalla QR después de 5 segundos
+  currentScreenMupi = qr; // Cambiar a la pantalla QR después de 5 segundos
   console.log('Cambiando a pantalla qr')
   p5.redraw(); // Actualizar el lienzo
 }, 5000);
@@ -142,8 +143,8 @@ setTimeout(() => {
     //ESTA WEA HACE QUE IMPRIMA
     p5.draw = function () {
       p5.background(0);
-      if (currentScreen) {
-        currentScreen.show(p5, users); // Renderizar la pantalla actual
+      if (currentScreenMupi) {
+        currentScreenMupi.show(p5, users); // Renderizar la pantalla actual
       } else {
         console.log('No hay pantalla seleccionada');
       }

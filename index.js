@@ -67,7 +67,27 @@ io.on('connection', (socket) => {
     console.error("Error al crear usuario en Firebase:", error);
   }
   // ... Lógica para eventos y manejo de sockets
-
+  io.on('connection', (socket) => {
+    console.log('Usuario conectado');
+  
+    socket.on('userSubmit', (userData) => {
+      // Emitir el evento a todos los clientes conectados
+      io.emit('userData', userData);
+  
+      // Guardar userData en Firebase
+      db.collection('users').add(userData)
+        .then((docRef) => {
+          console.log("Document written with ID: ", docRef.id);
+        })
+        .catch((error) => {
+          console.error("Error adding document: ", error);
+        });
+    });
+  
+    socket.on('disconnect', () => {
+      console.log('Usuario desconectado');
+    });
+  });
   // Ejemplo de uso de eventos
 
   socket.on('updateScore', (users) => {

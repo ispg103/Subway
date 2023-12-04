@@ -41,6 +41,7 @@ const app = (p5) => {
   let userData = {
     email: "",
     score: 0,
+    attempts: 2,
     subSelection: {
       selectedBread: "",
       selectedCheese: "",
@@ -64,8 +65,9 @@ const app = (p5) => {
     p5.createCanvas(393, 760);
 
     //PANTALLAS
-
+    
     home = new Home(p5, () => {
+      console.log(userData.attempts);
       currentScreen.hideInput();
       currentScreen = home2;
     });
@@ -90,7 +92,6 @@ const app = (p5) => {
       currentScreen = meats;
     }, (selectedBread) => {
       userData.subSelection.selectedBread = selectedBread;
-      console.log(userData)
     });
 
     meats = new Meats(p5, () => {
@@ -100,7 +101,6 @@ const app = (p5) => {
       currentScreen = cheese;
     }, (selectedMeat) => {
       userData.subSelection.selectedMeat = selectedMeat;
-      console.log(userData)
     });
 
     cheese = new Cheese(p5, () => {
@@ -108,7 +108,6 @@ const app = (p5) => {
       currentScreen = vegetables;
     }, (selectedCheese) => {
       userData.subSelection.selectedCheese = selectedCheese;
-      console.log(userData)
     });
 
     vegetables = new Vegetables(p5, () => {
@@ -116,7 +115,6 @@ const app = (p5) => {
       currentScreen = sauces;
     }, (selectedVegetable) => {
       userData.subSelection.selectedVegetable = selectedVegetable;
-      console.log(userData)
     });
 
     sauces = new Sauces(p5, () => {
@@ -124,10 +122,10 @@ const app = (p5) => {
       currentScreen = scores;
     }, (selectedSauce) => {
       userData.subSelection.selectedSauce = selectedSauce;
-      console.log(userData)
     });
 
     scores = new Scores(p5, () => {
+      console.log(userData)
       currentScreen.hideInput();
       currentScreen = sorry;
     });
@@ -135,13 +133,14 @@ const app = (p5) => {
     sorry = new Sorry(p5, () => {
       currentScreen.hideInput();
       currentScreen = congrats;
+      userData.attempts = userData.attempts - 1;
     });
-
+    
     congrats = new Congrats(p5, () => {
       currentScreen.hideInput();
       currentScreen = thanks;
     });
-
+    
     thanks = new Thanks(p5, () => {
       currentScreen.hideInput();
       currentScreen = home;
