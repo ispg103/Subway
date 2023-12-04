@@ -88,7 +88,9 @@ const app = (p5) => {
     bread = new Bread(p5, () => {
       currentScreen.hideInput();
       currentScreen = meats;
-    })
+    }, (selectedData) => { // Recibir los datos seleccionados desde la pantalla de Bread
+      console.log('(Info recibida en el sketch) Datos seleccionados de pan:', selectedData);
+    });
 
     meats = new Meats(p5, () => {
       const emailValue = userInfo.getEmail();
@@ -110,6 +112,10 @@ const app = (p5) => {
     sauces = new Sauces(p5, () => {
       currentScreen.hideInput();
       currentScreen = scores;
+    }, (selectedData) => {
+      // Recibir los datos seleccionados desde la pantalla de Salsas
+      console.log('(Info recibida en el sketch) Datos seleccionados de Salsas:', selectedData);
+
     });
 
     scores = new Scores(p5, () => {
