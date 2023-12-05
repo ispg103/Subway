@@ -19,9 +19,18 @@ import { Sorry } from "./screens/sorry.js";
 import { Congrats } from "./screens/congrats.js";
 import { Thanks } from "./screens/thanks.js";
 import { Start } from '../public-display/screens/start.js';
-//import {getRandomFromDB} from './firebase.js';
-
+//import { createUser, getUsers } from '../firebase.js';
+let dailySubs = [];
+let SubDaily = [];
 let user = [];
+
+let selectedIngBread = false;
+let selectedIngMeat = false;
+let selectedIngCheese = false;
+let selectedIngVegetable = false;
+let selectedIngSauce = false;
+
+
 
 const app = (p5) => {
   let home;
@@ -51,7 +60,7 @@ const app = (p5) => {
     },
   };
 
-
+  let selectedIngredients;
   //Timer
   let startingTime = 60;// el timer empezara desde 60 segundos
   let lastUpdateTime = 0;
@@ -59,7 +68,6 @@ const app = (p5) => {
   let timeStarted = false; //indica si el temporizador ya esta activo
   let timerVisible = false; // Controla la visibilidad del temporizador
 
-  let selectedIngredients = [];
 
   p5.setup = function () {
     p5.createCanvas(393, 760);
@@ -70,6 +78,8 @@ const app = (p5) => {
       console.log(userData.attempts);
       currentScreen.hideInput();
       currentScreen = home2;
+      console.log("sub daily: ", SubDaily);
+      console.log("number of attemps: ", userData.attempts);
     });
 
     home2 = new Home2(p5, () => {
@@ -83,15 +93,28 @@ const app = (p5) => {
       console.log('user email:', userEmail)
       currentScreen.hideInput();
       currentScreen = bread;
+      console.log("info user data: ", userData);
     });
-
-
 
     bread = new Bread(p5, () => {
       currentScreen.hideInput();
       currentScreen = meats;
     }, (selectedBread) => {
       userData.subSelection.selectedBread = selectedBread;
+      if (selectedBread === SubDaily.bread && selectedIngBread==false){
+        if(userData.attempts = 2){
+          userData.score = userData.score + 10;
+          console.log("puntaje: ", userData.score);
+          selectedIngBread = true;
+        }else if(userData.attempts = 1){
+          userData.score = userData.score + 5;
+          console.log("puntaje: ", userData.score);
+          selectedIngBread = true;
+        }
+      }else if(selectedIngBread==false){
+        selectedIngBread = true;
+        console.log("eleccion incorrecta , puntaje: ", userData.score);
+      }
     });
 
     meats = new Meats(p5, () => {
@@ -101,6 +124,20 @@ const app = (p5) => {
       currentScreen = cheese;
     }, (selectedMeat) => {
       userData.subSelection.selectedMeat = selectedMeat;
+      if (selectedMeat === SubDaily.meat && selectedIngMeat==false){
+        if(userData.attempts = 2){
+          userData.score = userData.score + 10;
+          console.log("puntaje: ", userData.score);
+          selectedIngMeat = true;
+        }else if(userData.attempts = 1){
+          userData.score = userData.score + 5;
+          console.log("puntaje: ", userData.score);
+          selectedIngMeat = true;
+        }
+      }else if(selectedIngMeat==false){
+        selectedIngMeat = true;
+        console.log("eleccion incorrecta , puntaje: ", userData.score);
+      }
     });
 
     cheese = new Cheese(p5, () => {
@@ -108,6 +145,20 @@ const app = (p5) => {
       currentScreen = vegetables;
     }, (selectedCheese) => {
       userData.subSelection.selectedCheese = selectedCheese;
+      if (selectedCheese === SubDaily.cheese && selectedIngCheese==false){
+        if(userData.attempts = 2){
+          userData.score = userData.score + 10;
+          console.log("puntaje: ", userData.score);
+          selectedIngCheese = true;
+        }else if(userData.attempts = 1){
+          userData.score = userData.score + 5;
+          console.log("puntaje: ", userData.score);
+          selectedIngCheese = true;
+        }
+      }else if(selectedIngCheese==false){
+        selectedIngCheese = true;
+        console.log("eleccion incorrecta , puntaje: ", userData.score);
+      }
     });
 
     vegetables = new Vegetables(p5, () => {
@@ -115,6 +166,20 @@ const app = (p5) => {
       currentScreen = sauces;
     }, (selectedVegetable) => {
       userData.subSelection.selectedVegetable = selectedVegetable;
+      if (selectedVegetable === SubDaily.vegetables && selectedIngVegetable==false){
+        if(userData.attempts = 2){
+          userData.score = userData.score + 10;
+          console.log("puntaje: ", userData.score);
+          selectedIngVegetable = true;
+        }else if(userData.attempts = 1){
+          userData.score = userData.score + 5;
+          console.log("puntaje: ", userData.score);
+          selectedIngVegetable = true;
+        }
+      }else if(selectedIngVegetable==false){
+        selectedIngVegetable = true;
+        console.log("eleccion incorrecta , puntaje: ", userData.score);
+      }
     });
 
     sauces = new Sauces(p5, () => {
@@ -122,18 +187,33 @@ const app = (p5) => {
       currentScreen = scores;
     }, (selectedSauce) => {
       userData.subSelection.selectedSauce = selectedSauce;
+      if (selectedSauce === SubDaily.sauce && selectedIngSauce==false){
+        if(userData.attempts = 2){
+          userData.score = userData.score + 10;
+          console.log("puntaje: ", userData.score);
+          selectedIngSauce = true;
+        }else if(userData.attempts = 1){
+          userData.score = userData.score + 5;
+          console.log("puntaje: ", userData.score);
+          selectedIngSauce = true;
+        }
+      }else if(selectedIngSauce==false){
+        selectedIngSauce = true;
+        console.log("eleccion incorrecta , puntaje: ", userData.score);
+      }
     });
 
     scores = new Scores(p5, () => {
       console.log(userData)
       currentScreen.hideInput();
       currentScreen = sorry;
+      console.log("info user data: ", userData);
     });
 
     sorry = new Sorry(p5, () => {
       currentScreen.hideInput();
       currentScreen = congrats;
-      userData.attempts = userData.attempts - 1;
+      userData.attemps = userData.attemps - 1;
     });
     
     congrats = new Congrats(p5, () => {
@@ -148,6 +228,30 @@ const app = (p5) => {
 
     // VER LAS PANTALLAS DESDE AQUI
     currentScreen = home;
+
+    /*async function sendDataToFirebase(userData) {
+      try {
+        await createUser(userData);
+        await getUsers();
+        console.log("Datos enviados a Firebase exitosamente");
+      } catch (error) {
+        console.error("Error al enviar datos a Firebase: ", error);
+      }
+    }
+    */
+
+    async function updateUserData(selectedData) {
+      userData.subSelection = {
+        selectedBread: selectedData.bread,
+        cheese: selectedData.cheese,
+        vegetables: selectedData.vegetables,
+        meats: selectedData.meats,
+        sauces: selectedData.sauces,
+      };
+
+      await sendDataToFirebase(userData);
+    }
+    
 
     `userInfo = new UserInfo(p5, () => {
       userInfo.setSubmitCallback((userData)=>{
@@ -169,6 +273,18 @@ const app = (p5) => {
         console.log("Comienza el temporizador");
       }
     });
+    
+    socket.on('get-daily-subs', (firebaseDailySubs) => {
+      dailySubs = firebaseDailySubs;
+      console.log("daily subs: ", dailySubs);
+      GetRandomSubDaily();
+    });
+    
+    function GetRandomSubDaily(){
+      let randomN = Math.floor(Math.random() * dailySubs.length);
+      SubDaily = dailySubs[randomN];
+      console.log("sub daily: ", SubDaily);
+    }
 
     //Actualizar el puntaje
     socket.on('updateScore', (winnerUser) => {

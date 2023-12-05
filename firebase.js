@@ -40,11 +40,14 @@ export async function getUsers() {
 
 // Función para obtener todos los DailySubs
 export async function getDailySubs() {
+  let dailySubs = [];
   try {
-    const querySnapshot = await getDocs(collection(db, "DailySubs"));
+    const querySnapshot = await getDocs(collection(db, "DailySub"));
     querySnapshot.forEach((doc) => {
       console.log(doc.id, " => ", doc.data());
+      dailySubs.push(doc.data())
     });
+    return dailySubs;
   } catch (error) {
     console.error("Error al obtener DailySubs: ", error);
   }
