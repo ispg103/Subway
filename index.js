@@ -1,6 +1,6 @@
 import express from 'express';
 import { createServer } from 'http';
-import cors from 'cors';
+import cors from 'cors'; //más seguridad a la hora de conectarse con socket (tipo typescript)
 import { SerialPort, ReadlineParser  } from 'serialport';
 import { Server } from 'socket.io';
 import { initializeApp } from 'firebase/app';
