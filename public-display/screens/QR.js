@@ -18,7 +18,7 @@ export class QR {
   show(p5) {
     p5.background('green');
     p5.image(this.logo, 145, 170);
-    p5.image(this.qr, 200, 430);
+    p5.image(this.qr, 150, 410);
     p5.image(this.vector1, 110, 719);
     p5.image(this.vector2, 0, 0);
     p5.image(this.textQR, 130, 320);
