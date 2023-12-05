@@ -1,7 +1,7 @@
 import express from 'express';
 import { createServer } from 'http';
 import cors from 'cors'; //más seguridad a la hora de conectarse con socket (tipo typescript)
-import { SerialPort, ReadlineParser  } from 'serialport';
+import { SerialPort, ReadlineParser  } from 'serialport'; //comunicación serial con arduino
 import { Server } from 'socket.io';
 import { initializeApp } from 'firebase/app';
 import * as Firebase from './firebase.js';
@@ -10,8 +10,8 @@ const PORT = 3000;
 const app = express();
 app.use(cors({origin:"*"}));
 app.use(express.json());
-app.use('/mupi', express.static('public-display'));  // Sirve archivos desde la carpeta public-diplay/Mupi
-app.use('/user', express.static('public-controller')); //Sirve archivos desde la carpeta public-controller/Celular
+app.use('/mupi', express.static('public-display'));  // Manda archivos desde la carpeta public-diplay/Mupi
+app.use('/user', express.static('public-controller')); //Manda archivos desde la carpeta public-controller/Celular
 
 const httpServer = createServer(app);
 
@@ -29,7 +29,7 @@ const io = new Server(httpServer, {
   path: '/real-time',
   cors: {
     origin: "*",
-    methods: ["GET", "POST"]
+    methods: ["GET", "POST"] 
   }
 });
 
@@ -37,7 +37,7 @@ const io = new Server(httpServer, {
 // Configuración de puerto serial - ARDUINO
 const protocolConfiguration = {
   path: 'COM10',
-  baudRate: 9600
+  baudRate: 9600 //envio de simbolos por segundo
 };
 
 const port = new SerialPort(protocolConfiguration);
