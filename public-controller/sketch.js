@@ -85,6 +85,23 @@ const app = (p5) => {
       console.log("info user data: ", userData);
     });
 
+    function compareIngredients() {
+      if (
+        userData.subSelection.selectedBread === SubDaily.bread &&
+        userData.subSelection.selectedMeat === SubDaily.meat &&
+        userData.subSelection.selectedCheese === SubDaily.cheese &&
+        userData.subSelection.selectedVegetable === SubDaily.vegetables &&
+        userData.subSelection.selectedSauce === SubDaily.sauce
+      ) {
+        currentScreen.hideInput();
+        currentScreen = congrats;
+      } else {
+        currentScreen.hideInput();
+        currentScreen = sorry;
+        userData.attempts = userData.attempts - 1;
+      }
+    }
+
     bread = new Bread(p5, () => {
       currentScreen.hideInput();
       currentScreen = meats;
@@ -171,7 +188,7 @@ const app = (p5) => {
 
     sauces = new Sauces(p5, () => {
       currentScreen.hideInput();
-      currentScreen = scores;
+      currentScreen = sorry;
     }, (selectedSauce) => {
       userData.subSelection.selectedSauce = selectedSauce;
       if (selectedSauce === SubDaily.sauce && selectedIngSauce==false){
@@ -188,23 +205,24 @@ const app = (p5) => {
         selectedIngSauce = true;
         console.log("eleccion incorrecta , puntaje: ", userData.score);
       }
-    });
-
-    scores = new Scores(p5, () => {
-      currentScreen.hideInput();
-      currentScreen = sorry;
-      console.log("info user data: ", userData);
+      compareIngredients();
     });
 
     sorry = new Sorry(p5, () => {
       currentScreen.hideInput();
-      currentScreen = congrats;
+      currentScreen = scores;
       userData.attemps = userData.attemps - 1;
     });
 
     congrats = new Congrats(p5, () => {
       currentScreen.hideInput();
+      currentScreen = scores;
+    });
+
+    scores = new Scores(p5, () => {
+      currentScreen.hideInput();
       currentScreen = thanks;
+      console.log("info user data: ", userData);
     });
 
     thanks = new Thanks(p5, () => {
