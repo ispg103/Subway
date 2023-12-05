@@ -1,3 +1,4 @@
+//Controla a qué servidor se dirigirá un usuario final cuando escriba un nombre de dominio en su navegador web
 const DNS = getDNS;
 
 const URL = `http://${window.location.hostname}:3000`;
