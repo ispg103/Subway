@@ -6,7 +6,7 @@ class Sauce {
 }
 
 export class Sauces {
-  constructor(p5, navigateCallback,selectionCallback) {
+  constructor(p5, navigateCallback, onSelectSauceCallback) {
     this.p5 = p5;
     this.logo = this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
     this.choose = this.p5.loadImage('./SUBWAY FOTOS/TITLES/choose.png');
@@ -20,7 +20,7 @@ export class Sauces {
       { name: 'Garlic', images: { sauce: this.p5.loadImage('./SUBWAY FOTOS/SAUCE/Garlic.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/Garlic.png') } },
       { name: 'Mayonnaise', images: { sauce: this.p5.loadImage('./SUBWAY FOTOS/SAUCE/Mayonnaise.png'), text: this.p5.loadImage('./SUBWAY FOTOS/TEXTS/mayonnaise.png') } },
     ];
-    this.selectionCallback = selectionCallback;
+
     this.selectedSauce = null;
 
     const buttonXPercentage = 15;
@@ -36,11 +36,11 @@ export class Sauces {
         selectedSauce: this.selectedSauce,
       };
       console.log('Salsa seleccionada:', userData);
-      this.selectionCallback({ selectedSauce: this.selectedSauce });
       navigateCallback();
     });
 
     this.hideInput();
+    this.onSelectSauceCallback = onSelectSauceCallback;
   }
 
   show(p5) {
@@ -83,6 +83,7 @@ export class Sauces {
       ) {
         this.selectedSauce = sauce.name;
         console.log('Salsa seleccionada:', this.selectedSauce);
+        this.onSelectSauceCallback(this.selectedSauce);
       }
 
       p5.image(sauce.images.sauce, imageX, imageY);

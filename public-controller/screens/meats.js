@@ -6,7 +6,7 @@ class Meat {
 }
 
 export class Meats {
-  constructor(p5, navigateCallback,selectionCallback) {
+  constructor(p5, navigateCallback, onSelectMeatCallback) {
     this.p5 = p5;
     this.logo = this.p5.loadImage('./SUBWAY FOTOS/EXTRAS/SubwayLogo.png');
     this.choose = this.p5.loadImage('./SUBWAY FOTOS/TITLES/choose.png');
@@ -20,7 +20,6 @@ export class Meats {
         { name: 'Tuna', image: new Meat(this.p5.loadImage('./SUBWAY FOTOS/MEAT/Tuna.png'), this.p5.loadImage('./SUBWAY FOTOS/TEXTS/Tuna.png')) },
         { name: 'BBQ Ribs', image: new Meat(this.p5.loadImage('./SUBWAY FOTOS/MEAT/BBQrips.png'), this.p5.loadImage('./SUBWAY FOTOS/TEXTS/ribs.png')) },
     ];
-    this.selectionCallback=selectionCallback;
     this.selectedMeat = null;
 
     const buttonXPercentage = 15;
@@ -35,12 +34,14 @@ export class Meats {
       const userData = {
         selectedMeat: this.selectedMeat,
       };
-      console.log('Carne seleccionado:', userData);
-      this.selectionCallback({ selectedMeat: this.selectedMeat });
+      console.log('Carne seleccionada:', userData);
       navigateCallback();
+
+
     });
 
     this.hideInput();
+    this.onSelectMeatCallback = onSelectMeatCallback;
   }
 
   show(p5) {
@@ -85,6 +86,7 @@ export class Meats {
         if (p5.mouseIsPressed) {
           this.selectedMeat = meat.name;
           console.log('Carne seleccionada:', this.selectedMeat);
+          this.onSelectMeatCallback(this.selectedMeat);
         }
       }
 

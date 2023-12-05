@@ -53,7 +53,9 @@ let arduinoInput=[];
 
 
 Firebase.getUsers();
-console.log()
+let dailySubs = await Firebase.getDailySubs();
+console.log("daily subs: ", dailySubs);
+io.emit('get-daily-subs', dailySubs);
 
 // Manejo de conexiones y eventos de Socket.IO
 io.on('connection', (socket) => {
@@ -85,8 +87,6 @@ io.on('connection', (socket) => {
   });
 
 });
-
-
 
 
 // Manejo de datos del puerto serial
